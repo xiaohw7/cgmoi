@@ -13,6 +13,7 @@ SimpleKalmanFilter simpleKalmanFilter(13, 13, 0.7);
 // Define stepper motor connections:
 #define dirPin 2
 #define stepPin 4
+#define stepperMotorSignal 22
 
 void setup() {
 //Set up Gyro----------------------------------------------------------------------------------------------------
@@ -27,6 +28,9 @@ void setup() {
 
   //Set filter for gyro
   BMI160.setAccelDLPFMode(OSR4);
+
+  //Set sampling rate to 1600Hz
+  BMI160.setAccelRate(12);
 
   //Calibrating accelerometer offset
   Serial.println("Calibrating accelerometer");
@@ -45,15 +49,22 @@ void setup() {
   // Declare pins as output:
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
+  pinMode(stepperMotorSignal, OUTPUT);
 
   //change pwm frequency
   TCCR5B = TCCR5B & B11111000 | B00000001;  // for PWM frequency of 31372.55 Hz
   
   // Set the spinning direction to CCW:
   //digitalWrite(dirPin, LOW);
+
+  //Turn off power to stepper motor
+  digitalWrite(stepperMotorSignal, HIGH);
 }
 
 void loop() {
+  //Turn on power to stepper motor
+  digitalWrite(stepperMotorSignal, LOW);
+  
   //Set the spinning direction to CW
   digitalWrite(dirPin, HIGH);
   
@@ -85,15 +96,20 @@ void loop() {
     //Serial.print("total accel offset(x,y): ");
     //Serial.print(totalXAccelOffset);Serial.print("\t");
     //Serial.println(totalYAccelOffset);
-    delay(10);
+    delay(100);
   }
+
+  //Serial.print("total accel offset(x,y): ");
+  //Serial.print(totalXAccelOffset);Serial.print("\t");
+  //Serial.println(totalYAccelOffset);
   
   delay(10);
 
   for (int x = 0; x < 10; x++) {//Run 10 times to collect 10 peak values for rslts array
     float peakValue = 0; //peak value of one measurement
+
     
-    digitalWrite(dirPin, HIGH); //Set spinning direction to CCW   
+    digitalWrite(dirPin, HIGH); //Set spinning direction to CW   
     analogWrite(stepPin,127); //Run stepper motor
 
     //Measure actual values when motor starts
@@ -104,7 +120,7 @@ void loop() {
       float xAccel = convertRawGyro(xAccelRaw);
       float yAccel = convertRawGyro(yAccelRaw);
       //Serial.println("MEASURED VALUES");
-      //Serial.print(xAccel);Serial.print("\t");
+      //Serial.println(xAccel);Serial.print("\t");
       //Serial.print(yAccel);Serial.print("\t");  
       //Serial.println();
       //Calculate required values
@@ -125,8 +141,9 @@ void loop() {
       }
   
     }
-  
+
     delay(5);
+   
     analogWrite(stepPin,0); //turn off motor
 
     //Run peak value through Kalman filter
@@ -146,6 +163,9 @@ void loop() {
     delay(1000);
 
   }
+
+  //turn off power to stepper motor
+  digitalWrite(stepperMotorSignal, HIGH);
 
   //Calculating mean peak value
   float totalPeakValue = 0;
@@ -171,18 +191,22 @@ void loop() {
   Serial.println(stanDev);
   
   Serial.println("End of recording");
-  delay(15000);
+  delay(10000);
 
+  //Receive command from serial terminal
+  if (Serial.available() > 0) {
+    int incomingByte = Serial.parseInt();
 
-  //Reverse direction of motor
-  //if (digitalRead(dirPin) == HIGH) {
-   //digitalWrite(dirPin, LOW);
-  //}
-  //else {
-   //digitalWrite(dirPin, HIGH);
-  //}
-  //delay(980); 
+    if (incomingByte == 12) { //send "12" to turn on power to stepper motor
+     digitalWrite(stepperMotorSignal, LOW);
+     Serial.println("Stepper Motor power on"); 
+    }
 
+    else if (incomingByte == 13) { //send "13" to turn off power to stepper motor
+      digitalWrite(stepperMotorSignal, HIGH);
+      Serial.println("Stepper Motor power off");
+    }
+  } 
 }
 
 

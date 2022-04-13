@@ -142,15 +142,25 @@ void TaskMotor(void *pvParameters)  // This is a task.
   for (;;)
   {
     //Set the spinning direction to CCW
+    //change pwm frequency
+    TCCR5B = TCCR5B & B11111000 | B00000001;  // for PWM frequency of 31372.55 Hz
     digitalWrite(dirPin, LOW);
     analogWrite(stepPin,127); //Run stepper motor
     vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
+    //slow down step motor by changing PWM frequency
+    TCCR5B = TCCR5B & B11111000 | B00000011;  // for PWM frequency of   490.20 Hz
+    delay(1000);
     analogWrite(stepPin,0); //Stop stepper motor
     //Set the spinning direction to CW
+    //change pwm frequency
+    TCCR5B = TCCR5B & B11111000 | B00000001;  // for PWM frequency of 31372.55 Hz
     digitalWrite(dirPin, HIGH);
     vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
     analogWrite(stepPin,127); //Run stepper motor
     vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
+    //slow down step motor by changing PWM frequency
+    TCCR5B = TCCR5B & B11111000 | B00000011;  // for PWM frequency of   490.20 Hz
+    delay(1000);
     analogWrite(stepPin,0); //Stop stepper motor
     vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
 

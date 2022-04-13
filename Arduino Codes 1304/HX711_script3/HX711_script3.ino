@@ -29,7 +29,7 @@ void setup() {
   float calibrationValue_2; // calibration value load cell 2
   float calibrationValue_3; // calibration value load cell 3
   
-  calibrationValue_1 = 89.6; // uncomment this if you want to set this value in the sketch
+  calibrationValue_1 = 89.60; // uncomment this if you want to set this value in the sketch
   calibrationValue_2 = 91.12; // uncomment this if you want to set this value in the sketch
   calibrationValue_3 = 90.18; // uncomment this if you want to set this value in the sketch
 

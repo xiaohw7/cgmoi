@@ -7,12 +7,12 @@
 #include <SimpleKalmanFilter.h>
 
 //pins:
-const int HX711_dout_1 = 5; //mcu > HX711 no 1 dout pin
-const int HX711_sck_1 = 6; //mcu > HX711 no 1 sck pin
-const int HX711_dout_2 = 7; //mcu > HX711 no 2 dout pin
-const int HX711_sck_2 = 8; //mcu > HX711 no 2 sck pin
-const int HX711_dout_3 = 9; //mcu > HX711 no 3 dout pin
-const int HX711_sck_3 = 10; //mcu > HX711 no 3 sck pin
+const int HX711_dout_1 = 45; //mcu > HX711 no 1 dout pin
+const int HX711_sck_1 = 44; //mcu > HX711 no 1 sck pin
+const int HX711_dout_2 = 43; //mcu > HX711 no 2 dout pin
+const int HX711_sck_2 = 42; //mcu > HX711 no 2 sck pin
+const int HX711_dout_3 = 41; //mcu > HX711 no 3 dout pin
+const int HX711_sck_3 = 40; //mcu > HX711 no 3 sck pin
 
 //HX711 constructor (dout pin, sck pin)
 HX711_ADC LoadCell_1(HX711_dout_1, HX711_sck_1); //HX711 1
@@ -41,9 +41,9 @@ void setup() {
   float calibrationValue_2; // calibration value load cell 2
   float calibrationValue_3; // calibration value load cell 3
   
-  calibrationValue_1 = 88.95; // uncomment this if you want to set this value in the sketch
-  calibrationValue_2 = 89.10; // uncomment this if you want to set this value in the sketch
-  calibrationValue_3 = 91.65; // uncomment this if you want to set this value in the sketch
+  calibrationValue_1 = 88.80; // uncomment this if you want to set this value in the sketch
+  calibrationValue_2 = 90.59; // uncomment this if you want to set this value in the sketch
+  calibrationValue_3 = 91.09; // uncomment this if you want to set this value in the sketch
   
   LoadCell_1.begin();
   LoadCell_2.begin();
@@ -109,7 +109,6 @@ void loop() {
   
      //get smoothed value from data set
      if ((newDataReady)) {
-       //if (millis() > t + serialPrintInterval) {
          float a = LoadCell_1.getData();
          float b = LoadCell_2.getData();
          float c = LoadCell_3.getData();
@@ -151,13 +150,6 @@ void loop() {
        Serial.print(",");
        Serial.print(yCoordinate);
        Serial.println(")");
-         //newDataReady = 0;
-         //t = millis();
-         
-       //} 
-      //}
-    //} 
-     
 
     
 

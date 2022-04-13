@@ -20,6 +20,10 @@ void setup() {
   //set filter
   BMI160.setAccelDLPFMode(OSR2);
 
+  //set sampling rate
+  BMI160.setAccelRate(12);
+  
+
   //Calibrating accelerometer offset
   //Serial.println("Calibrating accelerometer");
   BMI160.autoCalibrateXAccelOffset(0);
@@ -60,7 +64,7 @@ void loop() {
     Serial.print(gy1);Serial.print("\t");
     Serial.print("gz1 (g): ");
     Serial.println(gz1);
-    delay(500);
+    //delay(500);
 
 
 }
