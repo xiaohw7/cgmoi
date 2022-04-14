@@ -15,3 +15,5 @@ User can input commands in serial monitor to control individual linear actuators
 - Send '9' to move all 3 linear actuators up fully
 
 - Send '10' to move all 3 linear actuators down fully
+
+- Send '11' to tare all load cells
