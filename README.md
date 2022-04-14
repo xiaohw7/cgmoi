@@ -17,3 +17,7 @@ User can input commands in serial monitor to control individual linear actuators
 - Send '10' to move all 3 linear actuators down fully
 
 - Send '11' to tare all load cells
+
+- Send '12' to turn on power to stepper motor
+
+- Send '13' to off power to stepper motor
