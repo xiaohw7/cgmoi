@@ -35,11 +35,11 @@ void setup() {
   //Calibrating accelerometer offset
   Serial.println("Calibrating accelerometer");
   BMI160.autoCalibrateXAccelOffset(0);
-  //BMI160.setAccelOffsetEnabled(true);
-  BMI160.autoCalibrateYAccelOffset(0);
-  //BMI160.setAccelOffsetEnabled(true);
-  //BMI160.autoCalibrateZAccelOffset(-1);
   BMI160.setAccelOffsetEnabled(true);
+  BMI160.autoCalibrateYAccelOffset(0);
+  BMI160.setAccelOffsetEnabled(true);
+  //BMI160.autoCalibrateZAccelOffset(-1);
+  //BMI160.setAccelOffsetEnabled(true);
   delay(1000);
   
   delay(500);
@@ -96,7 +96,7 @@ void loop() {
     //Serial.print("total accel offset(x,y): ");
     //Serial.print(totalXAccelOffset);Serial.print("\t");
     //Serial.println(totalYAccelOffset);
-    delay(100);
+    delay(200);
   }
 
   //Serial.print("total accel offset(x,y): ");
@@ -112,7 +112,7 @@ void loop() {
     digitalWrite(dirPin, HIGH); //Set spinning direction to CW   
     analogWrite(stepPin,127); //Run stepper motor
 
-    //Measure actual values when motor starts
+    //Measure actual values when as soon as motor starts
     for (int i = 0; i < 800; i++) { //collect data from accelerometer
       BMI160.readAccelerometer(xAccelRaw, yAccelRaw, zAccelRaw);
     
@@ -127,6 +127,8 @@ void loop() {
       float avgXAccel = xAccel - (totalXAccelOffset/20); //average acceleration along x-axis after offset
       float avgYAccel = yAccel - (totalYAccelOffset/20); //average acceleration along y-axis after offset
 
+      //Serial.println(avgYAccel*100);
+      
       float netAccel = sqrt(sq(avgXAccel) + sq(avgYAccel)); // net acceleration
 
       float angularAccelRad = (netAccel * 9.807)/0.185; //angular acceleration is acceleration in g converted to m/s^2 divided by radius(dist from chip to center of top plate)
@@ -160,7 +162,7 @@ void loop() {
     analogWrite(stepPin,127); //Run stepper motor
     delay(975);
     analogWrite(stepPin, 0); //Turn off motor
-    delay(1000);
+    delay(1500);
 
   }
 
@@ -190,7 +192,7 @@ void loop() {
   Serial.print("Standard deviation: ");
   Serial.println(stanDev);
   
-  Serial.println("End of recording");
+  //Serial.println("End of recording");
   delay(10000);
 
   //Receive command from serial terminal

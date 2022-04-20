@@ -1,6 +1,7 @@
 #include <Arduino_FreeRTOS.h> //FreeRTOS library
 #include <BMI160Gen.h> //Gyro library
 #include <SimpleKalmanFilter.h> //Kalman filter library
+#include <AccelStepper.h> //AccelStepper library
 
 // define two tasks for Blink & AnalogRead
 void TaskGyro( void *pvParameters );
@@ -18,6 +19,11 @@ SimpleKalmanFilter simpleKalmanFilter(12, 12, 0.5);
 // Define stepper motor connections:
 #define dirPin 2
 #define stepPin 4
+#define motorInterfaceType 1
+#define stepperMotorSignal 22
+
+// Create a new instance of the AccelStepper class:
+AccelStepper stepper = AccelStepper(motorInterfaceType, stepPin, dirPin);
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -37,7 +43,7 @@ void setup() {
   //Calibrating accelerometer offset
   //Serial.println("Calibrating accelerometer");
   BMI160.autoCalibrateXAccelOffset(0);
-  //BMI160.setAccelOffsetEnabled(true);
+  BMI160.setAccelOffsetEnabled(true);
   BMI160.autoCalibrateYAccelOffset(0);
   //BMI160.setAccelOffsetEnabled(true);
   //BMI160.autoCalibrateZAccelOffset(-1);
@@ -49,12 +55,20 @@ void setup() {
   // Declare pins as output:
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
+  pinMode(stepperMotorSignal, OUTPUT);
 
   //change pwm frequency
   TCCR5B = TCCR5B & B11111000 | B00000001;  // for PWM frequency of 31372.55 Hz
   
   // Set the spinning direction to CCW:
-  digitalWrite(dirPin, LOW);
+  //digitalWrite(dirPin, LOW);
+
+  // Set the maximum speed and acceleration:
+  stepper.setMaxSpeed(20000);
+  stepper.setAcceleration(8000);
+
+  //Turn on power to stepper motor
+  digitalWrite(stepperMotorSignal, LOW);
 
 // Now set up two tasks to run independently----------------------------------------------------------------------------------------
   xTaskCreate(
@@ -117,7 +131,7 @@ void TaskGyro(void *pvParameters)  // This is a task.
 
     float netAccel = sqrt(sq(xAccel) + sq(yAccel)); // net acceleration
 
-    netAccel = abs(netAccel - netOffset); //Minus off offset value
+    netAccel = netAccel; //Minus off offset value
 
     float angularAccelRad = (netAccel * 9.807)/0.185; //angular acceleration is acceleration in g converted to m/s^2 divided by radius(dist from chip to center of top plate)
 
@@ -141,33 +155,19 @@ void TaskMotor(void *pvParameters)  // This is a task.
 
   for (;;)
   {
-    //Set the spinning direction to CCW
-    //change pwm frequency
-    TCCR5B = TCCR5B & B11111000 | B00000001;  // for PWM frequency of 31372.55 Hz
-    digitalWrite(dirPin, LOW);
-    analogWrite(stepPin,127); //Run stepper motor
-    vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
-    //slow down step motor by changing PWM frequency
-    TCCR5B = TCCR5B & B11111000 | B00000011;  // for PWM frequency of   490.20 Hz
-    delay(1000);
-    analogWrite(stepPin,0); //Stop stepper motor
-    //Set the spinning direction to CW
-    //change pwm frequency
-    TCCR5B = TCCR5B & B11111000 | B00000001;  // for PWM frequency of 31372.55 Hz
-    digitalWrite(dirPin, HIGH);
-    vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
-    analogWrite(stepPin,127); //Run stepper motor
-    vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
-    //slow down step motor by changing PWM frequency
-    TCCR5B = TCCR5B & B11111000 | B00000011;  // for PWM frequency of   490.20 Hz
-    delay(1000);
-    analogWrite(stepPin,0); //Stop stepper motor
-    vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
-
-  
+    // Set the target position:
+    stepper.moveTo(4000);
+    //Run to target position with set speed and acceleration/deceleration:
+    stepper.runToPosition();
     
-    //Serial.println("Sensor");
-    //vTaskDelay(1);  // one tick delay (15ms) in between reads for stability
+    vTaskDelay(1000/portTICK_PERIOD_MS);
+    
+    // Move back to zero:
+    stepper.moveTo(0);
+    stepper.runToPosition();   
+
+    vTaskDelay(1000/portTICK_PERIOD_MS);
+    
   }
 }
 
