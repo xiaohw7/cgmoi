@@ -20,4 +20,4 @@ Program runs using FreeRtos. Program starts with CG task, which will run with hi
 
 - Send '13' to off power to stepper motor
 
-- Send '14' to resume Gyro and Motor task
+- Send '14' to resume/start Gyro and Motor task
