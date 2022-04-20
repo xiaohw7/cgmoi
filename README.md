@@ -1,7 +1,5 @@
 # CGMOI User Guide
-Program runs using FreeRtos where a task with highest priority will be able to control other tasks such as Gyro and Motor or linear actuators or load cells by suspending and resuming tasks.
-
-User can input commands in serial monitor to resume/suspend tasks, control individual linear actuators, raise/lower all linear actuators, retrieve values from load cells, tare load cells, retrieve values from gyroscope while step motor spins top plate.
+Program runs using FreeRtos. Program starts with CG task, which will run with highest priority, where user can send commands to raise/lower linear actuators and read values from load cells. User can also send commands to suspend CG task and to start Gyro and Motor task and measure MOI. From there, user can send command to suspend Gyro and Motor task, resume CG task and go back to reading values from load cell.
 
 ## Commands to send:
 - Send '1' to turn on power to linear actuators
