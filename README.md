@@ -1,7 +1,7 @@
 # CGMOI User Guide
-Void loop will be an if (serial.available()) loop that waits for input from user.
+Program runs using FreeRtos where a task with highest priority will be able to control other tasks such as Gyro and Motor or linear actuators or load cells by suspending and resuming tasks.
 
-User can input commands in serial monitor to control individual linear actuators, raise/lower all linear actuators, retrieve values from load cells, tare load cells, retrieve values from gyroscope while step motor spins top plate.
+User can input commands in serial monitor to resume/suspend tasks, control individual linear actuators, raise/lower all linear actuators, retrieve values from load cells, tare load cells, retrieve values from gyroscope while step motor spins top plate.
 
 ## Commands to send:
 - Send '1' to turn on power to linear actuators
