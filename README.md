@@ -3,8 +3,9 @@
 Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task in void setup(). Cg will run at highest priority. After uploading code, Arduino will already run task Cg and read values from load cells. While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
 
 1. Obtaining Centre of Gravity:
-  * While in Cg task, code outputs overall mass of satellite in grams and cartesian coordinate of Centre of Gravity in millimeters.
-  
+    * While in Cg task, code outputs overall mass of satellite in grams and cartesian coordinate of Centre of Gravity in millimeters.
+    * [coordinates](https://github.com/xiaohw7/cgmoi/blob/main/coordinates%20cgmoi.png)
+
 
 ## Commands to send
 
