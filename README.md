@@ -71,4 +71,10 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
   * Rotating about Y-axis of satellite will result in JY
 
-  * Rotating about Z-axis of satellite will result in JZ 
+  * Rotating about Z-axis of satellite will result in JZ
+
+![parallel axis theorem](https://github.com/xiaohw7/cgmoi/blob/main/Images/parallel_axis_theorem.png)
+  * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
+
+#### Instructions
+ 
