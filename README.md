@@ -66,3 +66,9 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
   *  w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
   * Thus it is observed that the fraction in the equation is angular acceleration with satellite mounted divided by angular acceleration without satellite mounted.
   * Code outputs angular acceleration values in degrees/sec^2 which can then be used to calculate J0.
+
+  * Rotating about X-axis of satellite will result in JX
+
+  * Rotating about Y-axis of satellite will result in JY
+
+  * Rotating about Z-axis of satellite will result in JZ 
