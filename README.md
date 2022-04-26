@@ -55,6 +55,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
   * X-coordinate, xG = [Pb(x1) − Pc(x2)]/M
   * y1, y2, y3 are distances from x-axis. y1 = 206mm, y2 and y3 = 103mm
   * x1, x2, are distances from y-axis. x1 and x2 = 178.4mm
+  * Lengths are obtained from datasheets in OneDrive and calculations based on the information in datasheets.
   * To obtain z-coordinate of CG, rotate satellite by 90 degrees and undergo same calculations to obtain z-coordinate.
   * Code outputs coordinate of CG with reference to axis above and in millimeters.
   * Note: resultant x-axis values from calculations are opposite to the above axis shown in image. If location of CG moves upwards closer position B, x coordinate of CG becomes more positive.
@@ -77,4 +78,14 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
   * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
 
 #### Instructions
- 
+(Below are instructions on how to set up each component of the cgmoi machine as well as some notes I made on the problems I faced)
+
+HX711 load cell:
+
+- Refer to [this link](https://makersportal.com/blog/2019/5/12/arduino-weighing-scale-with-load-cell-and-hx711) for instructions on how to connect load cell to HX711 to Arduino. All 3 load cells can share a common power and ground connection through a breadboard.
+
+- Download to library at [github](https://github.com/olkal/HX711_ADC) for examples on calibrating and reading values from multiple load cells.
+
+- To calibrate load cell, connect Arduino to an individual load cell through HX711 and run “Calibration” example. Follow instructions on the serial monitor and record down “calibration value”.  Do this for every individual load cell.
+
+-To calibrate load cell, connect Arduino to an individual load cell through HX711 and run “Calibration” example. Follow instructions on the serial monitor and record down “calibration value”.  Do this for every individual load cell. 
