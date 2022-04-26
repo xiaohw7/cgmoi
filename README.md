@@ -39,7 +39,7 @@ Commands to send while running Gyro and Motor tasks:
 1. Finding Centre of Gravity:
     * While in Cg task, code outputs overall mass of satellite in grams and cartesian coordinate of Centre of Gravity in millimeters.
     * With reference to image below, points A,B,C correspond to load cell 1,2,3 respectively.
-    * ![coordinates](https://github.com/xiaohw7/cgmoi/blob/main/coordinates%20cgmoi.png)
+    * ![coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/coordinates%20cgmoi.png)
     * Note: resultant x-axis values from calculations are opposite to the above axis. If location of CG moves upwards closer position B, x coordinate of CG becomes more positive.
 
 2. Finding Moment Of Inertia
