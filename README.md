@@ -4,7 +4,7 @@ Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will 
 
 1. Obtaining Centre of Gravity:
     * While in Cg task, code outputs overall mass of satellite in grams and cartesian coordinate of Centre of Gravity in millimeters.
-    * [coordinates](https://github.com/xiaohw7/cgmoi/blob/main/coordinates%20cgmoi.png)
+    * ![coordinates](https://github.com/xiaohw7/cgmoi/blob/main/coordinates%20cgmoi.png)
 
 
 ## Commands to send
