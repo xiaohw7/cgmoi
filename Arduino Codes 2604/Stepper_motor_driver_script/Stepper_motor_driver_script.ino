@@ -17,7 +17,7 @@ void setup() {
   pinMode(stepperMotorSignal, OUTPUT);
   
   // Set the spinning direction CW/CCW (LOW = CCW, HIGH = CW)
-  digitalWrite(dirPin, HIGH);
+  digitalWrite(dirPin, LOW);
 
   //Turn off power to stepper motor
   digitalWrite(stepperMotorSignal, HIGH);

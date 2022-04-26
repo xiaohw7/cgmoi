@@ -18,7 +18,7 @@ void setup() {
   digitalWrite(dirPin, HIGH);
 
   //Turn off power to stepper motor
-  digitalWrite(stepperMotorSignal, HIGH);
+  digitalWrite(stepperMotorSignal, LOW);
 }
 
 
