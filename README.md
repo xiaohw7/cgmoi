@@ -213,12 +213,12 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 - When lowering top plate, user should stand by and make sure removeable shaft enters designated slot correctly.
 
-- There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
-
-- If there is a need to stop measurements/linear actuators/ stepper motor immediately, unplug Arduino to "Emergency Stop".
-
 - Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
 
-- Before measuring MOI, it is recommended to position gyro chip above red tape.
+- Before measuring MOI, it is recommended to position gyro chip above red tape. User can rotate top plate a set number of steps using Stepper_motor_driver2.ino.
+
+- There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
 
 - For reference, stepper motor driver set to 800 pulses/round, acceleration is set to 13000, and max speed is set to 39000, resultant angular acceleration should be 570-650 deg/sec^2.
+
+- If there is a need to stop measurements/linear actuators/ stepper motor immediately, unplug Arduino to "Emergency Stop".
