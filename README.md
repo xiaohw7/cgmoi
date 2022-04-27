@@ -94,4 +94,24 @@ HX711 load cell:
 
 - Send “t” on serial monitor to tare load cells immediately.
 
-- Reading is in grams. CG units are in mm. 
+- Reading is in grams. CG units are in mm.
+
+BMI 160 Gyro:
+
+- Refer to [hanyazou's github](https://github.com/hanyazou/BMI160-Arduino) for instructions to connect to gyro sensor. Download library at the same website. Use example “Gyro” example or bmi_160_gyro_script.ino to read from sensor. Switch example code to I2C mode.
+
+- Another library that can read from gyro is [DFRobot](https://github.com/DFRobot/DFRobot_BMI160#installation). Download the library and use accelgyro example for both accelerometer and angular velocity readings.
+
+- bmi_160_gryo_script2.ino takes accelgyro example from DFRobot library and modifies it to obtain net acceleration from x and y axis using Pythagoras theorem. Measurements are taken every 0.1 seconds and the average of 10 readings are calculated. Acceleration is converted from g to degrees/sec^2.
+
+- bmi_160_gryo_script3.ino modifies bmi_160_gyro_script.ino to get net acceleration using Pythagoras theorem on the x an y axis acceleration values.
+
+- Helpful links: http://www.arduinoprojects.net/sensor-projects/using-bmi160-sensor-arduino-uno.php , https://learn.sparkfun.com/tutorials/gyroscope/all
+
+Linear actuator with relay:
+
+- 1 SPDT relay to be used as overall power switch to linear actuators. 3 DPDT relays to be used as switches for each individual actuator and to be connected in a way to allow current to flow in both direction so as to enable actuator to extend and retract.
+
+- Helpful links for SPDT relay can be found at [circuit basics](https://www.circuitbasics.com/setting-up-a-5v-relay-on-the-arduino/) and [last minute engineers](https://lastminuteengineers.com/one-channel-relay-module-arduino-tutorial/).
+
+- Wiring for DPDT relay to be able to reverse current polarity to actuators can be found at [digikey](https://forum.digikey.com/t/polarity-reversal-using-a-dpdt-switch/626/4).
