@@ -34,7 +34,7 @@ Commands to send while running Gyro and Motor tasks:
 
 - Send '15' to end Gyro and Motor tasks and resume Cg task
 
-### Calculations
+## Calculations
 
 ![coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/coordinates%20cgmoi.png)
 
@@ -77,10 +77,10 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 ![parallel axis theorem](https://github.com/xiaohw7/cgmoi/blob/main/Images/parallel_axis_theorem.png)
   * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
 
-#### Instructions
+## Instructions
 (Below are instructions on how to set up each component of the cgmoi machine as well as some notes I made on the problems I faced)
 
-HX711 load cell:
+### HX711 load cell:
 
 - Refer to [this link](https://makersportal.com/blog/2019/5/12/arduino-weighing-scale-with-load-cell-and-hx711) for instructions on how to connect load cell to HX711 to Arduino. All 3 load cells can share a common power and ground connection through a breadboard.
 
@@ -96,7 +96,7 @@ HX711 load cell:
 
 - Reading is in grams. CG units are in mm.
 
-BMI 160 Gyro:
+### BMI 160 Gyro:
 
 - Refer to [hanyazou's github](https://github.com/hanyazou/BMI160-Arduino) for instructions to connect to gyro sensor. Download library at the same website. Use example “Gyro” example or bmi_160_gyro_script.ino to read from sensor. Switch example code to I2C mode.
 
@@ -110,7 +110,7 @@ BMI 160 Gyro:
 
 - Helpful links: http://www.arduinoprojects.net/sensor-projects/using-bmi160-sensor-arduino-uno.php , https://learn.sparkfun.com/tutorials/gyroscope/all
 
-Linear actuator with relay:
+### Linear actuator with relay:
 
 - 1 SPDT relay to be used as overall power switch to linear actuators. 3 DPDT relays to be used as switches for each individual actuator and to be connected in a way to allow current to flow in both direction so as to enable actuator to extend and retract.
 
@@ -142,16 +142,72 @@ Linear actuator with relay:
 
 - Linear actuator to use 12V from power supply.
 
-LICHUAN LCDA257S stepper motor driver and stepper motor:
+### LICHUAN LCDA257S stepper motor driver and stepper motor:
 
- - See [dronebotworkship](https://dronebotworkshop.com/big-stepper-motors/) to get an overview on stepper drivers and motors.
+- See [dronebotworkship](https://dronebotworkshop.com/big-stepper-motors/) to get an overview on stepper drivers and motors.
 
- - See [makersguides](https://www.makerguides.com/tb6600-stepper-motor-driver-arduino-tutorial/) for example code and wiring.
+- See [makersguides](https://www.makerguides.com/tb6600-stepper-motor-driver-arduino-tutorial/) for example code and wiring.
 
- - Download AccelStepper library from [github](https://github.com/waspinator/AccelStepper).
+- Download AccelStepper library from [github](https://github.com/waspinator/AccelStepper).
 
- - In AccelStepper library, speed is in steps/sec, Acceleration is in steps/sec2, position is in number of steps.
+- In AccelStepper library, speed is in steps/sec, Acceleration is in steps/sec2, position is in number of steps.
 
- - Stepper_motor_driver.ino controls stepper motor directly while Stepper_motor_driver2.ino uses AccelStepper library to control motor.
+- Stepper_motor_driver.ino controls stepper motor directly while Stepper_motor_driver2.ino uses AccelStepper library to control motor.
 
- - Another way of accelerating stepper motor is do gradually quicken pulses sent to motor (ramping). Code is in Stepper_motor_driver3.ino.
+- Another way of accelerating stepper motor is do gradually quicken pulses sent to motor (ramping). Code is in Stepper_motor_driver3.ino.
+
+- Stepper motor to use 36V from power supply.
+
+### Putting it together (Gyro and Motor):
+
+- Function to control movement of stepper motor in AccelStepper library is blocking, thus we use FreeRTOS on Arduino, Gyro and Motor can run and read data simultaneously. FreeRtos library can be found at [github](https://github.com/feilipu/Arduino_FreeRTOS_Library).
+
+- moi.ino uses FreeRTOS and AccelStepper library to run motor and gyro simultaneously.
+
+- Alternatively, we can use Pulse Width Modulation to send pulses to stepper motor. analogWrite() function output a PWM signal to stepper motor and is not a blocking function. Hence can collect data from gyro immediately after starting stepper motor.
+
+- Code to toggle PWM frequencies in Arduino can be found  [here](https://www.etechnophiles.com/how-to-change-pwm-frequency-of-arduino-mega/).
+
+- Take note: code to change PWM frequency to 62500 Hz changes delay() function such that delay(1000000) now is approximately 15 sec.
+
+- Also, offset values are recorded so as to account for gyro not being completely flat. Code can be found in moi2.ino.
+
+- However, Gyro still experiences large amount of noise. To reduce noise, gyro code include a digital low pass filter in the code from [hanyazou's github](https://github.com/hanyazou/BMI160-Arduino).  Also, a simple Kalman Filter found on [github] (https://github.com/denyssene/SimpleKalmanFilter) is added into the code which decreased standard variation when top plate is stationary as well as when it is moving, the final angular acceleration value is put through the filter.  
+
+- Using FreeRTOS and PWN with altered frequency of 31372.55 Hz, a graph of angular acceleration against time is plotted through the acceleration and deceleration of the stepper motor.  It is observed that there is a very sharp peak acceleration when stepper motor accelerates and acceleration. Hence the gyro will measure acceleration values throughout the motor’s acceleration and the code will record down the peak acceleration value.
+
+- Accelerometer sample rate is changed from 200Hz to 1600Hz so as to increase accuracy. Peak acceleration values are put in an array and after a certain number or recordings, mean and standard deviation are calculated from the peak values in array. Code is in moi3.ino.
+
+- However, peak acceleration values tend to vary substantially (sometimes up to 60%). We can use FreeRTOS to run gyro and motor with AccelStepper library simultaneously. Motor will accelerate at a set acceleration and gyro can measure average acceleration during that time.
+
+- 3 tasks are created, namely Control, Motor and Gyro. Control task will run with highest priority and will first suspend Gyro and Motor task. Purpose of Control task is to take commands from serial monitor and start Gyro and Motor task to begin recording of values.
+
+- While motor task is causing motor to accelerate, Gyroscope task will run and read acceleration values with each loop. Average acceleration is obtained by dividing total acceleration by number of loops variable loopCount. Average acceleration values are added to an array and average is obtained at the end of a set number of recordings.
+
+- When switching from Control task to Gyro and Motor task, first reading is buggy and inaccurate and hence not added to the array. Only 2nd reading onwards are added to the array. loopCount can also be used to limit gyro’s recording to the acceleration process of the motor and not both acceleration and deceleration.
+
+- A new problem arise when load is put on top plate, average acceleration is observed to increase instead of decrease due to majority of acceleration values becoming higher despite peak acceleration becoming lower. Solution is to just record down peak acceleration instead of averaging acceleration while the plate moves. The downside being that Peak acceleration tends to vary more than average acceleration. Code is in moi4.ino.
+
+### Putting it together (Linear Actuator and Load Cells):
+- Refer to above instructions “Linear actuator with relay” for instructions on how to operate linear actuators. Once Arduino is on, load cells are already reading weight values and calculating CG.
+
+- Linear actuators should be tested first by moving each actuator up and down.
+
+- Linear actuators should be extended all the way to measure weight of satellite. Satellite should be placed on the top plate after actuators fully extend and taring load cells. Wait for “Tare load cell 1 / 2 / 3 complete” message. User should also tare load cells after each measuremeent.
+
+- Arduino mega is able to support all 3 load cells and the 4 relays hence all 7 components will share the same VCC and GND through breadboard. Code is in cg.ino.
+
+### Putting it together (CG and MOI):
+
+- Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task in void setup(). Cg will run at highest priority.
+
+- While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
+
+## Points to take note
+- Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
+
+- Before raising/lowering linear actuators, user must remember to remove screw securing removeable shaft is removed.
+
+- When lowering top plate, user should stand by and make sure removeable shaft enters designated slot correctly.
+
+- There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
