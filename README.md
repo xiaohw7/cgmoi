@@ -106,6 +106,8 @@ BMI 160 Gyro:
 
 - bmi_160_gryo_script3.ino modifies bmi_160_gyro_script.ino to get net acceleration using Pythagoras theorem on the x an y axis acceleration values.
 
+- Sensor is to use 3.3v from Arduino.
+
 - Helpful links: http://www.arduinoprojects.net/sensor-projects/using-bmi160-sensor-arduino-uno.php , https://learn.sparkfun.com/tutorials/gyroscope/all
 
 Linear actuator with relay:
@@ -115,3 +117,15 @@ Linear actuator with relay:
 - Helpful links for SPDT relay can be found at [circuit basics](https://www.circuitbasics.com/setting-up-a-5v-relay-on-the-arduino/) and [last minute engineers](https://lastminuteengineers.com/one-channel-relay-module-arduino-tutorial/).
 
 - Wiring for DPDT relay to be able to reverse current polarity to actuators can be found at [digikey](https://forum.digikey.com/t/polarity-reversal-using-a-dpdt-switch/626/4).
+
+- Wiring:
+
+![linear actuator wiring](https://github.com/xiaohw7/cgmoi/blob/main/Images/linear_actuator_wiring.png)
+
+- Above picture shows wiring of linear actuators with relays.
+
+- VCC and GND of all relays are connected to 5V and GND of Arduino through breadboard.
+
+- For each DPDT relay, NO2 and NC1 should be connected to the black wire of actuator while NO1 and NC2 should be connected to the red wire of actuator.
+
+- Linear actuator to use 12V from power supply.
