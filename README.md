@@ -1,6 +1,10 @@
 # CGMOI User Guide
 
-Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task in void setup(). Cg will run at highest priority. After uploading code, Arduino will already run task Cg and read values from load cells. While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
+- Upload cgmoi.ino onto arduino and open Serial monitor. Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task in void setup(). Cg will run at highest priority. After uploading code, Arduino will already be running task Cg and read values from load cells. While running task Cg, user can control linear actuators and read mass and Centre of Gravity (CG) values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
+
+- CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis.
+
+- Code only outputs angular acceleration values from Motor and Gyro tasks. Refer to "Calculations" section below for equations to obtain MOI.
 
 ## Commands to send
 
@@ -204,10 +208,17 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 - While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
 
 ## Points to take note
-- Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
 
 - Before raising/lowering linear actuators, user must remember to remove screw securing removeable shaft is removed.
 
 - When lowering top plate, user should stand by and make sure removeable shaft enters designated slot correctly.
 
 - There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
+
+- If there is a need to stop measurements/linear actuators/ stepper motor immediately, unplug Arduino to "Emergency Stop".
+
+- Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
+
+- Before measuring MOI, it is recommended to position gyro chip above red tape.
+
+- For reference, stepper motor driver set to 800 pulses/round, acceleration is set to 13000, and max speed is set to 39000, resultant angular acceleration should be 570-650 deg/sec^2.
