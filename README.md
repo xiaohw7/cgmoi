@@ -128,4 +128,30 @@ Linear actuator with relay:
 
 - For each DPDT relay, NO2 and NC1 should be connected to the black wire of actuator while NO1 and NC2 should be connected to the red wire of actuator.
 
+- Use linear_actuator_script.ino to control the actuators through serial monitor.
+
+- Send ‘1’ to power on. Send ‘2’ to power off.  
+
+- Send ‘3’, ‘5’, or ‘7’ to move actuator 1, 2, or 3 up for 1 sec respectively.
+
+- Send ‘4’, ‘6’, or ‘8’ to move actuator 1, 2, or 3 down for 1 sec respectively.
+
+- Send ‘9’ to move all 3 actuators up completely.
+
+- Send ‘10’ to move all 3 actuators down completely.
+
 - Linear actuator to use 12V from power supply.
+
+LICHUAN LCDA257S stepper motor driver and stepper motor:
+
+ - See [dronebotworkship](https://dronebotworkshop.com/big-stepper-motors/) to get an overview on stepper drivers and motors.
+
+ - See [makersguides](https://www.makerguides.com/tb6600-stepper-motor-driver-arduino-tutorial/) for example code and wiring.
+
+ - Download AccelStepper library from [github](https://github.com/waspinator/AccelStepper).
+
+ - In AccelStepper library, speed is in steps/sec, Acceleration is in steps/sec2, position is in number of steps.
+
+ - Stepper_motor_driver.ino controls stepper motor directly while Stepper_motor_driver2.ino uses AccelStepper library to control motor.
+
+ - Another way of accelerating stepper motor is do gradually quicken pulses sent to motor (ramping). Code is in Stepper_motor_driver3.ino.
