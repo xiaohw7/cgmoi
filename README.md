@@ -21,6 +21,7 @@
 |Cg |Send '11' |Tare all load cells|
 |Cg |Send '12' |Turn on power to stepper motor|
 |Cg |Send '13' |Turn off power to stepper motor|
+---
 |Cg |Send '14' |End Cg task and resume/start Gyro and Motor tasks|
 |Gyro and Motor |Send '12' |Turn on power to stepper motor|
 |Gyro and Motor |Send '13' |Turn off power to stepper motor|
