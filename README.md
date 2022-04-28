@@ -8,40 +8,23 @@
 
 ## Commands to send
 
-|Task |Commands to send |What it does|
-|-----|-----------------|------------|
+
+
+|Task |Commands that can be sent |What it does|
+|-----|--------------------------|------------|
 |Cg |Send '1' |Turn on power to linear actuators|
 |Cg |Send '2' |Turn off power to linear actuators|
-
-Commands to send while running Cg task:
-
-- Send '1' to turn on power to linear actuators
-
-- Send '2' to turn off power to linear actuators
-
-- Send '3'/'5'/'7' to move linear actuator 1/2/3 up for 1 second
-
-- Send '4'/'6'/'8' to move linear actuator 1/2/3 down for 1 second
-
-- Send '9' to move all 3 linear actuators up fully
-
-- Send '10' to move all 3 linear actuators down fully
-
-- Send '11' to tare all load cells
-
-- Send '12' to turn on power to stepper motor
-
-- Send '13' to off power to stepper motor
-
-- Send '14' to end Cg task and resume/start Gyro and Motor tasks
-
-Commands to send while running Gyro and Motor tasks:
-
-- Send '12' to turn on power to stepper motor
-
-- Send '13' to off power to stepper motor
-
-- Send '15' to end Gyro and Motor tasks and resume Cg task
+|Cg |Send '3'/'5'/'7' |Move linear actuator 1/2/3 up for 1 second|
+|Cg |Send '4'/'6'/'8' |Move linear actuator 1/2/3 down for 1 second|
+|Cg |Send '9' |Move all 3 linear actuators up fully|
+|Cg |Send '10' |Move all 3 linear actuators down fully|
+|Cg |Send '11' |Tare all load cells|
+|Cg |Send '12' |Turn on power to stepper motor|
+|Cg |Send '13' |Turn off power to stepper motor|
+|Cg |Send '14' |End Cg task and resume/start Gyro and Motor tasks|
+|Gyro and Motor |Send '12' |Turn on power to stepper motor|
+|Gyro and Motor |Send '13' |Turn off power to stepper motor|
+|Gyro and Motor |Send '15' |End Gyro and Motor tasks and resume Cg task|
 
 ## Calculations
 
