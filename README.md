@@ -1,14 +1,70 @@
 # CGMOI User Guide
 
-- Upload cgmoi.ino onto arduino and open Serial monitor. Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task in void setup(). Cg will run at highest priority. After uploading code, Arduino will already be running task Cg and read values from load cells. While running task Cg, user can control linear actuators and read mass and Centre of Gravity (CG) values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
+## Overview
 
-- CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis.
+## Machine is currently still a work in progress. ##
 
-- Code only outputs angular acceleration values from Motor and Gyro tasks. Refer to "Calculations" section below for equations to obtain MOI.
+The cgmoi machine is one that is capable of measuring the Centre of Gravity (CG) and Moment Of Inertia (MOI) of a nano-satellite. It uses 3 load cells spaced 120 degrees apart to measure CG and a accelerometer to measure acceleration which in turn can be used to obtain MOI.
+
+The machine also includes a stepper motor that spins the top plate, and linear actuators to raise and lower the load cells in order to measure CG.
+
+The stepper motor, linear actuator, accelerometer, and load cells are controlled by and wired to an Arduino mega board. The Arduino could then be plugged into a laptop running the Arduino IDE where code could be uploaded to run the cgmoi machine.
+
+
+
+## How to use
+
+1. User would have to download the following Arduino libraries:
+ - [HX711_ADC](https://github.com/olkal/HX711_ADC) for the load cells
+ - [hanyazou](https://github.com/hanyazou/BMI160-Arduino) for the BMI160 gyroscope
+ - [AccelStepper](https://github.com/waspinator/AccelStepper) for stepper motor and stepper motor driver
+ - [FreeRTOS](https://github.com/feilipu/Arduino_FreeRTOS_Library) for running Real Time Operating System on Arduino
+ - [SimpleKalmanFilter](https://github.com/denyssene/SimpleKalmanFilter) for running values through a Kalman filter to reduce noisy readings
+
+2. Upload cgmoi.ino onto Arduino and open Serial monitor.
+
+3. Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task immediately in void setup() and Cg task will run at highest priority.
+
+4. After uploading code, Arduino will be running task Cg and user can see output values from load cells on Serial monitor. User can either continue with Cg task to measure CG of satellite or choose to measure MOI of satellite instead.
+
+5. If user intends to measure CG of satellite:
+
+ - Linear actuators must be fully extended.
+
+ - Ensure pin securing removeable shaft is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
+
+ - While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
+
+6. If user intends on measuring MOI of satellite:
+
+ - Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
+
+ - Ensure pin securing removeable shaft is secured, send '14' to suspend Cg task and start Gyro and Motor tasks.
+
+ - Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
+
+7. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
+
+## Points to take note
+
+- Before raising/lowering linear actuators, user must remember to remove screw securing removeable shaft is removed.
+
+- When lowering top plate, user should stand by and make sure removeable shaft enters designated slot correctly.
+
+- Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
+
+- Before measuring MOI, it is recommended to position gyro chip above red tape. User can rotate top plate a set number of steps using Stepper_motor_driver2.ino.
+
+- There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
+
+- For reference, stepper motor driver set to 800 pulses/round, acceleration is set to 13000, and max speed is set to 39000, resultant angular acceleration should be 570-650 deg/sec^2.
+
+- If load cell readings become inaccurate, try running "Calibration" example and obtain calibration values for each individual load cell and input into the code.
+
+- If there is a need to stop measurements/linear actuators/ stepper motor immediately, unplug Arduino to "Emergency Stop".
+
 
 ## Commands to send
-
-
 
 |Task |Commands that can be sent |What it does|
 |-----|--------------------------|------------|
@@ -21,7 +77,6 @@
 |Cg |Send '11' |Tare all load cells|
 |Cg |Send '12' |Turn on power to stepper motor|
 |Cg |Send '13' |Turn off power to stepper motor|
----
 |Cg |Send '14' |End Cg task and resume/start Gyro and Motor tasks|
 |Gyro and Motor |Send '12' |Turn on power to stepper motor|
 |Gyro and Motor |Send '13' |Turn off power to stepper motor|
@@ -34,6 +89,7 @@
 With reference to image above, points A,B,C correspond to load cell 1,2,3 respectively.
 
 1. Finding Mass
+
   * Pa = m4 - m1
   * Pc = m6 - m3
   * Pb = m5 - m2
@@ -44,6 +100,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
   * Code outputs overall mass of satellite in grams.
 
 2. Finding Centre of Gravity
+
   * Y-coordinate, yG = [Pb(y2) + Pc(y3) − Pa(y1)]/M
   * X-coordinate, xG = [Pb(x1) − Pc(x2)]/M
   * y1, y2, y3 are distances from x-axis. y1 = 206mm, y2 and y3 = 103mm
@@ -53,9 +110,10 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
   * Code outputs coordinate of CG with reference to axis above and in millimeters.
   * Note: resultant x-axis values from calculations are opposite to the above axis shown in image. If location of CG moves upwards closer position B, x coordinate of CG becomes more positive.
 
-2. Finding Moment Of Inertia
+3. Finding Moment Of Inertia
 
-![moi_eqn](https://github.com/xiaohw7/cgmoi/blob/main/Images/moi_eqn.png)
+* ![moi_eqn](https://github.com/xiaohw7/cgmoi/blob/main/Images/moi_eqn.png)
+
   * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works.
   *  w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
   * Thus it is observed that the fraction in the equation is angular acceleration with satellite mounted divided by angular acceleration without satellite mounted.
@@ -71,15 +129,13 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
   * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
 
 ## Instructions
-(Below are instructions on how to set up each component of the cgmoi machine as well as some notes I made on the problems I faced)
+(Below are instructions on how to set up each individual component of the cgmoi machine as well as some notes I made on the problems I faced)
 
-### HX711 load cell:
+### HX711 ADC and load cells:
 
 - Refer to [this link](https://makersportal.com/blog/2019/5/12/arduino-weighing-scale-with-load-cell-and-hx711) for instructions on how to connect load cell to HX711 to Arduino. All 3 load cells can share a common power and ground connection through a breadboard.
 
 - Download library at [github](https://github.com/olkal/HX711_ADC) for examples on calibrating and reading values from multiple load cells.
-
-- To calibrate load cell, connect Arduino to an individual load cell through HX711 and run “Calibration” example. Follow instructions on the serial monitor and record down “calibration value”.  Do this for every individual load cell.
 
 - To calibrate load cell, connect Arduino to an individual load cell through HX711 and run “Calibration” example. Follow instructions on the serial monitor and record down “calibration value”.  Do this for every individual load cell.
 
@@ -123,7 +179,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 - For each DPDT relay, NO2 and NC1 should be connected to the black wire of actuator while NO1 and NC2 should be connected to the red wire of actuator.
 
-- Use linear_actuator_script.ino to control the actuators through serial monitor.
+- Use `linear_actuator_script.ino` to control the actuators through serial monitor.
 
 - Send ‘1’ to power on. Send ‘2’ to power off.  
 
@@ -199,21 +255,3 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 - While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
 
 - Code is in `cgmoi.ino`.
-
-## Points to take note
-
-- Before raising/lowering linear actuators, user must remember to remove screw securing removeable shaft is removed.
-
-- When lowering top plate, user should stand by and make sure removeable shaft enters designated slot correctly.
-
-- Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
-
-- Before measuring MOI, it is recommended to position gyro chip above red tape. User can rotate top plate a set number of steps using Stepper_motor_driver2.ino.
-
-- There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
-
-- For reference, stepper motor driver set to 800 pulses/round, acceleration is set to 13000, and max speed is set to 39000, resultant angular acceleration should be 570-650 deg/sec^2.
-
-- If load cell readings become inaccurate, try running "Calibration" example and obtain calibration values for each individual load cell and input into the code.
-
-- If there is a need to stop measurements/linear actuators/ stepper motor immediately, unplug Arduino to "Emergency Stop".
