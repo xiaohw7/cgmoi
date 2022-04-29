@@ -15,11 +15,11 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 ## How to use
 
 1. User would have to download the following Arduino libraries:
-        - [HX711_ADC](https://github.com/olkal/HX711_ADC) for the load cells
-        - [hanyazou](https://github.com/hanyazou/BMI160-Arduino) for the BMI160 gyroscope
-        - [AccelStepper](https://github.com/waspinator/AccelStepper) for stepper motor and stepper motor driver
-        - [FreeRTOS](https://github.com/feilipu/Arduino_FreeRTOS_Library) for running Real Time Operating System on Arduino
-        - [SimpleKalmanFilter](https://github.com/denyssene/SimpleKalmanFilter) for running values through a Kalman filter to reduce noisy readings
+      - [HX711_ADC](https://github.com/olkal/HX711_ADC) for the load cells
+      - [hanyazou](https://github.com/hanyazou/BMI160-Arduino) for the BMI160 gyroscope
+      - [AccelStepper](https://github.com/waspinator/AccelStepper) for stepper motor and stepper motor driver
+      - [FreeRTOS](https://github.com/feilipu/Arduino_FreeRTOS_Library) for running Real Time Operating System on Arduino
+      - [SimpleKalmanFilter](https://github.com/denyssene/SimpleKalmanFilter) for running values through a Kalman filter to reduce noisy readings
 
 2. Upload cgmoi.ino onto Arduino and open Serial monitor.
 
@@ -29,21 +29,21 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
 5. If user intends to measure CG of satellite:
 
-        * Linear actuators must be fully extended.
+      * Linear actuators must be fully extended.
 
-        * Ensure pin securing removeable shaft is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
+      * Ensure pin securing removeable shaft is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
 
-        * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
+      * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
 6. If user intends on measuring MOI of satellite:
 
-        * Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
+      * Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
 
-        * Ensure pin securing removeable shaft is secured, send '14' to suspend Cg task and start Gyro and Motor tasks.
+      * Ensure pin securing removeable shaft is secured, send '14' to suspend Cg task and start Gyro and Motor tasks.
 
-        * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 10 seconds before recording process starts again.
+      * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 10 seconds before recording process starts again.
 
-        * User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
+      * User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
 
 7. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
 
