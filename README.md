@@ -116,22 +116,22 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 3. Finding Moment Of Inertia
 
-  * ![moi_eqn](https://github.com/xiaohw7/cgmoi/blob/main/Images/moi_eqn.png)
+      * ![moi_eqn](https://github.com/xiaohw7/cgmoi/blob/main/Images/moi_eqn.png)
 
-  * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works.
-  *  w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
-  * Thus it is observed that the fraction in the equation is angular acceleration with satellite mounted divided by angular acceleration without satellite mounted.
-  * Code outputs angular acceleration values in degrees/sec^2 which can then be used to calculate J0.
+      * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works.
+      *  w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
+      * Thus it is observed that the fraction in the equation is angular acceleration with satellite mounted divided by angular acceleration without satellite mounted.
+      * Code outputs angular acceleration values in degrees/sec^2 which can then be used to calculate J0.
 
-  * Rotating about X-axis of satellite will result in JX
+      * Rotating about X-axis of satellite will result in JX
 
-  * Rotating about Y-axis of satellite will result in JY
+      * Rotating about Y-axis of satellite will result in JY
 
-  * Rotating about Z-axis of satellite will result in JZ
+      * Rotating about Z-axis of satellite will result in JZ
 
-  * ![parallel axis theorem](https://github.com/xiaohw7/cgmoi/blob/main/Images/parallel_axis_theorem.png)
+      * ![parallel axis theorem](https://github.com/xiaohw7/cgmoi/blob/main/Images/parallel_axis_theorem.png)
 
-  * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
+      * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
 
 ## Instructions
 (Below are instructions on how to set up each individual component of the cgmoi machine as well as some notes I made on the problems I faced)
