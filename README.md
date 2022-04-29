@@ -15,11 +15,11 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 ## How to use
 
 1. User would have to download the following Arduino libraries:
- - [HX711_ADC](https://github.com/olkal/HX711_ADC) for the load cells
- - [hanyazou](https://github.com/hanyazou/BMI160-Arduino) for the BMI160 gyroscope
- - [AccelStepper](https://github.com/waspinator/AccelStepper) for stepper motor and stepper motor driver
- - [FreeRTOS](https://github.com/feilipu/Arduino_FreeRTOS_Library) for running Real Time Operating System on Arduino
- - [SimpleKalmanFilter](https://github.com/denyssene/SimpleKalmanFilter) for running values through a Kalman filter to reduce noisy readings
+  - [HX711_ADC](https://github.com/olkal/HX711_ADC) for the load cells
+  - [hanyazou](https://github.com/hanyazou/BMI160-Arduino) for the BMI160 gyroscope
+  - [AccelStepper](https://github.com/waspinator/AccelStepper) for stepper motor and stepper motor driver
+  - [FreeRTOS](https://github.com/feilipu/Arduino_FreeRTOS_Library) for running Real Time Operating System on Arduino
+  - [SimpleKalmanFilter](https://github.com/denyssene/SimpleKalmanFilter) for running values through a Kalman filter to reduce noisy readings
 
 2. Upload cgmoi.ino onto Arduino and open Serial monitor.
 
@@ -29,19 +29,19 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
 5. If user intends to measure CG of satellite:
 
- * Linear actuators must be fully extended.
+  * Linear actuators must be fully extended.
 
- * Ensure pin securing removeable shaft is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
+  * Ensure pin securing removeable shaft is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
 
- * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
+  * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
 6. If user intends on measuring MOI of satellite:
 
- * Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
+  * Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
 
- * Ensure pin securing removeable shaft is secured, send '14' to suspend Cg task and start Gyro and Motor tasks.
+  * Ensure pin securing removeable shaft is secured, send '14' to suspend Cg task and start Gyro and Motor tasks.
 
- * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
+  * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
 
 7. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
 
@@ -101,32 +101,32 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 2. Finding Centre of Gravity
 
-  * Y-coordinate, yG = [Pb(y2) + Pc(y3) − Pa(y1)]/M
-  * X-coordinate, xG = [Pb(x1) − Pc(x2)]/M
-  * y1, y2, y3 are distances from x-axis. y1 = 206mm, y2 and y3 = 103mm
-  * x1, x2, are distances from y-axis. x1 and x2 = 178.4mm
-  * Lengths are obtained from datasheets in OneDrive and calculations based on the information in datasheets.
-  * To obtain z-coordinate of CG, rotate satellite by 90 degrees and undergo same calculations to obtain z-coordinate.
-  * Code outputs coordinate of CG with reference to axis above and in millimeters.
-  * Note: resultant x-axis values from calculations are opposite to the above axis shown in image. If location of CG moves upwards closer position B, x coordinate of CG becomes more positive.
+    * Y-coordinate, yG = [Pb(y2) + Pc(y3) − Pa(y1)]/M
+    * X-coordinate, xG = [Pb(x1) − Pc(x2)]/M
+    * y1, y2, y3 are distances from x-axis. y1 = 206mm, y2 and y3 = 103mm
+    * x1, x2, are distances from y-axis. x1 and x2 = 178.4mm
+    * Lengths are obtained from datasheets in OneDrive and calculations based on the information in datasheets.
+    * To obtain z-coordinate of CG, rotate satellite by 90 degrees and undergo same calculations to obtain z-coordinate.
+    * Code outputs coordinate of CG with reference to axis above and in millimeters.
+    * Note: resultant x-axis values from calculations are opposite to the above axis shown in image. If location of CG moves upwards closer position B, x coordinate of CG becomes more positive.
 
 3. Finding Moment Of Inertia
 
  ![moi_eqn](https://github.com/xiaohw7/cgmoi/blob/main/Images/moi_eqn.png)
 
-  * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works.
-  *  w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
-  * Thus it is observed that the fraction in the equation is angular acceleration with satellite mounted divided by angular acceleration without satellite mounted.
-  * Code outputs angular acceleration values in degrees/sec^2 which can then be used to calculate J0.
+    * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works.
+    *  w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
+    * Thus it is observed that the fraction in the equation is angular acceleration with satellite mounted divided by angular acceleration without satellite mounted.
+    * Code outputs angular acceleration values in degrees/sec^2 which can then be used to calculate J0.
 
-  * Rotating about X-axis of satellite will result in JX
+    * Rotating about X-axis of satellite will result in JX
 
-  * Rotating about Y-axis of satellite will result in JY
+    * Rotating about Y-axis of satellite will result in JY
 
-  * Rotating about Z-axis of satellite will result in JZ
+    * Rotating about Z-axis of satellite will result in JZ
 
 ![parallel axis theorem](https://github.com/xiaohw7/cgmoi/blob/main/Images/parallel_axis_theorem.png)
-  * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
+    * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
 
 ## Instructions
 (Below are instructions on how to set up each individual component of the cgmoi machine as well as some notes I made on the problems I faced)
