@@ -41,28 +41,11 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
   * Ensure pin securing removeable shaft is secured, send '14' to suspend Cg task and start Gyro and Motor tasks.
 
-  * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
+  * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 10 seconds before recording process starts again.
+
+  * User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
 
 7. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
-
-## Points to take note
-
-- Before raising/lowering linear actuators, user must remember to remove screw securing removeable shaft is removed.
-
-- When lowering top plate, user should stand by and make sure removeable shaft enters designated slot correctly.
-
-- Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
-
-- Before measuring MOI, it is recommended to position gyro chip above red tape. User can rotate top plate a set number of steps using Stepper_motor_driver2.ino.
-
-- There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
-
-- For reference, stepper motor driver set to 800 pulses/round, acceleration is set to 13000, and max speed is set to 39000, resultant angular acceleration should be 570-650 deg/sec^2.
-
-- If load cell readings become inaccurate, try running "Calibration" example and obtain calibration values for each individual load cell and input into the code.
-
-- If there is a need to stop measurements/linear actuators/ stepper motor immediately, unplug Arduino to "Emergency Stop".
-
 
 ## Commands to send
 
@@ -81,6 +64,27 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 |Gyro and Motor |Send '12' |Turn on power to stepper motor|
 |Gyro and Motor |Send '13' |Turn off power to stepper motor|
 |Gyro and Motor |Send '15' |End Gyro and Motor tasks and resume Cg task|
+
+
+## Points to take note
+
+- Before raising/lowering linear actuators, user must remember to remove screw securing removeable shaft is removed.
+
+- When lowering top plate, user should stand by and make sure removeable shaft enters designated slot correctly.
+
+- Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
+
+- Before measuring MOI, it is recommended to position gyro chip above red tape. User can rotate top plate a set number of steps using Stepper_motor_driver2.ino.
+
+- There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
+
+- For reference, stepper motor driver set to
+
+- If load cell readings become inaccurate, try running "Calibration" example and obtain calibration values for each individual load cell and input into the code.
+
+- If there is a need to stop measurements/linear actuators/ stepper motor immediately, unplug Arduino to "Emergency Stop".
+
+
 
 ## Calculations
 
@@ -235,7 +239,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 - 3 tasks are created, namely Control, Motor and Gyro. Control task will run with highest priority and will first suspend Gyro and Motor task. Purpose of Control task is to take commands from serial monitor and start Gyro and Motor task to begin recording of values.
 
-- While motor task is causing motor to accelerate, Gyroscope task will run and read acceleration values with each loop. Average acceleration is obtained by dividing total acceleration by number of loops variable loopCount. Average acceleration values are added to an array and average is obtained at the end of a set number of recordings.
+- While motor task is causing motor to accelerate, Gyroscope task will run and read acceleration values with each loop. Average acceleration is obtained by dividing total acceleration by number of loops variable loopCount. Average acceleration values are added to an array and a subsequent average is obtained at the end of a set number of recordings.
 
 - When switching from Control task to Gyro and Motor task, first reading is buggy and inaccurate and hence not added to the array. Only 2nd reading onwards are added to the array. loopCount can also be used to limit gyro’s recording to the acceleration process of the motor and not both acceleration and deceleration.
 
