@@ -2,9 +2,9 @@
 
 ## Overview
 
-## Machine is currently still a work in progress. ##
+**Machine is currently still a work in progress.**
 
-The cgmoi machine is one that is capable of measuring the Centre of Gravity (CG) and Moment Of Inertia (MOI) of a nano-satellite. It uses 3 load cells spaced 120 degrees apart to measure CG and a accelerometer to measure acceleration which in turn can be used to obtain MOI.
+The cgmoi machine is one that is capable of measuring the Centre of Gravity (CG) and Moment Of Inertia (MOI) of a nano-satellite. It uses 3 load cells in a circle spaced 120 degrees apart to measure CG and an accelerometer to measure acceleration which in turn can be used to obtain MOI.
 
 The machine also includes a stepper motor that spins the top plate, and linear actuators to raise and lower the load cells in order to measure CG.
 
@@ -163,7 +163,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 ### Linear actuator with relay:
 
-- 1 SPDT relay to be used as overall power switch to linear actuators. 3 DPDT relays to be used as switches for each individual actuator and to be connected in a way to allow current to flow in both direction so as to enable actuator to extend and retract.
+- One SPDT relay to be used as overall power switch to linear actuators. 3 DPDT relays to be used as switches for each individual actuator and to be connected in a way to allow current to flow in both direction so as to enable actuator to extend and retract.
 
 - Helpful links for SPDT relay can be found at [circuit basics](https://www.circuitbasics.com/setting-up-a-5v-relay-on-the-arduino/) and [last minute engineers](https://lastminuteengineers.com/one-channel-relay-module-arduino-tutorial/).
 
@@ -198,6 +198,8 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 - See [dronebotworkship](https://dronebotworkshop.com/big-stepper-motors/) to get an overview on stepper drivers and motors.
 
 - See [makersguides](https://www.makerguides.com/tb6600-stepper-motor-driver-arduino-tutorial/) for example code and wiring.
+
+- Number of pulses per round can be adjusted by referring to table on the driver.
 
 - Download AccelStepper library from [github](https://github.com/waspinator/AccelStepper).
 
