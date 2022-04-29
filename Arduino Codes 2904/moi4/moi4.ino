@@ -101,8 +101,8 @@ void setup() {
   //digitalWrite(dirPin, LOW);
 
   // Set the maximum speed and acceleration:
-  stepper.setMaxSpeed(39000);
-  stepper.setAcceleration(13000);
+  stepper.setMaxSpeed(99999999);
+  stepper.setAcceleration(999999);
 
   //Turn off power to stepper motor
   digitalWrite(stepperMotorSignal, HIGH);
@@ -155,7 +155,7 @@ void TaskGyro(void *pvParameters)  // This is a task.
   
   for (;;) // A Task shall never return or exit.
   {
-    if (loopCount < 30) { //Only record peak acceleration during acceleration process and neglecting the deceleration process
+    if (loopCount < 30) { //Only record during acceleration process and neglecting the deceleration process
     // add 1 to loop count everytime loop happens
     loopCount = loopCount + 1;
     //Serial.print("loop: ");
@@ -180,14 +180,14 @@ void TaskGyro(void *pvParameters)  // This is a task.
 
     
     //add angularAccelDeg to total tally and obtain average
-    /*totalAccelDeg = totalAccelDeg + angularAccelDeg;
+    totalAccelDeg = totalAccelDeg + angularAccelDeg;
     avgAccelDeg = totalAccelDeg / loopCount;
-    //Serial.println(avgAccelDeg);*/
+    //Serial.println(avgAccelDeg);
 
-    //get peak acceleration
+   /* //get peak acceleration
     if (angularAccelDeg > peakAccel) {
       peakAccel = angularAccelDeg;
-    }
+    }*/
     
     vTaskDelay(1);
     }
@@ -229,12 +229,12 @@ void TaskMotor(void *pvParameters)  // This is a task.
       Serial.println("suspend gyro");
 
       //print average accel
-      Serial.print("Peak acceleration: ");
-      Serial.println(peakAccel);
+      Serial.print("avg acceleration: ");
+      Serial.println(avgAccelDeg);
 
       //add only the second value onwards to array
       if (i > 0) {
-        rslts[i-1] = peakAccel;
+        rslts[i-1] = avgAccelDeg;
         }
       
       vTaskDelay(1000/portTICK_PERIOD_MS);

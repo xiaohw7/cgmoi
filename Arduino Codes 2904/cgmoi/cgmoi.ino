@@ -22,8 +22,8 @@ const int i2c_addr = 0x69;
 uint8_t OSR4 = OSR4;
 
 int loopCount = 0; //counting number of times Gyro task loops to get number of readings obtained by readAccelerometer function
-//float totalAccelDeg = 0;
-//float avgAccelDeg = 0;
+float totalAccelDeg = 0;
+float avgAccelDeg = 0;
 float peakAccel = 0;
 
 int xAccelRawOffset, yAccelRawOffset, zAccelRawOffset; //Raw offset data
@@ -145,8 +145,8 @@ void setup() {
   pinMode(stepperMotorSignal, OUTPUT);
 
   // Set the maximum speed and acceleration:
-  stepper.setMaxSpeed(39000);
-  stepper.setAcceleration(13000);
+  stepper.setMaxSpeed(99999999);
+  stepper.setAcceleration(999999);
 
   //Turn off power to stepper motor
   digitalWrite(stepperMotorSignal, HIGH);
@@ -219,7 +219,7 @@ void TaskGyro(void *pvParameters) {
   (void) pvParameters;
 
   for (;;) {
-    if (loopCount < 30) { //By limitting loopCount, code only record peak acceleration during acceleration process and neglecting the deceleration process
+    if (loopCount < 30) { //By limitting loopCount, gyro only record during acceleration process and neglecting the deceleration process
       // add 1 to loop count everytime loop happens
       loopCount = loopCount + 1;
       //Serial.print("loop: ");
@@ -238,17 +238,22 @@ void TaskGyro(void *pvParameters) {
       float angularAccelDeg = (angularAccelRad/3.14159265359)*180;
 
       //Run value through Kalman filter
-      //angularAccelDeg = simpleKalmanFilter.updateEstimate(angularAccelDeg);
+      angularAccelDeg = angularAccelDegFilter.updateEstimate(angularAccelDeg);
   
       //Serial.println(angularAccelDeg);
-
+ 
+      //add angularAccelDeg to total tally and obtain average
+      totalAccelDeg = totalAccelDeg + angularAccelDeg;
+      avgAccelDeg = totalAccelDeg / loopCount;
+      //Serial.println(avgAccelDeg);
+  
       //get peak acceleration
-      if (angularAccelDeg > peakAccel) {
+      /*if (angularAccelDeg > peakAccel) {
         peakAccel = angularAccelDeg;
-      }
-    
+      }*/
+      
       vTaskDelay(1);
-      }
+    }
 
     else {
       vTaskDelay(1);
@@ -283,12 +288,12 @@ void TaskMotor(void *pvParameters) {
       Serial.println("suspend gyro");
 
       //print average accel
-      Serial.print("Peak acceleration: ");
-      Serial.println(peakAccel);
+      Serial.print("avg acceleration: ");
+      Serial.println(avgAccelDeg);
 
       //add only the second value onwards to array
       if (i > 0) {
-        rslts[i-1] = peakAccel;
+        rslts[i-1] = avgAccelDeg;
         }
       
       vTaskDelay(1000/portTICK_PERIOD_MS);
@@ -303,6 +308,8 @@ void TaskMotor(void *pvParameters) {
       //reset values to 0
       loopCount = 0;
       peakAccel = 0;
+      avgAccelDeg = 0;
+      totalAccelDeg = 0;
       //Serial.print("reset");   
     }
 
@@ -319,7 +326,8 @@ void TaskMotor(void *pvParameters) {
     Serial.println(meanaccelarray);
 
     Serial.println("Finish recording");
-    vTaskDelay(5000/portTICK_PERIOD_MS);
+    Serial.println("10 seconds until recording resumes");
+    vTaskDelay(10000/portTICK_PERIOD_MS);
 
 
     //receive command from serial monitor

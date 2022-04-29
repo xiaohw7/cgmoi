@@ -24,11 +24,20 @@ void setup() {
 
 void loop() {
   //acceleration of motor
-  for (int i = 0; i < 1500; i++) {
-    digitalWrite(stepPin, HIGH);
-    delayMicroseconds(abs(870 - (i/2)));
-    digitalWrite(stepPin, LOW);
-    delayMicroseconds(abs(870 - (i/2)));
+  for (int i = 0; i < 3000; i++) {
+    if (i < 1250||i > 1750) {
+      digitalWrite(stepPin, HIGH);
+      delayMicroseconds(abs(1500 - i));
+      digitalWrite(stepPin, LOW);
+      delayMicroseconds(abs(1500 - i)); 
+    }
+    else {
+      digitalWrite(stepPin, HIGH);
+      delayMicroseconds(250);
+      digitalWrite(stepPin, LOW);
+      delayMicroseconds(250); 
+    }
+       
   }
   //decceleration of motor
   //for (int x = 0; x < 1500; x++) {

@@ -236,7 +236,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 - Using FreeRTOS and PWM with altered frequency of 31372.55 Hz, a graph of angular acceleration against time is plotted through the acceleration and deceleration of the stepper motor.  It is observed that there is a very sharp peak acceleration when stepper motor accelerates and acceleration. Hence the gyro will measure acceleration values throughout the motor’s acceleration and the code will record down the peak acceleration value.
 
-- Accelerometer sample rate is changed from 200Hz to 1600Hz so as to increase accuracy. Peak acceleration values are put in an array and after a certain number or recordings, mean and standard deviation are calculated from the peak values in array. Code is in `moi3.ino` (using PWM to control stepper motors + `bmi_160_gryo_script3.ino`)..
+- Accelerometer sample rate is changed from 200Hz to 1600Hz so as to increase accuracy. Peak acceleration values are put in an array and after a certain number or recordings, mean and standard deviation are calculated from the peak values in array. Code is in `moi3.ino` (using PWM to control stepper motors + `bmi_160_gryo_script3.ino`).
 
 - However, peak acceleration values tend to vary substantially (sometimes up to 60%). We can use FreeRTOS to run gyro and motor with AccelStepper library simultaneously. Motor will accelerate at a set acceleration and gyro can measure average acceleration during that time.
 
@@ -246,7 +246,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 - When switching from Control task to Gyro and Motor task, first reading is buggy and inaccurate and hence not added to the array. Only 2nd reading onwards are added to the array. loopCount can also be used to limit gyro’s recording to the acceleration process of the motor and not both acceleration and deceleration.
 
-- A new problem arise when load is put on top plate, average acceleration is observed to increase instead of decrease due to majority of acceleration values becoming higher despite peak acceleration becoming lower. This may be due to the usage of AccelStepper library which allows motor to draw more current to maintain set acceleration. Solution is to max out setAcceleration() and setMaxSpeed() functions so that motor could not draw any additional current. Code is in `moi4.ino` (modified from `moi.ino`).
+- A new problem arise when load is put on top plate, average acceleration is observed to increase instead of decrease due to majority of acceleration values becoming higher despite peak acceleration becoming lower. This may be due to the usage of AccelStepper library which allows motor to draw more current to maintain set acceleration. Solution is to max out setAcceleration() and setMaxSpeed() functions so that motor could not draw any additional current and to set dip switches on the side of the stepper motor driver to 1600 pulses/round. Code is in `moi4.ino` (modified from `moi.ino`).
 
 ### Putting it together (Linear Actuator and Load Cells):
 - Refer to above instructions “Linear actuator with relay” for instructions on how to operate linear actuators. Once Arduino is on, load cells are already reading weight values and calculating CG.

@@ -24,7 +24,7 @@ void setup() {
 
 void loop() {
   // Set the target position(positive = cw, negative = ccw)
-  stepper.moveTo(2000);
+  stepper.moveTo(6000);
   //Run to target position with set speed and acceleration/deceleration:
   stepper.runToPosition();
 
