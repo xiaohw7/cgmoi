@@ -80,7 +80,7 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
 - There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
 
-- For reference, stepper motor driver set to
+- For reference, stepper motor driver acceleration set to 999999, max speed set to 99999999, and 1600 pulses/round should give a average acceleration around 280deg/sec^2 with no load
 
 - If load cell readings become inaccurate, try running "Calibration" example and obtain calibration values for each individual load cell and input into the code.
 
