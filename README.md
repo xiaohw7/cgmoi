@@ -33,7 +33,9 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
       * Linear actuators must be fully extended.
 
-      * Ensure pin securing removeable shaft is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
+      * ![screw securing removeable shaft](https://github.com/xiaohw7/cgmoi/blob/main/Images/screw_securing_removeable_shaft.JPG)
+
+      * Ensure pin securing removeable shaft (shown above) is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
 
       * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
