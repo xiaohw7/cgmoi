@@ -242,13 +242,13 @@ void TaskGyro(void *pvParameters) {
   
       //Serial.println(angularAccelDeg);
  
-      //add angularAccelDeg to total tally and obtain average
+      //add angularAccelDeg to total tally 
       totalAccelDeg = totalAccelDeg + angularAccelDeg;
-      avgAccelDeg = totalAccelDeg / loopCount;
+      //avgAccelDeg = totalAccelDeg / loopCount;
       //Serial.println(avgAccelDeg);
   
-      //get peak acceleration
-      /*if (angularAccelDeg > peakAccel) {
+      /*//get peak acceleration
+      if (angularAccelDeg > peakAccel) {
         peakAccel = angularAccelDeg;
       }*/
       
@@ -286,9 +286,12 @@ void TaskMotor(void *pvParameters) {
       //suspend Gyro task
       vTaskSuspend(Gyro);
       Serial.println("suspend gyro");
+      
+      //get average acceleration
+      avgAccelDeg = totalAccelDeg / 30;
 
       //print average accel
-      Serial.print("avg acceleration: ");
+      Serial.print("average acceleration: ");
       Serial.println(avgAccelDeg);
 
       //add only the second value onwards to array
@@ -506,8 +509,8 @@ void TaskCg(void *pvParameters) {
         digitalWrite(dpdtSignal1, HIGH);
         digitalWrite(spdtSignal, LOW); //turn on spdt relay
         Serial.println("Linear actuator power on. Raise platform completely.");
-        Serial.println("Make sure pin securing removeable shaft has been removed!");
-        delay(50000);        
+        Serial.println("Make sure screw securing removeable shaft has been removed!");
+        delay(60000);        
         digitalWrite(spdtSignal, HIGH); //turn off spdt relay
         Serial.println("Linear actuator power off");
       }
@@ -519,8 +522,8 @@ void TaskCg(void *pvParameters) {
         digitalWrite(dpdtSignal1, LOW);
         digitalWrite(spdtSignal, LOW); //turn on spdt relay
         Serial.println("Linear actuator power on. Lower platform completely.");
-        Serial.println("Make sure pin securing removeable shaft has been removed!");
-        delay(50000);
+        Serial.println("Make sure screw securing removeable shaft has been removed!");
+        delay(60000);
         digitalWrite(spdtSignal, HIGH); //turn off spdt relay
         Serial.println("Linear actuator power off");
       }

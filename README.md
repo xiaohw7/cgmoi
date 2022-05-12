@@ -35,7 +35,7 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
       * ![screw securing removeable shaft](https://github.com/xiaohw7/cgmoi/blob/main/Images/screw_securing_removeable_shaft.JPG)
 
-      * Ensure pin securing removeable shaft (shown above) is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
+      * Ensure screw securing removeable shaft (shown above) is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
 
       * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
@@ -43,7 +43,7 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
       * Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
 
-      * Ensure pin securing removeable shaft is secured, send '14' to suspend Cg task and start Gyro and Motor tasks.
+      * Ensure screw securing removeable shaft is secured, send '14' to suspend Cg task and start Gyro and Motor tasks.
 
       * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 10 seconds before recording process starts again.
 
@@ -82,11 +82,13 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
 - There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
 
-- For reference, stepper motor driver acceleration set to 999999, max speed set to 99999999, and 1600 pulses/round should give a average acceleration around 280deg/sec^2 with no load
+- Angular acceleration values is rather unreliable and difference while loaded and unloaded may not be easily observed. Sometimes loaded values may even be higher than unloaded values. May be due to looseness and play at the epoxy region of removeable shaft.
+
+- 
 
 - If load cell readings become inaccurate, try running "Calibration" example and obtain calibration values for each individual load cell and input into the code.
 
-- If there is a need to stop measurements/linear actuators/ stepper motor immediately, unplug Arduino to "Emergency Stop".
+- If there is a need to stop measurements/linear actuators/stepper motor immediately, unplug Arduino to "Emergency Stop".
 
 
 
