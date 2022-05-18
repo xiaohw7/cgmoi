@@ -37,7 +37,7 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
       * Linear actuators must be fully extended.
 
-      * Ensure screw securing removeable shaft (shown below) is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
+      * Ensure ***screw securing removeable shaft (shown below) is removed*** before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
 
       * ![screw securing removeable shaft](https://github.com/xiaohw7/cgmoi/blob/main/Images/screw_securing_removeable_shaft.JPG)
 
@@ -76,7 +76,7 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
 ## Points to take note
 
-- Before raising/lowering linear actuators, user must remember to remove screw securing removeable shaft is removed.
+- Before raising/lowering linear actuators, user must remember to ***remove screw securing removeable shaft***.
 
 - When lowering top plate, user should stand by and make sure removeable shaft enters designated slot correctly.
 
@@ -271,3 +271,13 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 - While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
 
 - Code is in `cgmoi.ino` (`moi4.ino` + `cg.ino`).
+
+### Printed Circuit Board:
+
+- The Arduino Mega board along with relays and ADCs are meant to be stacked on top of the PCB and put in a box.
+
+- Wiring to components of cgmoi machine such as load cells and gyro will be done with screw terminals soldered onto PCB.
+
+- [Screw terminal to be used](https://www.digikey.sg/en/products/detail/phoenix-contact/1935161/568614?s=N4IgTCBcDaIAQEYCcBmArAgbAuIC6AvkA)
+
+- [PCB encloser to be used](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
