@@ -37,9 +37,9 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
       * Linear actuators must be fully extended.
 
-      * ![screw securing removeable shaft](https://github.com/xiaohw7/cgmoi/blob/main/Images/screw_securing_removeable_shaft.JPG)
+      * Ensure screw securing removeable shaft (shown below) is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
 
-      * Ensure screw securing removeable shaft (shown above) is removed before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
+      * ![screw securing removeable shaft](https://github.com/xiaohw7/cgmoi/blob/main/Images/screw_securing_removeable_shaft.JPG)
 
       * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
@@ -196,15 +196,14 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 - Use `linear_actuator_script.ino` to control the actuators through serial monitor.
 
-- Send ‘1’ to power on. Send ‘2’ to power off.  
-
-- Send ‘3’, ‘5’, or ‘7’ to move actuator 1, 2, or 3 up for 1 sec respectively.
-
-- Send ‘4’, ‘6’, or ‘8’ to move actuator 1, 2, or 3 down for 1 sec respectively.
-
-- Send ‘9’ to move all 3 actuators up completely.
-
-- Send ‘10’ to move all 3 actuators down completely.
+|Commands that can be sent |What it does|
+|--------------------------|------------|
+|Send '1'|Power on|
+|Send '2'|Power off|
+|Send '3'/'5'/'7'|Move actuator 1/2/3 up for 1 sec|
+|Send '4'/'6'/'8'|Move actuator 1,2,3 down for 1 sec|
+|Send '9'|Move all 3 actuators up completely|
+|Send '10'|Move all 3 actuators down completely|
 
 - Linear actuator to use 12V from power supply.
 
