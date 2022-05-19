@@ -274,9 +274,11 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 ### Printed Circuit Board:
 
-- The Arduino Mega board along with relays and ADCs are meant to be stacked on top of the PCB and put in a box.
+- The Arduino Mega board along with relays and ADCs are to be stacked on top of the PCB.
 
-- Wiring to components of cgmoi machine such as load cells and gyro will be done with screw terminals soldered onto PCB.
+- Wiring to components of cgmoi machine such as load cells and gyro to ADC and Arduino on PCB will be done with screw terminals soldered onto PCB.
+
+- PCB along with its components would be put into a PCB encloser with opening for wires to connect to other components.
 
 - [Screw terminal to be used](https://www.digikey.sg/en/products/detail/phoenix-contact/1935161/568614?s=N4IgTCBcDaIAQEYCcBmArAgbAuIC6AvkA)
 
