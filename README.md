@@ -88,13 +88,9 @@ The stepper motor, linear actuator, accelerometer, and load cells are controlled
 
 - Angular acceleration values is rather unreliable and difference while loaded and unloaded may not be easily observed. Sometimes loaded values may even be higher than unloaded values. May be due to looseness and play at the epoxy region of removeable shaft.
 
--
-
 - If load cell readings become inaccurate, try running "Calibration" example and obtain calibration values for each individual load cell and input into the code.
 
 - If there is a need to stop measurements/linear actuators/stepper motor immediately, unplug Arduino to "Emergency Stop".
-
-
 
 ## Calculations
 
@@ -148,7 +144,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 ### HX711 ADC and load cells:
 
-- Refer to [this link](https://makersportal.com/blog/2019/5/12/arduino-weighing-scale-with-load-cell-and-hx711) for instructions on how to connect load cell to HX711 to Arduino. All 3 load cells can share a common power and ground connection through a breadboard.
+- Refer to [this link](https://makersportal.com/blog/2019/5/12/arduino-weighing-scale-with-load-cell-and-hx711) for instructions on how to connect load cell to HX711 to Arduino. All 3 load cells can share a common power and ground connection.
 
 - Download library at [github](https://github.com/olkal/HX711_ADC) for examples on calibrating and reading values from multiple load cells.
 
@@ -280,6 +276,6 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 - PCB along with its components would be put into a PCB encloser with opening for wires to connect to other components.
 
-- [Screw terminal to be used](https://www.digikey.sg/en/products/detail/phoenix-contact/1935161/568614?s=N4IgTCBcDaIAQEYCcBmArAgbAuIC6AvkA)
+- [Screw terminal to be used](https://www.digikey.sg/en/products/detail/w%C3%BCrth-elektronik/691211720002/2060530 )
 
 - [PCB encloser to be used](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
