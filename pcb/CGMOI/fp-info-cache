@@ -1,4 +1,4 @@
-20117656819123132
+20119310102326213
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -85623,3 +85623,10 @@ pin
 0
 1
 1
+cgmoi
+screw terminal
+terminal block Metz Connect Type011_RT05502HBWC, 2 pins, pitch 5mm, size 10x10.5mm^2, drill diamater 1.4mm, pad diameter 2.8mm, see http://www.metz-connect.com/de/system/files/productfiles/Datenblatt_310111_RT055xxHBLC_OFF-022717S.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_MetzConnect
+THT terminal block Metz Connect Type011_RT05502HBWC pitch 5mm size 10x10.5mm^2 drill 1.4mm pad 2.8mm
+0
+2
+2
