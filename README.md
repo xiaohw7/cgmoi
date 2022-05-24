@@ -118,15 +118,16 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
       * Lengths are obtained from datasheets in OneDrive and calculations based on the information in datasheets.
       * To obtain z-coordinate of CG, rotate satellite by 90 degrees and undergo same calculations to obtain z-coordinate.
       * Code outputs coordinate of CG with reference to axis above and in millimeters.
-      * Note: resultant x-axis values from calculations are opposite to the above axis shown in image. If location of CG moves upwards closer position B, x coordinate of CG becomes more positive.
+      * ***Note: resultant x-axis values from calculations are opposite to the above axis shown in image. If location of CG moves upwards closer position B, x coordinate of CG becomes more positive.***
 
 3. Finding Moment Of Inertia
 
       * ![moi_eqn](https://github.com/xiaohw7/cgmoi/blob/main/Images/moi_eqn.png)
 
-      * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works.
+      * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works. J0 in the vertical axis, taking center of top plate as origin, is 19113908 grams * square millimeters.
+      * 
       *  w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
-      * Thus it is observed that the fraction in the equation is angular acceleration with satellite mounted divided by angular acceleration without satellite mounted.
+      * Thus it is observed that the fraction in the equation is angular acceleration without satellite mounted divided by angular acceleration with satellite mounted.
       * Code outputs angular acceleration values in degrees/sec^2 which can then be used to calculate J0.
 
       * Rotating about X-axis of satellite will result in JX
