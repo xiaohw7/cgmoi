@@ -124,9 +124,9 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
       * ![moi_eqn](https://github.com/xiaohw7/cgmoi/blob/main/Images/moi_eqn.png)
 
-      * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works. Shown in picutre below, J0 in the vertical axis, taking center of top plate as origin, is ***19113908 grams * square millimeters***.
+      * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works. Shown in picutre below, J0 in the vertical axis, taken at output corrdinate system with center of top plate as origin, is ***19113908 grams * square millimeters***.
       * ![MOI_topplate](https://github.com/xiaohw7/cgmoi/blob/main/Images/MOI_topplate.JPG)
-      *  w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
+      *  Referring again to equation to obtain J1, w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
       * Thus it is observed that the fraction in the equation is angular acceleration without satellite mounted divided by angular acceleration with satellite mounted.
       * Code outputs angular acceleration values in degrees/sec^2 which can then be used to calculate J0.
 
