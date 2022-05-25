@@ -14,7 +14,7 @@ The concept of this machine is based on [this research paper](https://github.com
 
 The machine also includes a stepper motor that spins the top plate, and linear actuators to raise and lower the load cells in order to measure CG.
 
-The stepper motor, linear actuator, accelerometer, and load cells are controlled by and wired to an Arduino mega board. The Arduino could then be plugged into a laptop running the Arduino IDE where code could be uploaded to run the cgmoi machine.
+The stepper motor, linear actuator, accelerometer, load cells and other components are controlled by and wired to an Arduino mega board. The Arduino could then be plugged into a laptop running the Arduino IDE where code could be uploaded to run the cgmoi machine.
 
 
 
@@ -124,7 +124,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
       * ![moi_eqn](https://github.com/xiaohw7/cgmoi/blob/main/Images/moi_eqn.png)
 
-      * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works. Shown in picutre below, J0 in the vertical axis, taken at output corrdinate system with center of top plate as origin, is ***19113908 grams * square millimeters***.
+      * Use equation above to obtain J1. Where J1 is MOI of satellite. J0 is MOI of fixture tools which can be obtained from solid works. Shown in picutre below, J0 in the vertical axis, taken at output corrdinate system with center of top plate as origin, is ***19113908.45 grams * square millimeters***.
       * ![MOI_topplate](https://github.com/xiaohw7/cgmoi/blob/main/Images/MOI_topplate.JPG)
       *  Referring again to equation to obtain J1, w0 is angular velocity at time t without satellite. w’0 is angular velocity at time t with satellite. t1 and t2 are time at which angular velocity w0 and w’0 is taken respectively.
       * Thus it is observed that the fraction in the equation is angular acceleration without satellite mounted divided by angular acceleration with satellite mounted.
@@ -141,7 +141,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
       * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
 
 ## Instructions
-(Below are instructions on how to set up each individual component of the cgmoi machine as well as some notes I made on the problems I faced)
+Below are instructions on how to set up each individual component of the cgmoi machine as well as some notes I made on the problems I faced in the process.
 
 ### HX711 ADC and load cells:
 
@@ -191,7 +191,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 - For each DPDT relay, NO2 and NC1 should be connected to the black wire of actuator while NO1 and NC2 should be connected to the red wire of actuator.
 
-- Use `linear_actuator_script.ino` to control the actuators through serial monitor.
+- Use `linear_actuator_script.ino` to control the actuators by sending commands through serial monitor.
 
 |Commands that can be sent |What it does|
 |--------------------------|------------|

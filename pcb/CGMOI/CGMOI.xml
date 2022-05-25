@@ -1,0 +1,1314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\duc\OneDrive\Documents\KiCad\CGMOI\CGMOI.kicad_sch</source>
+    <date>5/25/2022 2:02:56 PM</date>
+    <tool>Eeschema (6.0.2)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>CGMOI.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J1">
+      <value>ADC1E+/-</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>07058de7-f688-454c-bfbe-7df82a190fcd</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>ADC1A-/+</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>441983fc-b4e8-4063-9f5d-4d6c91710b69</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>ADC1B-/+</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d0f5fc1e-22d9-437e-b546-0b819bd27321</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>ADC2E+/-</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>71df5cb8-0c6a-4fae-bf77-64f29d97d3df</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>ADC2A-/+</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b24db518-1961-47e1-af4f-98c98c7df78f</tstamps>
+    </comp>
+    <comp ref="J6">
+      <value>ADC2B-/+</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>48366576-2e60-4fa4-af09-1a53369d2e95</tstamps>
+    </comp>
+    <comp ref="J7">
+      <value>ADC3E+/-</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>31fd8253-bc54-4301-a0a7-fd07faa84688</tstamps>
+    </comp>
+    <comp ref="J8">
+      <value>ADC3A-/+</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>518f7a3a-e2e9-4e5d-8cad-0ea3620bd907</tstamps>
+    </comp>
+    <comp ref="J9">
+      <value>ADC3B-/+</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1b3ae8f0-e151-4c8d-915a-7ed0a983b510</tstamps>
+    </comp>
+    <comp ref="J10">
+      <value>ActuatorPower12V+/-</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e6669752-b473-4337-9fe4-407e230bdb72</tstamps>
+    </comp>
+    <comp ref="J11">
+      <value>MotorDir/Pulse</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>13afc725-3e1c-440d-8c7f-80c6b37a5ceb</tstamps>
+    </comp>
+    <comp ref="J12">
+      <value>actuator1Black/Red</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e334f9fb-52ab-4885-9edd-f10e1388af58</tstamps>
+    </comp>
+    <comp ref="J13">
+      <value>actuator2Black/Red</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6d0d016b-0f01-4943-89dc-f3505129891b</tstamps>
+    </comp>
+    <comp ref="J14">
+      <value>actuator3Black/Red</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ee32d04c-bb09-4d76-b4f8-1b6f5ac6a764</tstamps>
+    </comp>
+    <comp ref="J15">
+      <value>GyroSCL/SDA</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e7db3c8c-092b-4d77-b2ea-cc929ed1cd7f</tstamps>
+    </comp>
+    <comp ref="J16">
+      <value>MotorGNDPulse/Dir</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4d931e75-4276-4d6e-a3f0-426fae0eec5a</tstamps>
+    </comp>
+    <comp ref="J17">
+      <value>Gyro+/-</value>
+      <footprint>cgmoi:screw terminal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5357e8b4-ddd9-4fa0-a7a4-73c8d7affe7e</tstamps>
+    </comp>
+    <comp ref="pin1">
+      <value>dpdt1+</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9aa84815-f164-48c7-9e70-603f5f1c69fc</tstamps>
+    </comp>
+    <comp ref="pin2">
+      <value>dpdt2+</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>34e63368-885c-44b2-ba24-ae04069adf8e</tstamps>
+    </comp>
+    <comp ref="pin3">
+      <value>dpdt3+</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b4f68aa0-5993-4a01-b11a-69506f4b661d</tstamps>
+    </comp>
+    <comp ref="pin4">
+      <value>dpdt1-</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>05041dab-6c8e-4985-b38f-9ab72ab66a0b</tstamps>
+    </comp>
+    <comp ref="pin5">
+      <value>dpdt2-</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b90c7c99-be47-4813-bff6-471b92d5ebc2</tstamps>
+    </comp>
+    <comp ref="pin6">
+      <value>dpdt3-</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ae00f59a-072b-4bc3-9f6b-2d00972759b3</tstamps>
+    </comp>
+    <comp ref="pin7">
+      <value>spdtActuator+</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5881d3ae-16d3-4970-a9c7-aa1caf996e65</tstamps>
+    </comp>
+    <comp ref="pin8">
+      <value>spdtMotor+</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>82f7f40b-9441-456a-a5d7-430b1e5ac28a</tstamps>
+    </comp>
+    <comp ref="pin9">
+      <value>spdtActuator-</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6f2d4e1f-f5ff-4c14-93ef-14e61ee532e7</tstamps>
+    </comp>
+    <comp ref="pin10">
+      <value>spdtMotor-</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>26ec3275-6124-40e9-966c-e4b0896572d6</tstamps>
+    </comp>
+    <comp ref="pin17">
+      <value>ADC1+</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b4d70ea2-5f43-4ba4-ab50-8cf2b98f25b7</tstamps>
+    </comp>
+    <comp ref="pin18">
+      <value>ADC2+</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a996d934-dfde-42b0-97da-c7ba0fcedf7d</tstamps>
+    </comp>
+    <comp ref="pin19">
+      <value>ADC3+</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>33ccda45-6093-4398-8636-0b06f95fbe45</tstamps>
+    </comp>
+    <comp ref="pin20">
+      <value>ADC1-</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cbbd2589-52bc-476f-8739-0314ca044a69</tstamps>
+    </comp>
+    <comp ref="pin21">
+      <value>ADC2-</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b93d10e4-bb67-4b71-b711-e6af992756c6</tstamps>
+    </comp>
+    <comp ref="pin22">
+      <value>ADC3-</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>44b21e9a-30ba-4c4e-828d-1ac7c2af396d</tstamps>
+    </comp>
+    <comp ref="pin23">
+      <value>ADC1DT</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a7ab7683-18f4-4ad9-b5c0-983ec2f817d8</tstamps>
+    </comp>
+    <comp ref="pin24">
+      <value>ADC1SCK</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d01a7ad3-04b2-4d6c-a0cd-c78c5ab8447a</tstamps>
+    </comp>
+    <comp ref="pin25">
+      <value>ADC2DT</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8bf0bad1-c623-4374-8c0d-096e1a70785f</tstamps>
+    </comp>
+    <comp ref="pin26">
+      <value>ADC2SCK</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>37118082-912c-4d82-b568-a3d863cb8bd4</tstamps>
+    </comp>
+    <comp ref="pin27">
+      <value>ADC3DT</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c9160815-3802-4af3-82ae-04518122acc1</tstamps>
+    </comp>
+    <comp ref="pin28">
+      <value>ADC3SCK</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>53f3860f-28b8-4563-a3f4-2a63a819a0cd</tstamps>
+    </comp>
+    <comp ref="pin32">
+      <value>actuator1Com2</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>49b8223c-ea1f-4bbd-88da-25781decf322</tstamps>
+    </comp>
+    <comp ref="pin33">
+      <value>actuator2Com2</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>285513ea-ac1c-4ee6-9185-b7827cf28fb5</tstamps>
+    </comp>
+    <comp ref="pin34">
+      <value>actuator3Com2</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d4eb0c94-6777-449e-b3d8-b1ba4da5079e</tstamps>
+    </comp>
+    <comp ref="pin36">
+      <value>actuator1Com1</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2599b4e0-cf41-4cde-980d-e17e7e59e580</tstamps>
+    </comp>
+    <comp ref="pin37">
+      <value>actuator2Com1</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2bb5ccbe-f465-46c0-8890-a02e5cff0c30</tstamps>
+    </comp>
+    <comp ref="pin38">
+      <value>actuator3Com1</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>efb2bba6-c85b-427b-8204-3c4fde285edf</tstamps>
+    </comp>
+    <comp ref="pin39">
+      <value>dpdt1NO2</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1371dd47-5e68-45bb-9891-6dc104a3c6e9</tstamps>
+    </comp>
+    <comp ref="pin40">
+      <value>dpdt1NC1</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c355dbf6-f84a-40c7-a721-a380e14b80e6</tstamps>
+    </comp>
+    <comp ref="pin42">
+      <value>dpdt1NO1</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ec7f67cc-606c-467b-8722-ca669354e861</tstamps>
+    </comp>
+    <comp ref="pin43">
+      <value>dpdt1NC2</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>73976c76-6e85-44ac-a6e4-c1b2c52a8b22</tstamps>
+    </comp>
+    <comp ref="pin45">
+      <value>dpdt2NO2</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>04372649-f82b-4b41-b347-ec509c35d1d9</tstamps>
+    </comp>
+    <comp ref="pin46">
+      <value>dpdt2NC1</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7cbfc6d9-288f-4457-9b4b-d81a52c34252</tstamps>
+    </comp>
+    <comp ref="pin48">
+      <value>dpdt2NO1</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>64a7b442-edea-4d91-9f92-24f00819a5b0</tstamps>
+    </comp>
+    <comp ref="pin49">
+      <value>dpdt2NC2</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ea678c26-deea-4803-9371-fbad8522d59d</tstamps>
+    </comp>
+    <comp ref="pin51">
+      <value>dpdt3NO2</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f01bb94b-04f5-45de-af84-6b6dcca8089c</tstamps>
+    </comp>
+    <comp ref="pin52">
+      <value>dpdt3NC1</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>499cc4ba-ee98-442a-bfbf-049b51bbb8aa</tstamps>
+    </comp>
+    <comp ref="pin54">
+      <value>dpdt3NO1</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>842ed0d4-6bb0-430c-9f52-2efce4a6dd83</tstamps>
+    </comp>
+    <comp ref="pin55">
+      <value>dpdt3NC2</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>670dc992-eb3d-4c01-af88-76398d2b3253</tstamps>
+    </comp>
+    <comp ref="pin57">
+      <value>ADC1E+in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>08352c87-79cd-4c1c-b5f3-bbca1b1f686c</tstamps>
+    </comp>
+    <comp ref="pin59">
+      <value>ADC1E-in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>294adf0f-7a4f-4212-a1c5-8fbbed1523a5</tstamps>
+    </comp>
+    <comp ref="pin61">
+      <value>ADC1A-in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5a202297-c42b-4c02-a91d-b14cd1836f56</tstamps>
+    </comp>
+    <comp ref="pin63">
+      <value>ADC1A+in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ab318b28-2c67-4da9-94be-af84b8b52943</tstamps>
+    </comp>
+    <comp ref="pin65">
+      <value>ADC1B-in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b46440a7-f327-466c-b129-0fc866c61f8f</tstamps>
+    </comp>
+    <comp ref="pin67">
+      <value>ADC1B+in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f958fe05-34da-4d4e-8f89-a86170a8f8e9</tstamps>
+    </comp>
+    <comp ref="pin69">
+      <value>ADC2E+in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e991bc0c-b188-49d7-8a6c-befe42cf84a1</tstamps>
+    </comp>
+    <comp ref="pin71">
+      <value>ADC2E-in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7eb4a152-6a21-493d-8ca3-9737f1f68b5e</tstamps>
+    </comp>
+    <comp ref="pin73">
+      <value>ADC2A-in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>288dca09-3173-423e-8c1f-239d029b50a1</tstamps>
+    </comp>
+    <comp ref="pin75">
+      <value>ADC2A+in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a7836ce0-9d03-43ac-9dae-e6474ef7a0a0</tstamps>
+    </comp>
+    <comp ref="pin77">
+      <value>ADC2B-in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b7dc35af-4b4b-404f-ac18-eb18915152ea</tstamps>
+    </comp>
+    <comp ref="pin79">
+      <value>ADC2B+in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>15d380e1-c706-42b0-a33e-897e2e0164ce</tstamps>
+    </comp>
+    <comp ref="pin81">
+      <value>ADC3E+in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d68cfe94-6340-4a1b-bf1c-02ec50e65ef3</tstamps>
+    </comp>
+    <comp ref="pin83">
+      <value>ADC3E-in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>409b2220-88e4-4296-bfce-b6d81dd018bf</tstamps>
+    </comp>
+    <comp ref="pin85">
+      <value>ADC3A-in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>db4c9ae7-28f4-4e2c-8092-5317fbef8210</tstamps>
+    </comp>
+    <comp ref="pin87">
+      <value>ADC3A+in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fa239296-1151-46cf-8d01-dfe539fc593d</tstamps>
+    </comp>
+    <comp ref="pin89">
+      <value>ADC3B-in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2a6c7526-d912-4c59-adf2-184bee7be6ba</tstamps>
+    </comp>
+    <comp ref="pin91">
+      <value>ADC3B+in</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fee52fd3-ef4b-415c-b3a1-d9393c0249a5</tstamps>
+    </comp>
+    <comp ref="pin93">
+      <value>spdtActuatorIn</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9826266e-98cd-43ee-9fe6-7ff83d1c466b</tstamps>
+    </comp>
+    <comp ref="pin94">
+      <value>dpdt1In</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>99d87bc9-3f58-49db-b0e5-f4852b84addb</tstamps>
+    </comp>
+    <comp ref="pin95">
+      <value>dpdt2In</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a5916551-dd7f-40ca-b1d6-035b00d3297e</tstamps>
+    </comp>
+    <comp ref="pin96">
+      <value>dpdt3In</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d07327d1-cb60-4183-8557-1db9889938f2</tstamps>
+    </comp>
+    <comp ref="pin97">
+      <value>spdtMotorIn</value>
+      <footprint>cgmoi:pin</footprint>
+      <libsource lib="cgmoi" part="pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ca1efd81-4858-4866-94b1-3d55e5a572fc</tstamps>
+    </comp>
+    <comp ref="XA1">
+      <value>Arduino_Mega2560_Shield</value>
+      <footprint>cgmoi:Arduino_Mega2560_Shield</footprint>
+      <datasheet>https://store.arduino.cc/arduino-mega-2560-rev3</datasheet>
+      <libsource lib="cgmoi" part="Arduino_Mega2560_Shield" description="Shield for Arduino Mega 2560"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="CGMOI.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e0afd36d-fa75-4d37-b911-4a1e331c3414</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="Screw_Terminal_01x02">
+      <description>Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TerminalBlock*:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Screw_Terminal_01x02</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="cgmoi" part="Arduino_Mega2560_Shield">
+      <description>Shield for Arduino Mega 2560</description>
+      <docs>https://store.arduino.cc/arduino-mega-2560-rev3</docs>
+      <footprints>
+        <fp>Arduino_Mega2560_Shield</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">XA</field>
+        <field name="Value">Arduino_Mega2560_Shield</field>
+        <field name="Datasheet">https://store.arduino.cc/arduino-mega-2560-rev3</field>
+      </fields>
+      <pins>
+        <pin num="3V3" name="3.3V" type="bidirectional"/>
+        <pin num="5V1" name="5V" type="bidirectional"/>
+        <pin num="5V2" name="SPI_5V" type="power_in"/>
+        <pin num="5V3" name="5V" type="bidirectional"/>
+        <pin num="5V4" name="5V" type="bidirectional"/>
+        <pin num="A0" name="A0" type="bidirectional"/>
+        <pin num="A1" name="A1" type="bidirectional"/>
+        <pin num="A2" name="A2" type="bidirectional"/>
+        <pin num="A3" name="A3" type="bidirectional"/>
+        <pin num="A4" name="A4" type="bidirectional"/>
+        <pin num="A5" name="A5" type="bidirectional"/>
+        <pin num="A6" name="A6" type="bidirectional"/>
+        <pin num="A7" name="A7" type="bidirectional"/>
+        <pin num="A8" name="A8" type="bidirectional"/>
+        <pin num="A9" name="A9" type="bidirectional"/>
+        <pin num="A10" name="A10" type="bidirectional"/>
+        <pin num="A11" name="A11" type="bidirectional"/>
+        <pin num="A12" name="A12" type="bidirectional"/>
+        <pin num="A13" name="A13" type="bidirectional"/>
+        <pin num="A14" name="A14" type="bidirectional"/>
+        <pin num="A15" name="A15" type="bidirectional"/>
+        <pin num="AREF" name="AREF" type="input"/>
+        <pin num="D0" name="D0_RX0" type="bidirectional"/>
+        <pin num="D1" name="D1_TX0" type="bidirectional"/>
+        <pin num="D2" name="D2_INT0" type="bidirectional"/>
+        <pin num="D3" name="D3_INT1" type="bidirectional"/>
+        <pin num="D4" name="D4" type="bidirectional"/>
+        <pin num="D5" name="D5" type="bidirectional"/>
+        <pin num="D6" name="D6" type="bidirectional"/>
+        <pin num="D7" name="D7" type="bidirectional"/>
+        <pin num="D8" name="D8" type="bidirectional"/>
+        <pin num="D9" name="D9" type="bidirectional"/>
+        <pin num="D10" name="D10" type="bidirectional"/>
+        <pin num="D11" name="D11" type="bidirectional"/>
+        <pin num="D12" name="D12" type="bidirectional"/>
+        <pin num="D13" name="D13" type="bidirectional"/>
+        <pin num="D14" name="D14_TX3" type="bidirectional"/>
+        <pin num="D15" name="D15_RX3" type="bidirectional"/>
+        <pin num="D16" name="D16_TX2" type="bidirectional"/>
+        <pin num="D17" name="D17_RX2" type="bidirectional"/>
+        <pin num="D18" name="D18_TX1" type="bidirectional"/>
+        <pin num="D19" name="D19_RX1" type="bidirectional"/>
+        <pin num="D20" name="D20_SDA" type="bidirectional"/>
+        <pin num="D21" name="D21_SCL" type="bidirectional"/>
+        <pin num="D22" name="D22" type="bidirectional"/>
+        <pin num="D23" name="D23" type="bidirectional"/>
+        <pin num="D24" name="D24" type="bidirectional"/>
+        <pin num="D25" name="D25" type="bidirectional"/>
+        <pin num="D26" name="D26" type="bidirectional"/>
+        <pin num="D27" name="D27" type="bidirectional"/>
+        <pin num="D28" name="D28" type="bidirectional"/>
+        <pin num="D29" name="D29" type="bidirectional"/>
+        <pin num="D30" name="D30" type="bidirectional"/>
+        <pin num="D31" name="D31" type="bidirectional"/>
+        <pin num="D32" name="D32" type="bidirectional"/>
+        <pin num="D33" name="D33" type="bidirectional"/>
+        <pin num="D34" name="D34" type="bidirectional"/>
+        <pin num="D35" name="D35" type="bidirectional"/>
+        <pin num="D36" name="D36" type="bidirectional"/>
+        <pin num="D37" name="D37" type="bidirectional"/>
+        <pin num="D38" name="D38" type="bidirectional"/>
+        <pin num="D39" name="D39" type="bidirectional"/>
+        <pin num="D40" name="D40" type="bidirectional"/>
+        <pin num="D41" name="D41" type="bidirectional"/>
+        <pin num="D42" name="D42" type="bidirectional"/>
+        <pin num="D43" name="D43" type="bidirectional"/>
+        <pin num="D44" name="D44" type="bidirectional"/>
+        <pin num="D45" name="D45" type="bidirectional"/>
+        <pin num="D46" name="D46" type="bidirectional"/>
+        <pin num="D47" name="D47" type="bidirectional"/>
+        <pin num="D48" name="D48" type="bidirectional"/>
+        <pin num="D49" name="D49" type="bidirectional"/>
+        <pin num="D50" name="D50" type="bidirectional"/>
+        <pin num="D51" name="D51" type="bidirectional"/>
+        <pin num="D52" name="D52" type="bidirectional"/>
+        <pin num="D53" name="D53_SS" type="bidirectional"/>
+        <pin num="GND1" name="GND" type="bidirectional"/>
+        <pin num="GND2" name="GND" type="bidirectional"/>
+        <pin num="GND3" name="GND" type="bidirectional"/>
+        <pin num="GND4" name="SPI_GND" type="power_in"/>
+        <pin num="GND5" name="GND" type="bidirectional"/>
+        <pin num="GND6" name="GND" type="bidirectional"/>
+        <pin num="IORF" name="IOREF" type="output"/>
+        <pin num="MISO" name="SPI_MISO" type="input"/>
+        <pin num="MOSI" name="SPI_MOSI" type="output"/>
+        <pin num="RST1" name="RESET" type="open_collector"/>
+        <pin num="RST2" name="SPI_RESET" type="open_collector"/>
+        <pin num="SCK" name="SPI_SCK" type="output"/>
+        <pin num="SCL" name="SCL" type="bidirectional"/>
+        <pin num="SDA" name="SDA" type="bidirectional"/>
+        <pin num="VIN" name="VIN" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="cgmoi" part="pin">
+      <fields>
+        <field name="Reference">pin</field>
+        <field name="Value">pin</field>
+      </fields>
+      <pins>
+        <pin num="1" name="pin" type="bidirectional"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+    </library>
+    <library logical="cgmoi">
+      <uri>C:/Users/duc/OneDrive/Documents/KiCad/6.0/symbols/cgmoi.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="GND">
+      <node ref="J16" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J16" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J17" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="XA1" pin="GND1" pinfunction="GND" pintype="bidirectional"/>
+      <node ref="XA1" pin="GND2" pinfunction="GND" pintype="bidirectional"/>
+      <node ref="XA1" pin="GND3" pinfunction="GND" pintype="bidirectional"/>
+      <node ref="XA1" pin="GND5" pinfunction="GND" pintype="bidirectional"/>
+      <node ref="XA1" pin="GND6" pinfunction="GND" pintype="bidirectional"/>
+      <node ref="pin10" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin20" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin21" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin22" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin4" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin5" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin6" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin9" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="2" name="Net-(J1-Pad1)">
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin57" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="3" name="Net-(J1-Pad2)">
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin59" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="4" name="Net-(J2-Pad1)">
+      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin61" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="5" name="Net-(J2-Pad2)">
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin63" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="Net-(J3-Pad1)">
+      <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin65" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="7" name="Net-(J3-Pad2)">
+      <node ref="J3" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin67" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="Net-(J4-Pad1)">
+      <node ref="J4" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin69" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="9" name="Net-(J4-Pad2)">
+      <node ref="J4" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin71" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="10" name="Net-(J5-Pad1)">
+      <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin73" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="11" name="Net-(J5-Pad2)">
+      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin75" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="12" name="Net-(J6-Pad1)">
+      <node ref="J6" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin77" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="13" name="Net-(J6-Pad2)">
+      <node ref="J6" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin79" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="14" name="Net-(J7-Pad1)">
+      <node ref="J7" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin81" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="15" name="Net-(J7-Pad2)">
+      <node ref="J7" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin83" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="16" name="Net-(J8-Pad1)">
+      <node ref="J8" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin85" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="17" name="Net-(J8-Pad2)">
+      <node ref="J8" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin87" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="18" name="Net-(J9-Pad1)">
+      <node ref="J9" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin89" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="19" name="Net-(J9-Pad2)">
+      <node ref="J9" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin91" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="20" name="Net-(J10-Pad1)">
+      <node ref="J10" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin32" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin33" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin34" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="21" name="Net-(J10-Pad2)">
+      <node ref="J10" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin36" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin37" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin38" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="22" name="Net-(J11-Pad1)">
+      <node ref="J11" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="XA1" pin="D2" pinfunction="D2_INT0" pintype="bidirectional"/>
+    </net>
+    <net code="23" name="Net-(J11-Pad2)">
+      <node ref="J11" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="XA1" pin="D4" pinfunction="D4" pintype="bidirectional"/>
+    </net>
+    <net code="24" name="Net-(J12-Pad1)">
+      <node ref="J12" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin39" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin40" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="25" name="Net-(J12-Pad2)">
+      <node ref="J12" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin42" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin43" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="26" name="Net-(J13-Pad1)">
+      <node ref="J13" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin45" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin46" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="27" name="Net-(J13-Pad2)">
+      <node ref="J13" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin48" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin49" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="28" name="Net-(J14-Pad1)">
+      <node ref="J14" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="pin51" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin52" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="29" name="Net-(J14-Pad2)">
+      <node ref="J14" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="pin54" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin55" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="30" name="Net-(J15-Pad1)">
+      <node ref="J15" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="XA1" pin="D21" pinfunction="D21_SCL" pintype="bidirectional"/>
+    </net>
+    <net code="31" name="Net-(J15-Pad2)">
+      <node ref="J15" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="XA1" pin="D20" pinfunction="D20_SDA" pintype="bidirectional"/>
+    </net>
+    <net code="32" name="Net-(J17-Pad1)">
+      <node ref="J17" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="XA1" pin="3V3" pinfunction="3.3V" pintype="bidirectional"/>
+    </net>
+    <net code="33" name="Net-(XA1-Pad5V1)">
+      <node ref="XA1" pin="5V1" pinfunction="5V" pintype="bidirectional"/>
+      <node ref="pin17" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin18" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin19" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="34" name="Net-(XA1-Pad5V3)">
+      <node ref="XA1" pin="5V3" pinfunction="5V" pintype="bidirectional"/>
+      <node ref="pin1" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin2" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin3" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="35" name="Net-(XA1-Pad5V4)">
+      <node ref="XA1" pin="5V4" pinfunction="5V" pintype="bidirectional"/>
+      <node ref="pin7" pin="1" pinfunction="pin" pintype="bidirectional"/>
+      <node ref="pin8" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="36" name="Net-(XA1-PadD22)">
+      <node ref="XA1" pin="D22" pinfunction="D22" pintype="bidirectional"/>
+      <node ref="pin97" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="37" name="Net-(XA1-PadD31)">
+      <node ref="XA1" pin="D31" pinfunction="D31" pintype="bidirectional"/>
+      <node ref="pin93" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="38" name="Net-(XA1-PadD32)">
+      <node ref="XA1" pin="D32" pinfunction="D32" pintype="bidirectional"/>
+      <node ref="pin94" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="39" name="Net-(XA1-PadD33)">
+      <node ref="XA1" pin="D33" pinfunction="D33" pintype="bidirectional"/>
+      <node ref="pin95" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="40" name="Net-(XA1-PadD34)">
+      <node ref="XA1" pin="D34" pinfunction="D34" pintype="bidirectional"/>
+      <node ref="pin96" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="41" name="Net-(XA1-PadD40)">
+      <node ref="XA1" pin="D40" pinfunction="D40" pintype="bidirectional"/>
+      <node ref="pin28" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="42" name="Net-(XA1-PadD41)">
+      <node ref="XA1" pin="D41" pinfunction="D41" pintype="bidirectional"/>
+      <node ref="pin27" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="43" name="Net-(XA1-PadD42)">
+      <node ref="XA1" pin="D42" pinfunction="D42" pintype="bidirectional"/>
+      <node ref="pin26" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="44" name="Net-(XA1-PadD43)">
+      <node ref="XA1" pin="D43" pinfunction="D43" pintype="bidirectional"/>
+      <node ref="pin25" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="45" name="Net-(XA1-PadD44)">
+      <node ref="XA1" pin="D44" pinfunction="D44" pintype="bidirectional"/>
+      <node ref="pin24" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="46" name="Net-(XA1-PadD45)">
+      <node ref="XA1" pin="D45" pinfunction="D45" pintype="bidirectional"/>
+      <node ref="pin23" pin="1" pinfunction="pin" pintype="bidirectional"/>
+    </net>
+    <net code="47" name="unconnected-(XA1-Pad5V2)">
+      <node ref="XA1" pin="5V2" pinfunction="SPI_5V" pintype="power_in+no_connect"/>
+    </net>
+    <net code="48" name="unconnected-(XA1-PadA0)">
+      <node ref="XA1" pin="A0" pinfunction="A0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="49" name="unconnected-(XA1-PadA1)">
+      <node ref="XA1" pin="A1" pinfunction="A1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="50" name="unconnected-(XA1-PadA2)">
+      <node ref="XA1" pin="A2" pinfunction="A2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="51" name="unconnected-(XA1-PadA3)">
+      <node ref="XA1" pin="A3" pinfunction="A3" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="52" name="unconnected-(XA1-PadA4)">
+      <node ref="XA1" pin="A4" pinfunction="A4" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="53" name="unconnected-(XA1-PadA5)">
+      <node ref="XA1" pin="A5" pinfunction="A5" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="54" name="unconnected-(XA1-PadA6)">
+      <node ref="XA1" pin="A6" pinfunction="A6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="55" name="unconnected-(XA1-PadA7)">
+      <node ref="XA1" pin="A7" pinfunction="A7" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="56" name="unconnected-(XA1-PadA8)">
+      <node ref="XA1" pin="A8" pinfunction="A8" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="57" name="unconnected-(XA1-PadA9)">
+      <node ref="XA1" pin="A9" pinfunction="A9" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="58" name="unconnected-(XA1-PadA10)">
+      <node ref="XA1" pin="A10" pinfunction="A10" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="59" name="unconnected-(XA1-PadA11)">
+      <node ref="XA1" pin="A11" pinfunction="A11" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="60" name="unconnected-(XA1-PadA12)">
+      <node ref="XA1" pin="A12" pinfunction="A12" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="61" name="unconnected-(XA1-PadA13)">
+      <node ref="XA1" pin="A13" pinfunction="A13" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="62" name="unconnected-(XA1-PadA14)">
+      <node ref="XA1" pin="A14" pinfunction="A14" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="63" name="unconnected-(XA1-PadA15)">
+      <node ref="XA1" pin="A15" pinfunction="A15" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="64" name="unconnected-(XA1-PadAREF)">
+      <node ref="XA1" pin="AREF" pinfunction="AREF" pintype="input+no_connect"/>
+    </net>
+    <net code="65" name="unconnected-(XA1-PadD0)">
+      <node ref="XA1" pin="D0" pinfunction="D0_RX0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="66" name="unconnected-(XA1-PadD1)">
+      <node ref="XA1" pin="D1" pinfunction="D1_TX0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="67" name="unconnected-(XA1-PadD3)">
+      <node ref="XA1" pin="D3" pinfunction="D3_INT1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="68" name="unconnected-(XA1-PadD5)">
+      <node ref="XA1" pin="D5" pinfunction="D5" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="69" name="unconnected-(XA1-PadD6)">
+      <node ref="XA1" pin="D6" pinfunction="D6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="70" name="unconnected-(XA1-PadD7)">
+      <node ref="XA1" pin="D7" pinfunction="D7" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="71" name="unconnected-(XA1-PadD8)">
+      <node ref="XA1" pin="D8" pinfunction="D8" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="72" name="unconnected-(XA1-PadD9)">
+      <node ref="XA1" pin="D9" pinfunction="D9" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="73" name="unconnected-(XA1-PadD10)">
+      <node ref="XA1" pin="D10" pinfunction="D10" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="74" name="unconnected-(XA1-PadD11)">
+      <node ref="XA1" pin="D11" pinfunction="D11" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="75" name="unconnected-(XA1-PadD12)">
+      <node ref="XA1" pin="D12" pinfunction="D12" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="76" name="unconnected-(XA1-PadD13)">
+      <node ref="XA1" pin="D13" pinfunction="D13" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="77" name="unconnected-(XA1-PadD14)">
+      <node ref="XA1" pin="D14" pinfunction="D14_TX3" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="78" name="unconnected-(XA1-PadD15)">
+      <node ref="XA1" pin="D15" pinfunction="D15_RX3" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="79" name="unconnected-(XA1-PadD16)">
+      <node ref="XA1" pin="D16" pinfunction="D16_TX2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="80" name="unconnected-(XA1-PadD17)">
+      <node ref="XA1" pin="D17" pinfunction="D17_RX2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="81" name="unconnected-(XA1-PadD18)">
+      <node ref="XA1" pin="D18" pinfunction="D18_TX1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="82" name="unconnected-(XA1-PadD19)">
+      <node ref="XA1" pin="D19" pinfunction="D19_RX1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="83" name="unconnected-(XA1-PadD23)">
+      <node ref="XA1" pin="D23" pinfunction="D23" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="84" name="unconnected-(XA1-PadD24)">
+      <node ref="XA1" pin="D24" pinfunction="D24" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="85" name="unconnected-(XA1-PadD25)">
+      <node ref="XA1" pin="D25" pinfunction="D25" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="86" name="unconnected-(XA1-PadD26)">
+      <node ref="XA1" pin="D26" pinfunction="D26" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="87" name="unconnected-(XA1-PadD27)">
+      <node ref="XA1" pin="D27" pinfunction="D27" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="88" name="unconnected-(XA1-PadD28)">
+      <node ref="XA1" pin="D28" pinfunction="D28" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="89" name="unconnected-(XA1-PadD29)">
+      <node ref="XA1" pin="D29" pinfunction="D29" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="90" name="unconnected-(XA1-PadD30)">
+      <node ref="XA1" pin="D30" pinfunction="D30" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="91" name="unconnected-(XA1-PadD35)">
+      <node ref="XA1" pin="D35" pinfunction="D35" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="92" name="unconnected-(XA1-PadD36)">
+      <node ref="XA1" pin="D36" pinfunction="D36" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="93" name="unconnected-(XA1-PadD37)">
+      <node ref="XA1" pin="D37" pinfunction="D37" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="94" name="unconnected-(XA1-PadD38)">
+      <node ref="XA1" pin="D38" pinfunction="D38" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="95" name="unconnected-(XA1-PadD39)">
+      <node ref="XA1" pin="D39" pinfunction="D39" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="96" name="unconnected-(XA1-PadD46)">
+      <node ref="XA1" pin="D46" pinfunction="D46" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="97" name="unconnected-(XA1-PadD47)">
+      <node ref="XA1" pin="D47" pinfunction="D47" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="98" name="unconnected-(XA1-PadD48)">
+      <node ref="XA1" pin="D48" pinfunction="D48" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="99" name="unconnected-(XA1-PadD49)">
+      <node ref="XA1" pin="D49" pinfunction="D49" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="100" name="unconnected-(XA1-PadD50)">
+      <node ref="XA1" pin="D50" pinfunction="D50" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="101" name="unconnected-(XA1-PadD51)">
+      <node ref="XA1" pin="D51" pinfunction="D51" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="102" name="unconnected-(XA1-PadD52)">
+      <node ref="XA1" pin="D52" pinfunction="D52" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="103" name="unconnected-(XA1-PadD53)">
+      <node ref="XA1" pin="D53" pinfunction="D53_SS" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="104" name="unconnected-(XA1-PadGND4)">
+      <node ref="XA1" pin="GND4" pinfunction="SPI_GND" pintype="power_in+no_connect"/>
+    </net>
+    <net code="105" name="unconnected-(XA1-PadIORF)">
+      <node ref="XA1" pin="IORF" pinfunction="IOREF" pintype="output+no_connect"/>
+    </net>
+    <net code="106" name="unconnected-(XA1-PadMISO)">
+      <node ref="XA1" pin="MISO" pinfunction="SPI_MISO" pintype="input+no_connect"/>
+    </net>
+    <net code="107" name="unconnected-(XA1-PadMOSI)">
+      <node ref="XA1" pin="MOSI" pinfunction="SPI_MOSI" pintype="output+no_connect"/>
+    </net>
+    <net code="108" name="unconnected-(XA1-PadRST1)">
+      <node ref="XA1" pin="RST1" pinfunction="RESET" pintype="open_collector+no_connect"/>
+    </net>
+    <net code="109" name="unconnected-(XA1-PadRST2)">
+      <node ref="XA1" pin="RST2" pinfunction="SPI_RESET" pintype="open_collector+no_connect"/>
+    </net>
+    <net code="110" name="unconnected-(XA1-PadSCK)">
+      <node ref="XA1" pin="SCK" pinfunction="SPI_SCK" pintype="output+no_connect"/>
+    </net>
+    <net code="111" name="unconnected-(XA1-PadSCL)">
+      <node ref="XA1" pin="SCL" pinfunction="SCL" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="112" name="unconnected-(XA1-PadSDA)">
+      <node ref="XA1" pin="SDA" pinfunction="SDA" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="113" name="unconnected-(XA1-PadVIN)">
+      <node ref="XA1" pin="VIN" pinfunction="VIN" pintype="bidirectional+no_connect"/>
+    </net>
+  </nets>
+</export>
