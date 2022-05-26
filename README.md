@@ -31,29 +31,45 @@ The stepper motor, linear actuator, accelerometer, load cells and other componen
 
 3. Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task immediately in void setup() and Cg task will run at highest priority.
 
-4. After uploading code, Arduino will be running task Cg and user can see output values from load cells on Serial monitor. User can either continue with Cg task to measure CG of satellite or choose to measure MOI of satellite instead.
+4. Code has 2 modes. Mode 1 runs Cg task, reads values from load cells and output CG and mass values. Mode 2 runs Motor and Gyro tasks and outputs angular acceleration values.
 
-5. If user intends to measure CG of satellite:
+5. After uploading code, Arduino will be running mode 1 and user can see output values from load cells on Serial monitor. User can either continue with mode 1 to measure CG of satellite or switch to mode 2 to measure MOI of satellite instead.
+
+6. Mode 1: User intends to measure CG of satellite:
 
       * Linear actuators must be fully extended.
 
-      * Ensure ***screw securing removeable shaft (shown below) is removed*** before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite on top plate.
+      * Ensure ***screw securing removeable shaft (shown below) is removed*** before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite.
 
       * ![screw securing removeable shaft](https://github.com/xiaohw7/cgmoi/blob/main/Images/screw_securing_removeable_shaft.JPG)
 
       * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
-6. If user intends on measuring MOI of satellite:
+7. Mode 2: user intends on measuring MOI of satellite:
 
       * Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
 
-      * Ensure screw securing removeable shaft is secured, send '14' to suspend Cg task and start Gyro and Motor tasks.
+      * Ensure screw securing removeable shaft is secured, send '14' to switch from mode 1 to mode 2.
 
       * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 10 seconds before recording process starts again.
 
       * User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
 
-7. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
+8. While running mode 2, user can also send '15' to switch to mode 1 and return to reading values from load cells.
+
+User uploads code
+
+&darr; &darr; &darr;
+
+Mode 1: Cg task begins, code outputs mass and CG values
+
+&darr; &darr; &darr; *User send '14'*
+
+Mode 2: Cg task stops, Motor and Gyro tasks begin, code outputs angular acceleration values
+
+&darr; &darr; &darr; *User send '15'*
+
+Motor ang Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Code reverts back to mode 1 above.
 
 ## Commands to send
 
@@ -285,6 +301,6 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - [Female headers to be used](https://www.digikey.sg/en/products/detail/samtec-inc/SSW-101-01-G-D/6691946 )
 
-- [Male headers to be used](https://www.digikey.sg/en/products/detail/w%C3%BCrth-elektronik/61300211121/4846823)
+- [Male headers to be used](https://www.digikey.sg/en/products/detail/sullins-connector-solutions/PREC003SAAN-RC/2774851?s=N4IgTCBcDaIMoEYAMCwFEDCBaJBmLAcgCIgC6AvkA)
 
 - [PCB encloser to be used](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
