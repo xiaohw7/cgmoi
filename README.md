@@ -96,7 +96,7 @@ The stepper motor, linear actuator, accelerometer, load cells and other componen
 
 ![coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/coordinates%20cgmoi.png)
 
-With reference to image above, points A,B,C correspond to load cell 1,2,3 respectively.
+With reference to image above, points A,B,C correspond to load cell 1,2,3 respectively. Do take note that X-axis in image above is reversed in reality. Point B would have a positive X-coordinate and point C would have a negative X-coordinate.
 
 1. Finding Mass
 
@@ -275,8 +275,16 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - Wiring to components of cgmoi machine such as load cells and gyro to ADC and Arduino on PCB will be done with screw terminals soldered onto PCB.
 
+- Female headers will be soldered on to PCB so that relays and ADCs can be stacked on PCB.
+
+- Male headers will be soldered on to PCB so that Arduino Mega can be stack on the PCB.
+
 - PCB along with its components would be put into a PCB encloser with opening for wires to connect to other components.
 
 - [Screw terminal to be used](https://www.digikey.sg/en/products/detail/w%C3%BCrth-elektronik/691211720002/2060530 )
+
+- [Female headers to be used](https://www.digikey.sg/en/products/detail/samtec-inc/SSW-101-01-G-D/6691946 )
+
+- [Male headers to be used](https://www.digikey.sg/en/products/detail/w%C3%BCrth-elektronik/61300211121/4846823)
 
 - [PCB encloser to be used](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
