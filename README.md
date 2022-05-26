@@ -51,12 +51,13 @@ The stepper motor, linear actuator, accelerometer, load cells and other componen
 
       * Ensure screw securing removeable shaft is secured, send '14' to switch from mode 1 to mode 2.
 
-      * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 10 seconds before recording process starts again.
+      * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 10 seconds to mount/dismount satellite before recording process starts again.
 
       * User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
 
 8. While running mode 2, user can also send '15' to switch to mode 1 and return to reading values from load cells.
 
+***
 User uploads code
 
 &darr; &darr; &darr;
@@ -69,25 +70,26 @@ Mode 2: Cg task stops, Motor and Gyro tasks begin, code outputs angular accelera
 
 &darr; &darr; &darr; *User send '15'*
 
-Motor ang Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Code reverts back to mode 1 above.
+Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Code reverts back to mode 1 above.
+***
 
 ## Commands to send
 
-|Task |Commands that can be sent |What it does|
+|Mode |Commands that can be sent |What it does|
 |-----|--------------------------|------------|
-|Cg |Send '1' |Turn on power to linear actuators|
-|Cg |Send '2' |Turn off power to linear actuators|
-|Cg |Send '3'/'5'/'7' |Move linear actuator 1/2/3 up for 1 second|
-|Cg |Send '4'/'6'/'8' |Move linear actuator 1/2/3 down for 1 second|
-|Cg |Send '9' |Move all 3 linear actuators up fully|
-|Cg |Send '10' |Move all 3 linear actuators down fully|
-|Cg |Send '11' |Tare all load cells|
-|Cg |Send '12' |Turn on power to stepper motor|
-|Cg |Send '13' |Turn off power to stepper motor|
-|Cg |Send '14' |End Cg task and resume/start Gyro and Motor tasks|
-|Gyro and Motor |Send '12' |Turn on power to stepper motor|
-|Gyro and Motor |Send '13' |Turn off power to stepper motor|
-|Gyro and Motor |Send '15' |End Gyro and Motor tasks and resume Cg task|
+|1 |Send '1' |Turn on power to linear actuators|
+|1 |Send '2' |Turn off power to linear actuators|
+|1 |Send '3'/'5'/'7' |Move linear actuator 1/2/3 up for 1 second|
+|1 |Send '4'/'6'/'8' |Move linear actuator 1/2/3 down for 1 second|
+|1 |Send '9' |Move all 3 linear actuators up fully|
+|1 |Send '10' |Move all 3 linear actuators down fully|
+|1 |Send '11' |Tare all load cells|
+|1 |Send '12' |Turn on power to stepper motor|
+|1 |Send '13' |Turn off power to stepper motor|
+|1 |Send '14' |End Cg task and resume/start Gyro and Motor tasks, switch to mode 2|
+|2 |Send '12' |Turn on power to stepper motor|
+|2 |Send '13' |Turn off power to stepper motor|
+|2 |Send '15' |End Gyro and Motor tasks and resume Cg task, switch to mode 1|
 
 
 ## Points to take note
@@ -112,7 +114,7 @@ Motor ang Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Cod
 
 ![coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/coordinates%20cgmoi.png)
 
-With reference to image above, points A,B,C correspond to load cell 1,2,3 respectively. Do take note that X-axis in image above is reversed in reality. Point B would have a positive X-coordinate and point C would have a negative X-coordinate.
+With reference to image above, points A,B,C correspond to load cell 1,2,3 respectively. ***X-axis in image above is reversed in reality. Point B would have a positive X-coordinate and point C would have a negative X-coordinate.***
 
 1. Finding Mass
 
