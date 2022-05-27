@@ -122,7 +122,7 @@ Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Cod
 
 ![coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/coordinates%20cgmoi.png)
 
-![edited coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/edited_coordinates.png)
+![edited coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/edited_coordinates_cgmoi.png)
 
 With reference to image above, points A,B,C correspond to load cell 1,2,3 respectively. ***X-axis in image above is reversed in reality. Point B would have a positive X-coordinate and point C would have a negative X-coordinate.***
 
