@@ -45,17 +45,21 @@ The stepper motor, linear actuator, accelerometer, load cells and other componen
 
       * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
+      * User can send '14' to switch to mode 2 and measure MOI of satellite.
+
 7. Mode 2: user intends on measuring MOI of satellite:
 
       * Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
 
       * Ensure screw securing removeable shaft is secured, send '14' to switch from mode 1 to mode 2.
 
-      * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 10 seconds to mount/dismount satellite before recording process starts again.
+      * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 15 seconds to mount/dismount satellite before recording process starts again.
 
       * User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
 
-8. While running mode 2, user can also send '15' to switch to mode 1 and return to reading values from load cells.
+      * While running mode 2, user can also send '15' to switch to mode 1 and return to reading values from load cells.
+
+Below is an illustration of how to navigate mode 1 and mode 2
 
 ***
 User uploads code
@@ -106,7 +110,9 @@ Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Cod
 
 - Angular acceleration values is rather unreliable and difference while loaded and unloaded may not be easily observed. Sometimes loaded values may even be higher than unloaded values. May be due to looseness and play at the epoxy region of removeable shaft.
 
-- If load cell readings become inaccurate, try running "Calibration" example and obtain calibration values for each individual load cell and input into the code.
+- First measurements of angular velocity tend to be buggy and inaccurate, hence code only starts recording values from second reading onwards.
+
+- If load cell readings become inaccurate, try running "Calibration" example from this [github library](https://github.com/olkal/HX711_ADC) and obtain calibration values for each individual load cell and input into the code.
 
 - If there is a need to stop measurements/linear actuators/stepper motor immediately, unplug Arduino to "Emergency Stop".
 
@@ -157,6 +163,18 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
       * ![parallel axis theorem](https://github.com/xiaohw7/cgmoi/blob/main/Images/parallel_axis_theorem.png)
 
       * Above equation uses parallel axis parallel axis theorem to correct MOI vector with reference to the CG and find vector of MOI. JxG, JyG, JzG are the MOI in x, y, and z direction respectively.
+
+## Areas for improvement
+
+1. Values for angular acceleration can vary substantially leading to inaccurate and imprecise values of MOI.
+
+     * One way to improve is to move designated mounting place of BMI160 chip to the center of the top plate. This way Arduino can use raw values of angular velocity measured by the gyroscope in the MOI equation instead of having to measure linear acceleration values and then subject them to a series of calculations to obtain angular acceleration.
+
+     * Another way is to decrease the play in the removeable shaft especially at the spot with Epoxy where the shaft connects with the flat plate.
+
+2. Torque of stepper motor varies with speed and is difficult to control. This may lead to inaccurate values of MOI when torque applied while top plate is loaded vs when it is unloaded is different.
+
+     *  Potential way to improve is to change to motor to a simple DC motor that outputs constant torque every time it accelerated top plate from rest regardless of whether top plate is loaded.
 
 ## Instructions
 Below are instructions on how to set up each individual component of the cgmoi machine as well as some notes I made on the problems I faced in the process.
@@ -287,11 +305,11 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - Code is in `cgmoi.ino` (`moi4.ino` + `cg.ino`).
 
-### Printed Circuit Board:
+### Putting it together (Printed Circuit Board):
 
 - The Arduino Mega board along with relays and ADCs are to be stacked on top of the PCB.
 
-- Wiring to components of cgmoi machine such as load cells and gyro to ADC and Arduino on PCB will be done with screw terminals soldered onto PCB.
+- Wiring of components of cgmoi machine such as load cells, gyro, ADC to Arduino on PCB will be done with screw terminals soldered onto PCB.
 
 - Female headers will be soldered on to PCB so that relays and ADCs can be stacked on PCB.
 
