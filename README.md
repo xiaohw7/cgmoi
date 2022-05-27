@@ -35,9 +35,11 @@ The stepper motor, linear actuator, accelerometer, load cells and other componen
 
 5. After uploading code, Arduino will be running mode 1 and user can see output values from load cells on Serial monitor. User can either continue with mode 1 to measure CG of satellite or switch to mode 2 to measure MOI of satellite instead.
 
-6. Mode 1: User intends to measure CG of satellite:
+6. Mode 1: User intends to measure CG of satellite
 
       * Linear actuators must be fully extended.
+
+      * It is advisable to test each linear actuator by moving them up and down individually for 1 second before raising all three actuators completely. Refer to "Commands to send" table below for commands to move actuators individually.
 
       * Ensure ***screw securing removeable shaft (shown below) is removed*** before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite.
 
@@ -47,11 +49,11 @@ The stepper motor, linear actuator, accelerometer, load cells and other componen
 
       * User can send '14' to switch to mode 2 and measure MOI of satellite.
 
-7. Mode 2: user intends on measuring MOI of satellite:
+7. Mode 2: user intends on measuring MOI of satellite
 
       * Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
 
-      * Ensure screw securing removeable shaft is secured, send '14' to switch from mode 1 to mode 2.
+      * Ensure screw securing removeable shaft (shown above) is secured, send '14' to switch from mode 1 to mode 2.
 
       * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 15 seconds to mount/dismount satellite before recording process starts again.
 
@@ -119,6 +121,8 @@ Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Cod
 ## Calculations
 
 ![coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/coordinates%20cgmoi.png)
+
+![edited coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/edited_coordinates.png)
 
 With reference to image above, points A,B,C correspond to load cell 1,2,3 respectively. ***X-axis in image above is reversed in reality. Point B would have a positive X-coordinate and point C would have a negative X-coordinate.***
 
