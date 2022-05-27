@@ -10,11 +10,11 @@ The cgmoi machine is one that is capable of measuring the Centre of Gravity (CG)
 
 ![satellite mounted](https://github.com/xiaohw7/cgmoi/blob/main/Images/satellite%20mounted%20annotated.png)
 
-The concept of this machine is based on [this research paper](https://github.com/xiaohw7/cgmoi/blob/main/applsci-08-00104.pdf) done by some guys from ZheJiang University. It uses 3 load cells in a circle spaced 120 degrees apart to measure CG and an accelerometer to measure acceleration which in turn can be used to obtain MOI.
+The concept of this machine is based on [this research paper](https://github.com/xiaohw7/cgmoi/blob/main/applsci-08-00104.pdf) done by some guys from ZheJiang University. It uses 3 load cells in a circle spaced 120 degrees apart to measure CG and a gyroscope to measure acceleration which in turn can be used to obtain MOI.
 
 The machine also includes a stepper motor that spins the top plate, and linear actuators to raise and lower the load cells in order to measure CG.
 
-The stepper motor, linear actuator, accelerometer, load cells and other components are controlled by and wired to an Arduino mega board. The Arduino could then be plugged into a laptop running the Arduino IDE where code could be uploaded to run the cgmoi machine.
+The stepper motor, linear actuator, gyroscope, load cells and other components are controlled by and wired to an Arduino mega board. The Arduino could then be plugged into a laptop running the Arduino IDE where code could be uploaded to run the cgmoi machine.
 
 Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuator 1/2/3 correspond to load cell 1/2/3. i.e. linear actuator 1 is directly below load cell 1.
 
@@ -198,7 +198,7 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - Refer to [hanyazou's github](https://github.com/hanyazou/BMI160-Arduino) for instructions to connect to gyro sensor. Download library at the same website. Use example `Gyro` example or `bmi_160_gyro_script.ino` to read from sensor. Switch example code to I2C mode.
 
-- Another library that can read from gyro is [DFRobot](https://github.com/DFRobot/DFRobot_BMI160#installation). Download the library and use `accelgyro` example for both accelerometer and angular velocity readings.
+- Another library that can read from gyro is [DFRobot](https://github.com/DFRobot/DFRobot_BMI160#installation). Download the library and use `accelgyro` example for both accelerometer and gyroscope readings.
 
 - `bmi_160_gryo_script2.ino` takes `accelgyro` example from DFRobot library and modifies it to obtain net acceleration from x and y axis using Pythagoras theorem. Measurements are taken every 0.1 seconds and the average of 10 readings are calculated. Acceleration is converted from g to degrees/sec^2.
 
@@ -277,7 +277,7 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - Using FreeRTOS and PWM with altered frequency of 31372.55 Hz, a graph of angular acceleration against time is plotted through the acceleration and deceleration of the stepper motor.  It is observed that there is a very sharp peak acceleration when stepper motor accelerates and acceleration. Hence the gyro will measure acceleration values throughout the motor’s acceleration and the code will record down the peak acceleration value.
 
-- Accelerometer sample rate is changed from 200Hz to 1600Hz so as to increase accuracy. Peak acceleration values are put in an array and after a certain number or recordings, mean and standard deviation are calculated from the peak values in array. Code is in `moi3.ino` (using PWM to control stepper motors + `bmi_160_gryo_script3.ino`).
+- Gyroscope sample rate is changed from 200Hz to 1600Hz so as to increase accuracy. Peak acceleration values are put in an array and after a certain number or recordings, mean and standard deviation are calculated from the peak values in array. Code is in `moi3.ino` (using PWM to control stepper motors + `bmi_160_gryo_script3.ino`).
 
 - However, peak acceleration values tend to vary substantially (sometimes up to 60%). We can use FreeRTOS to run gyro and motor with AccelStepper library simultaneously. Motor will accelerate at a set acceleration and gyro can measure average acceleration during that time.
 
