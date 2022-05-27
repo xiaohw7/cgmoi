@@ -16,9 +16,7 @@ The machine also includes a stepper motor that spins the top plate, and linear a
 
 The stepper motor, linear actuator, accelerometer, load cells and other components are controlled by and wired to an Arduino mega board. The Arduino could then be plugged into a laptop running the Arduino IDE where code could be uploaded to run the cgmoi machine.
 
-Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuator 1/2/3 correspond to load cell 1/2/3. i.e. linear actuator 1 is directly below load cell 1. 
-
-
+Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuator 1/2/3 correspond to load cell 1/2/3. i.e. linear actuator 1 is directly below load cell 1.
 
 ## How to use
 
@@ -108,7 +106,7 @@ Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Cod
 
 - Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
 
-- Before measuring MOI, it is recommended to position gyro chip above red tape. User can rotate top plate a set number of steps using Stepper_motor_driver2.ino.
+- FreeRTOS can be buggy which causes starting position of gyroscope to shift after repeatedly switching from mode 1 to mode 2. Hence it is recommended to position gyro chip above red tape before uploading `cgmoi.ino`. User can rotate top plate a set number of steps using `Stepper_motor_driver2.ino`.
 
 - There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
 
@@ -141,9 +139,9 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
       * Y-coordinate, yG = [Pb(y2) + Pc(y3) − Pa(y1)]/M
       * X-coordinate, xG = [Pb(x1) − Pc(x2)]/M
-      * y1, y2, y3 are distances from x-axis. y1 = 206mm, y2 and y3 = 103mm
-      * x1, x2, are distances from y-axis. x1 and x2 = 178.4mm
-      * Lengths are obtained from datasheets in OneDrive and calculations based on the information in datasheets.
+      * y1, y2, y3 are distances of points A, B, ad C from y-axis respectively. y1 = 206mm, y2 and y3 = 103mm
+      * x1, x2, are distances of point B and C from x-axis. x1 and x2 = 178.4mm
+      * Lengths are calculated using values from [load cell plate drawing](https://github.com/xiaohw7/cgmoi/blob/main/M02_load%20cell%20plate_drawing.pdf) and [load cell data sheet](https://github.com/xiaohw7/cgmoi/blob/main/M02_load%20cell%20plate_drawing.pdf).
       * To obtain z-coordinate of CG, rotate satellite by 90 degrees and undergo same calculations to obtain z-coordinate.
       * Code outputs coordinate of CG with reference to axis above and in millimeters.
 
@@ -210,7 +208,7 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - Sensor is to use 3.3v from Arduino.
 
-- Helpful links: (http://www.arduinoprojects.net/sensor-projects/using-bmi160-sensor-arduino-uno.php) , https://learn.sparkfun.com/tutorials/gyroscope/all
+- Helpful links at [arduino projects](http://www.arduinoprojects.net/sensor-projects/using-bmi160-sensor-arduino-uno.php) and [sparkfun.](https://learn.sparkfun.com/tutorials/gyroscope/all)
 
 ### Linear actuator with relay:
 
