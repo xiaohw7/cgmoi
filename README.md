@@ -16,6 +16,8 @@ The machine also includes a stepper motor that spins the top plate, and linear a
 
 The stepper motor, linear actuator, accelerometer, load cells and other components are controlled by and wired to an Arduino mega board. The Arduino could then be plugged into a laptop running the Arduino IDE where code could be uploaded to run the cgmoi machine.
 
+Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuator 1/2/3 correspond to load cell 1/2/3. i.e. linear actuator 1 is directly below load cell 1. 
+
 
 
 ## How to use
@@ -120,11 +122,9 @@ Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Cod
 
 ## Calculations
 
-![coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/coordinates%20cgmoi.png)
-
 ![edited coordinates](https://github.com/xiaohw7/cgmoi/blob/main/Images/edited_coordinates_cgmoi.png)
 
-With reference to image above, points A,B,C correspond to load cell 1,2,3 respectively. ***X-axis in image above is reversed in reality. Point B would have a positive X-coordinate and point C would have a negative X-coordinate.***
+With reference to image above, points A,B,C correspond to load cell 1,2,3 respectively. Load cell numbers are marked on load cells.
 
 1. Finding Mass
 
@@ -146,7 +146,6 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
       * Lengths are obtained from datasheets in OneDrive and calculations based on the information in datasheets.
       * To obtain z-coordinate of CG, rotate satellite by 90 degrees and undergo same calculations to obtain z-coordinate.
       * Code outputs coordinate of CG with reference to axis above and in millimeters.
-      * ***Note: resultant x-axis values from calculations are opposite to the above axis shown in image. If location of CG moves upwards closer position B, x coordinate of CG becomes more positive.***
 
 3. Finding Moment Of Inertia
 
