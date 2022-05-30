@@ -18,6 +18,11 @@ The stepper motor, linear actuator, gyroscope, load cells and other components a
 
 Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuator 1/2/3 correspond to load cell 1/2/3. i.e. linear actuator 1 is directly below load cell 1.
 
+## Components of the cgmoi Machine
+
+- HX711 analog to digital converter
+[]
+
 ## How to use
 
 1. User would have to download the following Arduino libraries:
