@@ -21,7 +21,16 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 ## Components of the cgmoi Machine
 
 - HX711 analog to digital converter
-[]
+![ADC](https://github.com/xiaohw7/cgmoi/blob/main/Images/ADC.JPG)
+
+- Single pole double throw(SPDT) relay
+![spdt](https://github.com/xiaohw7/cgmoi/blob/main/Images/SPDT.JPG)
+
+- Double pole double throw(DPDT) relay
+![dpdt](https://github.com/xiaohw7/cgmoi/blob/main/Images/DPDT.JPG)
+
+- Gyroscope
+![gyro](https://github.com/xiaohw7/cgmoi/blob/main/Images/Gyroscope.JPG)
 
 ## How to use
 
@@ -49,6 +58,8 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
       * Ensure ***screw securing removeable shaft (shown below) is removed*** before sending '9' in Serial monitor to raise linear actuators completely. Then, send '11' in serial monitor to tare load cells before mounting satellite.
 
       * ![screw securing removeable shaft](https://github.com/xiaohw7/cgmoi/blob/main/Images/screw_securing_removeable_shaft.JPG)
+
+      *
 
       * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
@@ -108,6 +119,10 @@ Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Cod
 - Before raising/lowering linear actuators, user must remember to ***remove screw securing removeable shaft***.
 
 - When lowering top plate, user should stand by and make sure removeable shaft enters designated slot correctly.
+
+- Before measuring CG, user to ensure that the tips of adjustable screws (shown below) on load cells are the same distance above the table top so that when top plate is resting on load cells, top plate is as flat as possible.
+
+![load cell screws](https://github.com/xiaohw7/cgmoi/blob/main/Images/load%20cell%20screws.JPG)
 
 - Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
 
@@ -330,3 +345,5 @@ Below are instructions on how to set up each individual component of the cgmoi m
 - [Male headers to be used](https://www.digikey.sg/en/products/detail/sullins-connector-solutions/PREC003SAAN-RC/2774851?s=N4IgTCBcDaIMoEYAMCwFEDCBaJBmLAcgCIgC6AvkA)
 
 - [PCB encloser to be used](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
+
+- There was an error in the PCB design regarding dpdt 2 and dpdt 3. The input, vcc, com1, and com2 pins meant for dpdt2 has been wrongly placed at dpdt3 and vice versa. Fortunately, all dpdt relays share the same vcc, com1, and com2 so technically there is no impact there. As for the input pins, simply changing the Arduino code such that input pin of dpdt 2 is now the input pin of dpdt 3 and vice versa has solved the problem.

@@ -23,8 +23,8 @@ unsigned long t = 0;
 //linear actuator definition--------------------------------------------------------------------------------------
 int spdtSignal = 31; //power supply
 int dpdtSignal1 = 32; //linear actuator 1
-int dpdtSignal2 = 33; //linear actuator 2
-int dpdtSignal3 = 34; //linear actuator 3
+int dpdtSignal2 = 34; //linear actuator 2
+int dpdtSignal3 = 33; //linear actuator 3
 
 //Define kalman filters--------------------------------------------------------------------------
 SimpleKalmanFilter massKalmanFilter(2, 2, 1);

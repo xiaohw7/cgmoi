@@ -59,8 +59,8 @@ unsigned long t = 0;
 //linear actuator definition--------------------------------------------------------------------------------------
 int spdtSignal = 31; //power supply
 int dpdtSignal1 = 32; //linear actuator 1
-int dpdtSignal2 = 33; //linear actuator 2
-int dpdtSignal3 = 34; //linear actuator 3
+int dpdtSignal2 = 34; //linear actuator 2
+int dpdtSignal3 = 33; //linear actuator 3
 
 //Define kalman filters---------------------------------------------------------------------------------------------
 SimpleKalmanFilter massKalmanFilter(2, 2, 1);
@@ -120,7 +120,7 @@ void setup() {
   //BMI160.autoCalibrateZAccelOffset(-1);
   //BMI160.setAccelOffsetEnabled(true);
 
-  //Measure offset values before motor starts
+  /*//Measure offset values before motor starts
   for (int i = 0; i < 20; i++) { //collect data from accelerometer to calculate offset values
     BMI160.readAccelerometer(xAccelRawOffset, yAccelRawOffset, zAccelRawOffset);
     
@@ -135,7 +135,7 @@ void setup() {
 
   float avgXOffset = totalXAccelOffset/20;
   float avgYOffset = totalYAccelOffset/20;
-  float netOffset = sqrt(sq(avgXOffset) + sq(avgYOffset));
+  float netOffset = sqrt(sq(avgXOffset) + sq(avgYOffset));*/
   Serial.println("Gyro start up is complete");
 
 //Set up motor-------------------------------------------------------------------------------------------------------------------
@@ -232,7 +232,7 @@ void TaskGyro(void *pvParameters) {
       float yAccel = convertRawGyro(yAccelRaw);
 
       float netAccel = sqrt(sq(xAccel) + sq(yAccel)); // net acceleration
-      netAccel = netAccel; //Minus off offset value
+      //netAccel = netAccel; //Minus off offset value
       float angularAccelRad = (netAccel * 9.807)/0.185; //angular acceleration is acceleration in g converted to m/s^2 divided by radius(dist from chip to center of top plate)
       //Serial.println(angularAccelRad);
       float angularAccelDeg = (angularAccelRad/3.14159265359)*180;
@@ -242,15 +242,15 @@ void TaskGyro(void *pvParameters) {
   
       //Serial.println(angularAccelDeg);
  
-      //add angularAccelDeg to total tally 
+      /*//add angularAccelDeg to total tally 
       totalAccelDeg = totalAccelDeg + angularAccelDeg;
       //avgAccelDeg = totalAccelDeg / loopCount;
-      //Serial.println(avgAccelDeg);
+      //Serial.println(avgAccelDeg);*/
   
-      /*//get peak acceleration
+      //get peak acceleration
       if (angularAccelDeg > peakAccel) {
         peakAccel = angularAccelDeg;
-      }*/
+      }
       
       vTaskDelay(1);
     }
@@ -264,7 +264,7 @@ void TaskGyro(void *pvParameters) {
 //Motor task----------------------------------------------------------------------------------------------------------
 void TaskMotor(void *pvParameters) {
   (void) pvParameters;
-
+  //Serial.print("motor task set up");
   for (;;) {
     float rslts[10]; //array of 10 peak values from 10 measurements
     //Serial.println("Recording in progress...");
@@ -291,12 +291,12 @@ void TaskMotor(void *pvParameters) {
       avgAccelDeg = totalAccelDeg / 30;
 
       //print average accel
-      Serial.print("average acceleration: ");
-      Serial.println(avgAccelDeg);
+      Serial.print("peak acceleration: ");
+      Serial.println(peakAccel);
 
       //add only the second value onwards to array
       if (i > 0) {
-        rslts[i-1] = avgAccelDeg;
+        rslts[i-1] = peakAccel;
         }
       
       vTaskDelay(1000/portTICK_PERIOD_MS);
@@ -329,8 +329,8 @@ void TaskMotor(void *pvParameters) {
     Serial.println(meanaccelarray);
 
     Serial.println("Finish recording");
-    Serial.println("10 seconds until recording resumes");
-    vTaskDelay(10000/portTICK_PERIOD_MS);
+    Serial.println("15 seconds until recording resumes");
+    vTaskDelay(15000/portTICK_PERIOD_MS);
 
 
     //receive command from serial monitor
@@ -347,8 +347,8 @@ void TaskMotor(void *pvParameters) {
          Serial.println("Stepper Motor power off");
       }
 
-      else if (incomingByte == 15) { //send "15" to suspend Gyro and Motor tasks and resume control task
-        Serial.println("Suspend gyro and motor, resume Cg, ready for input");
+      else if (incomingByte == 15) { //send "15" to suspend Gyro and Motor tasks and resume cg task
+        Serial.println("Suspend gyro and motor, resume Cg");
         vTaskSuspend(Gyro);
         digitalWrite(stepperMotorSignal, HIGH);
         vTaskResume(Cg);
@@ -548,13 +548,13 @@ void TaskCg(void *pvParameters) {
          Serial.println("Stepper Motor power off");
       }
 
-      //send "14" to resume Gyro and Motor tasks and suspend Control task and turn on power to motor
+      //send "14" to resume Gyro and Motor tasks and suspend Cg task and turn on power to motor
       if (incomingByte == 14) { 
-        Serial.println("Resume motor and gyro");
+        Serial.println("Suspend Cg, start/resume motor and gyro");
         digitalWrite(stepperMotorSignal, LOW); //turn on power to motor
 
         //reset values to 0
-        loopCount = 0;
+        //loopCount = 0;
         //totalAccelDeg = 0;
         //avgAccelDeg = 0;
         //Serial.print("reset");
