@@ -59,7 +59,9 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * ![screw securing removeable shaft](https://github.com/xiaohw7/cgmoi/blob/main/Images/screw_securing_removeable_shaft.JPG)
 
-      *
+      * Directions of x and y axis are indicated on the top plate and also illustrated in "Calculations" section below.
+
+      * To ease measuring process of CG, x and y axis on top plate must align with axis indicated in "Calculations" section below. Arrow of y axis must point directly away from load cell 1. 
 
       * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
