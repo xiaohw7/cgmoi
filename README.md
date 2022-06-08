@@ -35,6 +35,9 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 - Power supply (12v and 36v)
 ![power supply](https://github.com/xiaohw7/cgmoi/blob/main/Images/power%20supply.JPG)
 
+- Printed circuit Board
+![PCB](https://github.com/xiaohw7/cgmoi/blob/main/Images/PCB.JPG)
+
 ## How to use
 
 1. User would have to download the following Arduino libraries:
