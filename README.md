@@ -204,7 +204,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
      *  Potential way to improve is to change to motor to a simple DC motor that outputs constant torque every time it accelerated top plate from rest regardless of whether top plate is loaded.
 
 ## Instructions
-Below are instructions on how to set up each individual component of the cgmoi machine as well as some notes I made on the problems I faced in the process.
+Below are instructions on how to set up each individual component of the cgmoi machine, links to each component's datasheet, as well as some notes I made on the problems I faced in the process.
 
 ### HX711 ADC and load cells:
 
@@ -219,6 +219,10 @@ Below are instructions on how to set up each individual component of the cgmoi m
 - Send “t” on serial monitor to tare load cells immediately.
 
 - Reading is in grams. CG units are in mm.
+
+- [HX711 data sheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129427&parId=8E16A592663A6%2129388&o=OneUp)
+
+- [load cell data sheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129434&parId=8E16A592663A6%2129388&o=OneUp)
 
 ### BMI 160 Gyro:
 
@@ -235,6 +239,8 @@ Below are instructions on how to set up each individual component of the cgmoi m
 - Sensor is to use 3.3v from Arduino.
 
 - Helpful links at [arduino projects](http://www.arduinoprojects.net/sensor-projects/using-bmi160-sensor-arduino-uno.php) and [sparkfun.](https://learn.sparkfun.com/tutorials/gyroscope/all)
+
+- [BMI 160 datasheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129414&parId=8E16A592663A6%2129388&o=OneUp)
 
 ### Linear actuator with relay:
 
@@ -267,6 +273,12 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - Linear actuator to use 12V from power supply.
 
+- [Linear actuator data sheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129428&parId=8E16A592663A6%2129388&o=OneUp)
+
+- [spdt relay datasheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129439&parId=8E16A592663A6%2129388&o=OneUp)
+
+- [dpdt relay datasheet](https://datasheetspdf.com/datasheet/HK19F-DC5V.html)
+
 ### LICHUAN LCDA257S stepper motor driver and stepper motor:
 
 - See [dronebotworkship](https://dronebotworkshop.com/big-stepper-motors/) to get an overview on stepper drivers and motors.
@@ -284,6 +296,10 @@ Below are instructions on how to set up each individual component of the cgmoi m
 - Another way of accelerating stepper motor is do gradually quicken pulses sent to motor (ramping). Code is in `Stepper_motor_driver3.ino`.
 
 - Stepper motor to use 36V from power supply.
+
+- [Stepper motor driver datasheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129431&parId=8E16A592663A6%2129388&o=OneUp)
+
+- [Stepper motor datasheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129413&parId=8E16A592663A6%2129388&o=OneUp)
 
 ### Putting it together (Gyro and Motor):
 
@@ -353,3 +369,5 @@ Below are instructions on how to set up each individual component of the cgmoi m
 - [PCB encloser to be used](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
 
 - There was an error in the PCB design regarding dpdt 2 and dpdt 3. The input, vcc, com1, and com2 pins meant for dpdt2 has been wrongly placed at dpdt3 and vice versa. Fortunately, all dpdt relays share the same vcc, com1, and com2 so technically there is no impact there. As for the input pins, simply changing the Arduino code such that input pin of dpdt 2 is now the input pin of dpdt 3 and vice versa has solved the problem.
+
+- 12v power supply for linear actuators do not function properly when connected to PCB. When linear actuators are turned on, 12v power supply stutters and its LED light flicker on and off. As a result, linear actuators also stutter. Actuators are able to function normally when benchtop power supply is connected to PCB. Actuators are also able to function normally when 12v power supply is connected to breadboard. This occurrence seems to be due to the start-up current required by 3 linear actuators being too high for the 12v power supply when connected to PCB. The solution is to lower the output of the 12v power supply to roughly 10.5v. This decreased the start-up current that 3 linear actuators require to a manageable amount for the 12v power supply allowing it to continue supplying power to move the actuators.
