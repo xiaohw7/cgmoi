@@ -32,6 +32,9 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 - Gyroscope
 ![gyro](https://github.com/xiaohw7/cgmoi/blob/main/Images/Gyroscope.JPG)
 
+- Power supply (12v and 36v)
+![power supply](https://github.com/xiaohw7/cgmoi/blob/main/Images/power%20supply.JPG)
+
 ## How to use
 
 1. User would have to download the following Arduino libraries:
