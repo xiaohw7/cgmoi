@@ -89,7 +89,7 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * While running mode 2, user can also send '15' to switch to mode 1 and return to reading values from load cells.
 
-Below is an illustration of how to navigate mode 1 and mode 2
+Below is an illustration of how to navigate between mode 1 and mode 2.
 
 ***
 User uploads code
@@ -228,7 +228,7 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - [HX711 data sheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129427&parId=8E16A592663A6%2129388&o=OneUp)
 
-- [load cell data sheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129434&parId=8E16A592663A6%2129388&o=OneUp)
+- [Load cell data sheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129434&parId=8E16A592663A6%2129388&o=OneUp)
 
 ### BMI 160 Gyro:
 
