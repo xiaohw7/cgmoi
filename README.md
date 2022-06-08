@@ -360,13 +360,15 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - PCB along with its components would be put into a PCB encloser with opening for wires to connect to other components.
 
+- PCB encloser is to be designed using solidworks and 3D printed. Design of encloser is based on [this PCB encloser](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
+
+- PCB CAD files can be found on [Onedrive](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&id=8E16A592663A6%2154244&cid=0008E16A592663A6)
+
 - [Screw terminal to be used](https://www.digikey.sg/en/products/detail/w%C3%BCrth-elektronik/691211720002/2060530 )
 
 - [Female headers to be used](https://www.digikey.sg/en/products/detail/samtec-inc/SSW-101-01-G-D/6691946 )
 
 - [Male headers to be used](https://www.digikey.sg/en/products/detail/sullins-connector-solutions/PREC003SAAN-RC/2774851?s=N4IgTCBcDaIMoEYAMCwFEDCBaJBmLAcgCIgC6AvkA)
-
-- [PCB encloser to be used](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
 
 - There was an error in the PCB design regarding dpdt 2 and dpdt 3. The input, vcc, com1, and com2 pins meant for dpdt2 has been wrongly placed at dpdt3 and vice versa. Fortunately, all dpdt relays share the same vcc, com1, and com2 so technically there is no impact there. As for the input pins, simply changing the Arduino code such that input pin of dpdt 2 is now the input pin of dpdt 3 and vice versa has solved the problem.
 
