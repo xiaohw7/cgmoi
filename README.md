@@ -49,11 +49,11 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
 2. Upload cgmoi.ino onto Arduino and open Serial monitor.
 
-3. Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task immediately in void setup() and Cg task will run at highest priority.
+3. Code uses FreeRTOS. There will be 4 tasks, namely Rotate, Gyro, Motor, and Cg. Code will suspend Rotate, Gyro, and Motor task immediately in void setup() and Cg task will run at highest priority.
 
-4. Code has 2 modes. Mode 1 runs Cg task, reads values from load cells and output CG and mass values. Mode 2 runs Motor and Gyro tasks and outputs angular acceleration values.
+4. Code has 3 modes. Mode 1 runs Cg task, reads values from load cells and output CG and mass values. Mode 2 runs Motor and Gyro tasks and outputs angular acceleration values. Mode 3 runs Rotate task and allows user to rotate top plate a desired number of steps.
 
-5. After uploading code, Arduino will be running mode 1 and user can see output values from load cells on Serial monitor. User can either continue with mode 1 to measure CG of satellite or switch to mode 2 to measure MOI of satellite instead.
+5. After uploading code, Arduino will be running mode 1 and user can see output values from load cells on Serial monitor. User can either continue with mode 1 to measure CG of satellite or switch to mode 2 to measure MOI of satellite instead or switch to mode 3 to rotate top plate to the desired orientation.
 
 6. Mode 1: User intends to measure CG of satellite
 
@@ -77,9 +77,11 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * User can send '14' to switch to mode 2 and measure MOI of satellite.
 
+      * User can send '16' to switch to mode 3 and to rotate top plate.
+
 7. Mode 2: user intends on measuring MOI of satellite
 
-      * Linear actuators must be fully retracted. Send '10' to fully retract linear actuators.
+      * Linear actuators must be fully retracted. Send '10' while in mode 1 to fully retract linear actuators.
 
       * Ensure screw securing removeable shaft (shown above) is secured, send '14' to switch from mode 1 to mode 2.
 
@@ -89,7 +91,21 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * While running mode 2, user can also send '15' to switch to mode 1 and return to reading values from load cells.
 
-Below is an illustration of how to navigate between mode 1 and mode 2.
+      * While running mode 2, user can send '16' to switch to mode 3 to rotate top plate.
+
+8. Mode 3: user intends to rotate top plate
+
+      * Linear actuators must be fully retracted. Send '10' while in mode 1 to fully retract linear actuators.
+
+      * Ensure screw securing removeable shaft (shown above) is secured, send '16' to switch from mode 1 to mode 3.
+
+      * User can input number of steps user wishes stepper motor to turn. Positive number of steps causes motor to rotate clockwise while negative number of steps causes motor to rotate counter clockwise.
+
+      * While running mode 3, user can send '15' to switch to mode 1 and return to reading values from load cells.
+
+      * While running mode 3, user can send '14' to switch to mode 2 and measure MOI of satellite.
+
+Below is an illustration of how to navigate between mode 1, mode 2, and mode 3.
 
 ***
 User uploads code
@@ -121,9 +137,15 @@ Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Cod
 |1 |Send '12' |Turn on power to stepper motor|
 |1 |Send '13' |Turn off power to stepper motor|
 |1 |Send '14' |End Cg task and resume/start Gyro and Motor tasks, switch to mode 2|
+|1 |Send '16' |End Cg task and resume/start Rotate task, switch to mode 3|
 |2 |Send '12' |Turn on power to stepper motor|
 |2 |Send '13' |Turn off power to stepper motor|
-|2 |Send '15' |End Gyro and Motor tasks and resume Cg task, switch to mode 1|
+|2 |Send '15' |End Gyro and Motor tasks and resume/start Cg task, switch to mode 1|
+|2 |Send '16' |End Gyro and Motor tasks and resume/start Rotate task, switch to mode 3|
+|3 |Send '12' |Turn on power to stepper motor|
+|3 |Send '13' |Turn off power to stepper motor|
+|3 |Send '14' |End Rotate task and resume/start Gyro and Motor tasks, switch to mode 2|
+|3 |Send '15' |End Rotate task and resume/start Cg task, switch to mode 1|
 
 
 ## Points to take note
@@ -138,7 +160,7 @@ Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Cod
 
 - Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
 
-- FreeRTOS can be buggy which causes starting position of gyroscope to shift after repeatedly switching from mode 1 to mode 2. Hence it is recommended to position gyro chip above red tape before uploading `cgmoi.ino`. User can rotate top plate a set number of steps using `Stepper_motor_driver2.ino`.
+- FreeRTOS can be buggy which causes starting position of gyroscope to shift after repeatedly switching from mode 1 to mode 2. Hence it is recommended to position gyro chip above red tape before uploading `cgmoi.ino`. User can rotate top plate a set number of steps using `rotate_topplate.ino`. After code is uploaded, intructions will appear on serial monitor, user simply enter send the number of steps user wants the top plate to rotate.
 
 - There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
 
@@ -350,7 +372,9 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task in void setup(). Cg will run at highest priority.
 
-- While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators.
+- While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators. Code is in `cgmoi.ino`.
+
+- To facilitate more accurate and easier measurements of CG, another task is added to the code. Rotate task allows user to control stepper motor and rotate top plate a set number of steps in either direction to facilitate alignment of top plate before raising linear actuators to measure CG. New code has 4 tasks, namely Gyro, Motor, Cg, and Rotate. Code is in `cgmoi2.ino`.
 
 - Code is in `cgmoi.ino` (`moi4.ino` + `cg.ino`).
 
