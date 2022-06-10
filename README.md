@@ -53,7 +53,7 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
 4. Code has 3 modes. Mode 1 runs Cg task, reads values from load cells and output CG and mass values. Mode 2 runs Motor and Gyro tasks and outputs angular acceleration values. Mode 3 runs Rotate task and allows user to rotate top plate a desired number of steps in either direction.
 
-5. After uploading code, Arduino will be running mode 1 and user can see output values from load cells on Serial monitor. User can either continue with mode 1 to measure CG of satellite or switch to mode 2 to measure MOI of satellite instead or switch to mode 3 to rotate top plate to the desired orientation.
+5. After uploading code, Arduino will be running mode 1 and user can see output values from load cells on Serial monitor. User can either continue with mode 1 to measure CG of satellite, switch to mode 2 to measure MOI of satellite instead or switch to mode 3 to rotate top plate to the desired orientation.
 
 6. Mode 1: User intends to measure CG of satellite
 
@@ -85,6 +85,8 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * Ensure screw securing removeable shaft (shown above) is secured, send '14' to switch from mode 1 to mode 2.
 
+      * Mode 2 uses 'stepper' instance of AccelStepper class to control stepper motor.
+
       * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 15 seconds to mount/dismount satellite before recording process starts again.
 
       * User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
@@ -101,11 +103,13 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * User can input number of steps user wishes stepper motor to turn.
 
-      * Mode 3 uses a second instance of the AccelStepper class. A separate one from the one used in mode 2. Hence when user first uploads `cgmoi2.ino`, mode 3 regards the position of the stepper motor at that instant as 0 (origin). User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from origin while negative steps are in the counter clockwise direction from origin.
+      * Mode 3 uses 'rotate' instance of the AccelStepper class. A separate instance from the one used in mode 2. Hence when user first uploads `cgmoi2.ino`, mode 3 regards the position of the stepper motor at that instant as 0 (origin). User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from origin while negative steps are in the counter clockwise direction from origin.
 
       * Note that location of origin stays the same the whole time while using the code. Therefore if user inputs 3000 (motor rotates 3000 steps in clockwise direction) and then inputs 1000, motor would subsequently rotate 2000 steps in the counter clockwise direction and stop at the position that is 1000 steps clockwise from the origin.
 
       * If user uses mode 3 to rotate to 3000 steps clockwise, and then proceeds to use mode 2, mode 2 will alter the position of the stepper motor but mode 3 will still think it is at 3000 steps clockwise. Hence if user then goes to mode 3 and inputs 0, motor will rotate 3000 steps counter clockwise.
+
+      * ***Ensure serial monitor is set to 'No line ending'.***
 
       * While running mode 3, user can send '15' to switch to mode 1 and return to reading values from load cells.
 
@@ -383,11 +387,9 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - Code uses FreeRTOS. There will be 3 tasks, namely Gyro, Motor and Cg. Code will suspend Gyro and Motor task in void setup(). Cg will run at highest priority.
 
-- While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators. Code is in `cgmoi.ino`.
+- While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators. Code is in `cgmoi.ino`(`moi4.ino` + `cg.ino`).
 
-- To facilitate more accurate and easier measurements of CG, another task, based on `rotate_topplate.ino`, is added to the code. Rotate task allows user to control stepper motor and rotate top plate a set number of steps in either direction to facilitate alignment of top plate before raising linear actuators to measure CG. New code has 4 tasks, namely Gyro, Motor, Cg, and Rotate. Code is in `cgmoi2.ino`.
-
-- Code is in `cgmoi.ino` (`moi4.ino` + `cg.ino`).
+- To facilitate more accurate and easier measurements of CG, another task, based on `rotate_topplate.ino`, is added to the code. Rotate task uses a seprate instance of AccelStepper class and allows user to control stepper motor and rotate top plate a set number of steps in either direction to facilitate alignment of top plate before raising linear actuators to measure CG. New code has 4 tasks, namely Gyro, Motor, Cg, and Rotate. Code is in `cgmoi2.ino`.
 
 ### Putting it together (Printed Circuit Board):
 

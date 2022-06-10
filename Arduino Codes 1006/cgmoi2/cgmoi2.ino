@@ -213,6 +213,7 @@ void setup() {
   Serial.println("Linear actuator start up is complete");
 
   Serial.println("Set up finish");
+  Serial.println("MODE 1");
 
   //first suspend Rotate, Gyro and Motor tasks and turn off power to motor   
   vTaskSuspend(Gyro);    
@@ -278,7 +279,7 @@ void TaskGyro(void *pvParameters) {
 //Motor task----------------------------------------------------------------------------------------------------------
 void TaskMotor(void *pvParameters) {
   (void) pvParameters;
-  //Serial.print("motor task set up");
+
   for (;;) {
     float rslts[10]; //array of 10 peak values from 10 measurements
     //Serial.println("Recording in progress...");
@@ -380,7 +381,7 @@ void TaskMotor(void *pvParameters) {
         Serial.println("Suspend Cg, start/resume Rotate");
         Serial.println("MODE 3");
         Serial.println("Input steps.");
-        Serial.println("Positive steps = rotate clockwise, negative steps = rotate counter clockewise.");
+        Serial.println("Positive = clockwise from origin, negative = counter clockewise from origin.");
         
 
         vTaskResume(Rotate);
@@ -444,7 +445,9 @@ void TaskRotate(void *pvParameters) {
         //Run to target position with set speed and acceleration/deceleration:
         rotate.runToPosition();
     
-        Serial.println("Position reached");
+        Serial.print("Position ");
+        Serial.print(incomingByte);
+        Serial.println(" reached");
     
         //Turn off power to stepper motor (LOW = on, HIGH = off)
         digitalWrite(stepperMotorSignal, HIGH);
@@ -665,9 +668,8 @@ void TaskCg(void *pvParameters) {
         Serial.println("Suspend Cg, start/resume Rotate");
         Serial.println("MODE 3");
         Serial.println("Input steps.");
-        Serial.println("Positive steps = rotate clockwise, negative steps = rotate counter clockewise.");
+        Serial.println("Positive = clockwise from origin, negative = counter clockwise from origin.");
         
-
         vTaskResume(Rotate);
         vTaskSuspend(Cg);
       }
