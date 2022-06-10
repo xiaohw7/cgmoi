@@ -105,9 +105,19 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * While running mode 3, user can send '14' to switch to mode 2 and measure MOI of satellite.
 
-Below is an illustration of how to navigate between mode 1, mode 2, and mode 3.
+Below is an illustration of how to navigate between mode 1, mode 2, and mode 3:
 
 ***
+
+(User uploads code)
+
+       |       
+       |       
+       |     
+       v
+(Mode 1:Cg task begins, code outputs mass and CG values )
+
+
 User uploads code
 
 &darr; &darr; &darr;
