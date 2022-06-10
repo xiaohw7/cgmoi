@@ -105,32 +105,25 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * While running mode 3, user can send '14' to switch to mode 2 and measure MOI of satellite.
 
-Below is an illustration of how to navigate between mode 1, mode 2, and mode 3:
+Below is an illustration of how to navigate between the three modes:
 
 ***
-
-(User uploads code)
-
-       |       
-       |       
-       |     
-       v
-(Mode 1:Cg task begins, code outputs mass and CG values )
-
-
-User uploads code
-
-&darr; &darr; &darr;
-
-Mode 1: Cg task begins, code outputs mass and CG values
-
-&darr; &darr; &darr; *User send '14'*
-
-Mode 2: Cg task stops, Motor and Gyro tasks begin, code outputs angular acceleration values
-
-&darr; &darr; &darr; *User send '15'*
-
-Motor and Gyro tasks stop, Cg task resumes, code outputs mass and CG values. Code reverts back to mode 1 above.
+```
+            (User uploads code)
+                 |       
+                 |   ----------------<--------------------------   
+                 |   |                                         |
+                 v   v                                         |
+            -> (Mode 1) -------->--------------                |
+            |      |                          |                |
+*send '15'* |      | *send '14'*              | *send '16'     ^ *send '15'*
+            ^      |                          |                |
+            |      v         *send '16'       v                |
+            ----(Mode 2)--------->--------->(Mode 3)----->------
+                   ^                         |
+                   |       *send '14'        |
+                   -------------<-------------  
+```
 ***
 
 ## Commands to send
