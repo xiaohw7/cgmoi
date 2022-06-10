@@ -47,11 +47,11 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
       - [FreeRTOS](https://github.com/feilipu/Arduino_FreeRTOS_Library) for running Real Time Operating System on Arduino
       - [SimpleKalmanFilter](https://github.com/denyssene/SimpleKalmanFilter) for running values through a Kalman filter to reduce noisy readings
 
-2. Upload cgmoi.ino onto Arduino and open Serial monitor.
+2. Upload cgmoi2.ino onto Arduino and open Serial monitor.
 
 3. Code uses FreeRTOS. There will be 4 tasks, namely Rotate, Gyro, Motor, and Cg. Code will suspend Rotate, Gyro, and Motor task immediately in void setup() and Cg task will run at highest priority.
 
-4. Code has 3 modes. Mode 1 runs Cg task, reads values from load cells and output CG and mass values. Mode 2 runs Motor and Gyro tasks and outputs angular acceleration values. Mode 3 runs Rotate task and allows user to rotate top plate a desired number of steps.
+4. Code has 3 modes. Mode 1 runs Cg task, reads values from load cells and output CG and mass values. Mode 2 runs Motor and Gyro tasks and outputs angular acceleration values. Mode 3 runs Rotate task and allows user to rotate top plate a desired number of steps in either direction.
 
 5. After uploading code, Arduino will be running mode 1 and user can see output values from load cells on Serial monitor. User can either continue with mode 1 to measure CG of satellite or switch to mode 2 to measure MOI of satellite instead or switch to mode 3 to rotate top plate to the desired orientation.
 
@@ -69,7 +69,7 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * To ease measuring process of CG, x and y axis on top plate must align with axis indicated in "Calculations" section below. Arrow of y axis must point directly away from load cell 1. Location of origin is the center of the top plate.
 
-      * One way to align x and y axis is to align the marked line on the edge of the top plate with the number 1 indicated on load cell 1. An illustration is shown below.
+      * One way to align x and y axis is to align the marked line on the edge of the top plate with the number 1 indicated on load cell 1. User can do so with the help of mode 3. An illustration is shown below.
 
       * ![axis alignment](https://github.com/xiaohw7/cgmoi/blob/main/Images/axis_alignment.JPG)
 
@@ -99,7 +99,13 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * Ensure screw securing removeable shaft (shown above) is secured, send '16' to switch from mode 1 to mode 3.
 
-      * User can input number of steps user wishes stepper motor to turn. Positive number of steps causes motor to rotate clockwise while negative number of steps causes motor to rotate counter clockwise.
+      * User can input number of steps user wishes stepper motor to turn.
+
+      * Mode 3 uses a second instance of the AccelStepper class. A separate one from the one used in mode 2. Hence when user first uploads `cgmoi2.ino`, mode 3 regards the position of the stepper motor at that instant as 0 (origin). User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from origin while negative steps are in the counter clockwise direction from origin.
+
+      * Note that location of origin stays the same the whole time while using the code. Therefore if user inputs 3000 (motor rotates 3000 steps in clockwise direction) and then inputs 1000, motor would subsequently rotate 2000 steps in the counter clockwise direction and stop at the position that is 1000 steps clockwise from the origin.
+
+      * If user uses mode 3 to rotate to 3000 steps clockwise, and then proceeds to use mode 2, mode 2 will alter the position of the stepper motor but mode 3 will still think it is at 3000 steps clockwise. Hence if user then goes to mode 3 and inputs 0, motor will rotate 3000 steps counter clockwise.
 
       * While running mode 3, user can send '15' to switch to mode 1 and return to reading values from load cells.
 
@@ -163,7 +169,7 @@ Below is an illustration of how to navigate between the three modes:
 
 - Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
 
-- FreeRTOS can be buggy which causes starting position of gyroscope to shift after repeatedly switching from mode 1 to mode 2. Hence it is recommended to position gyro chip above red tape before uploading `cgmoi.ino`. User can rotate top plate a set number of steps using `rotate_topplate.ino`. After code is uploaded, intructions will appear on serial monitor, user simply enter send the number of steps user wants the top plate to rotate.
+- FreeRTOS can be buggy which causes starting position of gyroscope to shift after repeatedly using mode 2. Hence it is recommended to position gyro chip above red tape using mode 3 before using mode 2 to measure angular acceleration.
 
 - There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
 
@@ -326,6 +332,8 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - Another way of accelerating stepper motor is do gradually quicken pulses sent to motor (ramping). Code is in `Stepper_motor_driver3.ino`.
 
+- Another sketch based on is conjured up Stepper_motor_driver2.ino is conjured up with the intention of enabling user to input number of steps the user wishes the stepper motor to rotate. Code is in `rotate_topplate.ino`. Starting position of stepper motor when user first uploads the code is always regarded as the origin. User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from the origin while negative steps are in the counter clockwise direction from the origin. Note that location of origin stays the same the whole time while using the code and only changes if user resets the Arduino or uploads the code again.
+
 - Stepper motor to use 36V from power supply.
 
 - [Stepper motor driver datasheet](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&cid=0008E16A592663A6&id=8E16A592663A6%2129431&parId=8E16A592663A6%2129388&o=OneUp)
@@ -377,7 +385,7 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators. Code is in `cgmoi.ino`.
 
-- To facilitate more accurate and easier measurements of CG, another task is added to the code. Rotate task allows user to control stepper motor and rotate top plate a set number of steps in either direction to facilitate alignment of top plate before raising linear actuators to measure CG. New code has 4 tasks, namely Gyro, Motor, Cg, and Rotate. Code is in `cgmoi2.ino`.
+- To facilitate more accurate and easier measurements of CG, another task, based on `rotate_topplate.ino`, is added to the code. Rotate task allows user to control stepper motor and rotate top plate a set number of steps in either direction to facilitate alignment of top plate before raising linear actuators to measure CG. New code has 4 tasks, namely Gyro, Motor, Cg, and Rotate. Code is in `cgmoi2.ino`.
 
 - Code is in `cgmoi.ino` (`moi4.ino` + `cg.ino`).
 
