@@ -124,15 +124,15 @@ Below is an illustration of how to navigate between the three modes:
                  |   ----------------<--------------------------   
                  |   |                                         |
                  v   v                                         |
-            -> (Mode CG) -------->--------------                |
+            -->(Mode CG)------->---------------                |
             |      |                          |                |
 *send '15'* |      | *send '14'*              | *send '16'     ^ *send '15'*
             ^      |                          |                |
-            |      v         *send '16'       v                |
-            ----(Mode MOI)--------->--------->(Mode ROTATE)----->------
-                   ^                         |
-                   |       *send '14'        |
-                   -------------<-------------  
+            |      v        *send '16'        v                |
+            ---(Mode MOI)--------->----(Mode ROTATE)----->------
+                   ^                          |
+                   |       *send '14'         |
+                   -------------<--------------  
 ```
 ***
 
@@ -149,7 +149,7 @@ Below is an illustration of how to navigate between the three modes:
 |CG |Send '11' |Tare all load cells|
 |CG |Send '12' |Turn on power to stepper motor|
 |CG |Send '13' |Turn off power to stepper motor|
-|CG |Send '14' |End Cg task and resume/start Gyro and Motor tasks, switch to mode 2|
+|CG |Send '14' |End Cg task and resume/start Gyro and Motor tasks, switch to mode MOI|
 |CG |Send '16' |End Cg task and resume/start Rotate task, switch to mode ROTATE|
 |MOI |Send '12' |Turn on power to stepper motor|
 |MOI|Send '13' |Turn off power to stepper motor|
@@ -159,6 +159,7 @@ Below is an illustration of how to navigate between the three modes:
 |ROTATE |Send '13' |Turn off power to stepper motor|
 |ROTATE |Send '14' |End Rotate task and resume/start Gyro and Motor tasks, switch to mode MOI|
 |ROTATE |Send '15' |End Rotate task and resume/start Cg task, switch to mode CG|
+|ROTATE |Send steps to rotate |Motor rotate to set steps|
 
 
 ## Points to take note
@@ -173,7 +174,7 @@ Below is an illustration of how to navigate between the three modes:
 
 - Before measuring MOI, ensure screw securing removeable shaft is tightened to prevent any play when motor is turning.
 
-- FreeRTOS can be buggy which causes starting position of gyroscope to shift after repeatedly using mode 2. Hence it is recommended to position gyro chip above red tape using mode 3 before using mode 2 to measure angular acceleration.
+- FreeRTOS can be buggy which causes starting position of gyroscope to shift after repeatedly using mode MOI. Hence it is recommended to position gyro chip above red tape using mode ROTATE before using mode MOI to measure angular acceleration.
 
 - There is a tendency for SPDT relay supplying power to stepper motor to get stuck in the close position despite the LED light being off and signal sent to it to disconnect. This may be because relay is only rated for 30V while power supply is at 36V. Tapping the blue box on the relay would help to disconnect it. User can tell if power had been disconnected by observing light on stepper motor driver.
 
@@ -341,6 +342,8 @@ Below are instructions on how to set up each individual component of the CGMOI m
 - Another way of accelerating stepper motor is do gradually quicken pulses sent to motor (ramping). Code is in `Stepper_motor_driver3.ino`.
 
 - Another sketch based on is conjured up Stepper_motor_driver2.ino is conjured up with the intention of enabling user to input number of steps the user wishes the stepper motor to rotate. Code is in `rotate_topplate.ino`. Starting position of stepper motor when user first uploads the code is always regarded as the origin. User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from the origin while negative steps are in the counter clockwise direction from the origin. Note that location of origin stays the same the whole time while using the code and only changes if user resets the Arduino or uploads the code again.
+
+- There was a problem of code running twice for one input. Problem was solved by setting serial monitor to 'No line ending'. Code is in `rotate_topplate.ino`.
 
 - Stepper motor to use 36V from power supply.
 

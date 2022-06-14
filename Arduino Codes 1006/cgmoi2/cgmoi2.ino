@@ -213,7 +213,7 @@ void setup() {
   Serial.println("Linear actuator start up is complete");
 
   Serial.println("Set up finish");
-  Serial.println("MODE 1");
+  Serial.println("MODE CG");
 
   //first suspend Rotate, Gyro and Motor tasks and turn off power to motor   
   vTaskSuspend(Gyro);    
@@ -367,7 +367,7 @@ void TaskMotor(void *pvParameters) {
       //send "15" to suspend Gyro and Motor tasks and resume cg task
       else if (incomingByte == 15) { 
         Serial.println("Suspend gyro and motor, resume Cg");
-        Serial.println("MODE 1");
+        Serial.println("MODE CG");
         vTaskSuspend(Gyro);
         digitalWrite(stepperMotorSignal, HIGH); //turn off power to stepper motor
         vTaskResume(Cg);
@@ -379,7 +379,7 @@ void TaskMotor(void *pvParameters) {
         digitalWrite(stepperMotorSignal, HIGH); //turn off power to stepper motor
         
         Serial.println("Suspend Cg, start/resume Rotate");
-        Serial.println("MODE 3");
+        Serial.println("MODE ROTATE");
         Serial.println("Input steps.");
         Serial.println("Positive = clockwise from origin, negative = counter clockewise from origin.");
         
@@ -416,7 +416,7 @@ void TaskRotate(void *pvParameters) {
         //Send "14" to suspend Rotate task and resume/start Motor and Gyro tasks
         if (incomingByte == 14) { 
           Serial.println("Suspend Cg, start/resume motor and gyro");
-          Serial.println("MODE 2");
+          Serial.println("MODE MOI");
           digitalWrite(stepperMotorSignal, LOW); //turn on power to motor
           
           vTaskResume(Motor);
@@ -427,7 +427,7 @@ void TaskRotate(void *pvParameters) {
         //Send "15 to suspend Rotate task and resume Cg task
         if (incomingByte == 15) {
           Serial.println("Suspend Rotate, resume Cg");
-          Serial.println("MODE 1");
+          Serial.println("MODE CG");
           //Turn off power to stepper motor
           digitalWrite(stepperMotorSignal, HIGH);
           vTaskResume(Cg);
@@ -649,7 +649,7 @@ void TaskCg(void *pvParameters) {
       //send "14" to resume Gyro and Motor tasks and suspend Cg task and turn on power to motor
       if (incomingByte == 14) { 
         Serial.println("Suspend Cg, start/resume motor and gyro");
-        Serial.println("MODE 2");
+        Serial.println("MODE MOI");
         digitalWrite(stepperMotorSignal, LOW); //turn on power to motor
 
         //reset values to 0
@@ -666,7 +666,7 @@ void TaskCg(void *pvParameters) {
       //send "16" to resume Rotate task and suspend Cg task
       if (incomingByte == 16) {
         Serial.println("Suspend Cg, start/resume Rotate");
-        Serial.println("MODE 3");
+        Serial.println("MODE ROTATE");
         Serial.println("Input steps.");
         Serial.println("Positive = clockwise from origin, negative = counter clockwise from origin.");
         
