@@ -49,7 +49,7 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
 2. Upload cgmoi2.ino onto Arduino and open Serial monitor.
 
-3. Code uses FreeRTOS. There will be 4 tasks, namely ROTATE, Gyro, Motor, and Cg. Code will suspend Rotate, Gyro, and Motor task immediately in void setup() and Cg task will run at highest priority.
+3. Code uses FreeRTOS. There will be 4 tasks, namely Rotate, Gyro, Motor, and Cg. Code will suspend Rotate, Gyro, and Motor task immediately in void setup() and Cg task will run at highest priority.
 
 4. Code has 3 modes. Mode CG runs Cg task, reads values from load cells and output CG and mass values. Mode MOI runs Motor and Gyro tasks and outputs angular acceleration values. Mode ROTATE runs Rotate task and allows user to rotate top plate a desired number of steps in either direction.
 
@@ -103,7 +103,7 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * User can input number of steps user wishes stepper motor to turn.
 
-      * Mode ROTATE uses 'rotate' instance of the AccelStepper class. A separate instance from the one used in mode 2. Hence when user first uploads `cgmoi2.ino`, mode ROTATE regards the position of the stepper motor at that instant as 0 (origin). User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from origin while negative steps are in the counter clockwise direction from origin.
+      * Mode ROTATE uses 'rotate' instance of the AccelStepper class. A separate instance from the one used in mode MOI. Hence when user first uploads `cgmoi2.ino`, mode ROTATE regards the position of the stepper motor at that instant as 0 (origin). User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from origin while negative steps are in the counter clockwise direction from origin.
 
       * Note that location of origin stays the same the whole time while using the code until Arduino is refreshed. Therefore if user inputs 3000 (motor rotates 3000 steps in clockwise direction from origin) and then inputs 1000, motor would subsequently rotate 2000 steps in the counter clockwise direction and stop at the position that is 1000 steps clockwise from the origin.
 
@@ -124,12 +124,12 @@ Below is an illustration of how to navigate between the three modes:
                  |   ----------------<--------------------------   
                  |   |                                         |
                  v   v                                         |
-            -> (Mode 1) -------->--------------                |
+            -> (Mode CG) -------->--------------                |
             |      |                          |                |
 *send '15'* |      | *send '14'*              | *send '16'     ^ *send '15'*
             ^      |                          |                |
             |      v         *send '16'       v                |
-            ----(Mode 2)--------->--------->(Mode 3)----->------
+            ----(Mode MOI)--------->--------->(Mode ROTATE)----->------
                    ^                         |
                    |       *send '14'        |
                    -------------<-------------  
@@ -246,7 +246,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
 3. PCB enclosure was not fully printed because filament kept breaking during the print. 2 halves of the enclosure were used as a makeshift PCB enclosure with one end of sawn open to create opening for wires. Also, slot for PCB to sit in and the width of the enclosure was too narrow for PCB to fit and required a lot of filing. Even then PCB had difficulty fitting into the slot.
 
-      * To increase probability of success of subsequent prints, opening of PCB enclosure should be widened by 1-2mm. Height of slot meant for PCB should be increased by 1mm. And use filament that's less likely to break during print.
+      * To increase probability of success of subsequent prints, opening of PCB enclosure should be widened by 1-2mm. Height of slot meant for PCB should be increased by 1mm. Walls of enclosure can also be made thinner for a faster print. And use filament that's less likely to break during print.
 
 ## Instructions
 Below are instructions on how to set up each individual component of the CGMOI machine, links to each component's datasheet, as well as some notes I made on the my experiences.
