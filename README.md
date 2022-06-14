@@ -6,7 +6,7 @@
 
 **Machine is currently still a work in progress.**
 
-The cgmoi machine is one that is capable of measuring the Centre of Gravity (CG) and Moment Of Inertia (MOI) of a nano-satellite while satellite is mounted on the top plate as shown in picture below.
+The CGMOI machine is one that is capable of measuring the Centre of Gravity (CG) and Moment Of Inertia (MOI) of a nano-satellite while satellite is mounted on the top plate as shown in picture below.
 
 ![satellite mounted](https://github.com/xiaohw7/cgmoi/blob/main/Images/satellite%20mounted%20annotated.png)
 
@@ -14,11 +14,11 @@ The concept of this machine is based on [this research paper](https://github.com
 
 The machine also includes a stepper motor that spins the top plate, and linear actuators to raise and lower the load cells in order to measure CG.
 
-The stepper motor, linear actuator, gyroscope, load cells and other components are controlled by and wired to an Arduino mega board. The Arduino could then be plugged into a laptop running the Arduino IDE where code could be uploaded to run the cgmoi machine.
+The stepper motor, linear actuator, gyroscope, load cells and other components are controlled by and wired to an Arduino mega board. The Arduino could then be plugged into a laptop running the Arduino IDE where code could be uploaded to run the CGMOI machine.
 
 Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuator 1/2/3 correspond to load cell 1/2/3. i.e. linear actuator 1 is directly below load cell 1.
 
-## Components of the cgmoi Machine
+## Components of the CGMOI Machine
 
 - HX711 analog to digital converter
 ![ADC](https://github.com/xiaohw7/cgmoi/blob/main/Images/ADC.JPG)
@@ -49,13 +49,13 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
 2. Upload cgmoi2.ino onto Arduino and open Serial monitor.
 
-3. Code uses FreeRTOS. There will be 4 tasks, namely Rotate, Gyro, Motor, and Cg. Code will suspend Rotate, Gyro, and Motor task immediately in void setup() and Cg task will run at highest priority.
+3. Code uses FreeRTOS. There will be 4 tasks, namely ROTATE, Gyro, Motor, and Cg. Code will suspend Rotate, Gyro, and Motor task immediately in void setup() and Cg task will run at highest priority.
 
-4. Code has 3 modes. Mode 1 runs Cg task, reads values from load cells and output CG and mass values. Mode 2 runs Motor and Gyro tasks and outputs angular acceleration values. Mode 3 runs Rotate task and allows user to rotate top plate a desired number of steps in either direction.
+4. Code has 3 modes. Mode CG runs Cg task, reads values from load cells and output CG and mass values. Mode MOI runs Motor and Gyro tasks and outputs angular acceleration values. Mode ROTATE runs Rotate task and allows user to rotate top plate a desired number of steps in either direction.
 
-5. After uploading code, Arduino will be running mode 1 and user can see output values from load cells on Serial monitor. User can either continue with mode 1 to measure CG of satellite, switch to mode 2 to measure MOI of satellite instead or switch to mode 3 to rotate top plate to the desired orientation.
+5. After uploading code, Arduino will be running mode CG and user can see output values from load cells on Serial monitor. User can either continue with mode CG to measure CG of satellite, switch to mode MOI to measure MOI of satellite instead or switch to mode ROTATE to rotate top plate to the desired orientation.
 
-6. Mode 1: User intends to measure CG of satellite
+6. Mode CG: User intends to measure CG of satellite
 
       * Linear actuators must be fully extended.
 
@@ -75,45 +75,45 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * While running task Cg, mass and CG coordinates can be read straight off the output on the Serial monitor. Refer to "Calculations" section below for x and y axis. Coordinates are in mm.
 
-      * User can send '14' to switch to mode 2 and measure MOI of satellite.
+      * User can send '14' to switch to mode MOI and measure MOI of satellite.
 
-      * User can send '16' to switch to mode 3 and to rotate top plate.
+      * User can send '16' to switch to mode ROTATE and to rotate top plate.
 
-7. Mode 2: user intends on measuring MOI of satellite
+7. Mode MOI: user intends on measuring MOI of satellite
 
-      * Linear actuators must be fully retracted. Send '10' while in mode 1 to fully retract linear actuators.
+      * Linear actuators must be fully retracted. Send '10' while in mode CG to fully retract linear actuators.
 
-      * Ensure screw securing removeable shaft (shown above) is secured, send '14' to switch from mode 1 to mode 2.
+      * Ensure screw securing removeable shaft (shown above) is secured, send '14' to switch from mode CG to mode MOI.
 
-      * Mode 2 uses 'stepper' instance of AccelStepper class to control stepper motor.
+      * Mode MOI uses 'stepper' instance of AccelStepper class to control stepper motor.
 
       * Gyro and Motor tasks will run simultaneously and angular acceleration values can be read from serial monitor. Motor will spin back and forth to allow gyro to measure acceleration values. Once measurement process is finished, average acceleration will be displayed on serial monitor along with "Finish recording" message. User has 15 seconds to mount/dismount satellite before recording process starts again.
 
       * User should record down angular acceleration values with and without satellite mounted. Refer to "Calculations" section for the equations to obtain MOI.
 
-      * While running mode 2, user can also send '15' to switch to mode 1 and return to reading values from load cells.
+      * While running mode MOI, user can also send '15' to switch to mode CG and return to reading values from load cells.
 
-      * While running mode 2, user can send '16' to switch to mode 3 to rotate top plate.
+      * While running mode MOI, user can send '16' to switch to mode ROTATE to rotate top plate.
 
-8. Mode 3: user intends to rotate top plate
+8. Mode ROTATE: user intends to rotate top plate
 
-      * Linear actuators must be fully retracted. Send '10' while in mode 1 to fully retract linear actuators.
+      * Linear actuators must be fully retracted. Send '10' while in mode CG to fully retract linear actuators.
 
-      * Ensure screw securing removeable shaft (shown above) is secured, send '16' to switch from mode 1 to mode 3.
+      * Ensure screw securing removeable shaft (shown above) is secured, send '16' to switch from mode CG to mode ROTATE.
 
       * User can input number of steps user wishes stepper motor to turn.
 
-      * Mode 3 uses 'rotate' instance of the AccelStepper class. A separate instance from the one used in mode 2. Hence when user first uploads `cgmoi2.ino`, mode 3 regards the position of the stepper motor at that instant as 0 (origin). User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from origin while negative steps are in the counter clockwise direction from origin.
+      * Mode ROTATE uses 'rotate' instance of the AccelStepper class. A separate instance from the one used in mode 2. Hence when user first uploads `cgmoi2.ino`, mode ROTATE regards the position of the stepper motor at that instant as 0 (origin). User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from origin while negative steps are in the counter clockwise direction from origin.
 
       * Note that location of origin stays the same the whole time while using the code until Arduino is refreshed. Therefore if user inputs 3000 (motor rotates 3000 steps in clockwise direction from origin) and then inputs 1000, motor would subsequently rotate 2000 steps in the counter clockwise direction and stop at the position that is 1000 steps clockwise from the origin.
 
-      * If user uses mode 3 to rotate to 3000 steps clockwise, and then proceeds to use mode 2, mode 2 will alter the position of the stepper motor but mode 3 will still think it is at 3000 steps clockwise. Hence if user then goes back to mode 3 and inputs 0, motor will rotate 3000 steps counter clockwise.
+      * If user uses mode ROTATE to rotate to 3000 steps clockwise, and then proceeds to use mode MOI, mode MOI will alter the position of the stepper motor but mode ROTATE will still think it is at 3000 steps clockwise. Hence if user then goes back to mode ROTATE and inputs 0, motor will rotate 3000 steps counter clockwise.
 
       * ***Ensure serial monitor is set to 'No line ending'.***
 
-      * While running mode 3, user can send '15' to switch to mode 1 and return to reading values from load cells.
+      * While running mode ROTATE, user can send '15' to switch to mode CG and return to reading values from load cells.
 
-      * While running mode 3, user can send '14' to switch to mode 2 and measure MOI of satellite.
+      * While running mode ROTATE, user can send '14' to switch to mode MOI and measure MOI of satellite.
 
 Below is an illustration of how to navigate between the three modes:
 
@@ -140,25 +140,25 @@ Below is an illustration of how to navigate between the three modes:
 
 |Mode |Commands that can be sent |What it does|
 |-----|--------------------------|------------|
-|1 |Send '1' |Turn on power to linear actuators|
-|1 |Send '2' |Turn off power to linear actuators|
-|1 |Send '3'/'5'/'7' |Move linear actuator 1/2/3 up for 1 second|
-|1 |Send '4'/'6'/'8' |Move linear actuator 1/2/3 down for 1 second|
-|1 |Send '9' |Move all 3 linear actuators up fully|
-|1 |Send '10' |Move all 3 linear actuators down fully|
-|1 |Send '11' |Tare all load cells|
-|1 |Send '12' |Turn on power to stepper motor|
-|1 |Send '13' |Turn off power to stepper motor|
-|1 |Send '14' |End Cg task and resume/start Gyro and Motor tasks, switch to mode 2|
-|1 |Send '16' |End Cg task and resume/start Rotate task, switch to mode 3|
-|2 |Send '12' |Turn on power to stepper motor|
-|2 |Send '13' |Turn off power to stepper motor|
-|2 |Send '15' |End Gyro and Motor tasks and resume/start Cg task, switch to mode 1|
-|2 |Send '16' |End Gyro and Motor tasks and resume/start Rotate task, switch to mode 3|
-|3 |Send '12' |Turn on power to stepper motor|
-|3 |Send '13' |Turn off power to stepper motor|
-|3 |Send '14' |End Rotate task and resume/start Gyro and Motor tasks, switch to mode 2|
-|3 |Send '15' |End Rotate task and resume/start Cg task, switch to mode 1|
+|CG |Send '1' |Turn on power to linear actuators|
+|CG |Send '2' |Turn off power to linear actuators|
+|CG |Send '3'/'5'/'7' |Move linear actuator 1/2/3 up for 1 second|
+|CG |Send '4'/'6'/'8' |Move linear actuator 1/2/3 down for 1 second|
+|CG |Send '9' |Move all 3 linear actuators up fully|
+|CG |Send '10' |Move all 3 linear actuators down fully|
+|CG |Send '11' |Tare all load cells|
+|CG |Send '12' |Turn on power to stepper motor|
+|CG |Send '13' |Turn off power to stepper motor|
+|CG |Send '14' |End Cg task and resume/start Gyro and Motor tasks, switch to mode 2|
+|CG |Send '16' |End Cg task and resume/start Rotate task, switch to mode ROTATE|
+|MOI |Send '12' |Turn on power to stepper motor|
+|MOI|Send '13' |Turn off power to stepper motor|
+|MOI |Send '15' |End Gyro and Motor tasks and resume/start Cg task, switch to mode CG|
+|MOI |Send '16' |End Gyro and Motor tasks and resume/start Rotate task, switch to mode ROTATE|
+|ROTATE |Send '12' |Turn on power to stepper motor|
+|ROTATE |Send '13' |Turn off power to stepper motor|
+|ROTATE |Send '14' |End Rotate task and resume/start Gyro and Motor tasks, switch to mode MOI|
+|ROTATE |Send '15' |End Rotate task and resume/start Cg task, switch to mode CG|
 
 
 ## Points to take note
@@ -249,7 +249,7 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
       * To increase probability of success of subsequent prints, opening of PCB enclosure should be widened by 1-2mm. Height of slot meant for PCB should be increased by 1mm. And use filament that's less likely to break during print.
 
 ## Instructions
-Below are instructions on how to set up each individual component of the cgmoi machine, links to each component's datasheet, as well as some notes I made on the my experiences.
+Below are instructions on how to set up each individual component of the CGMOI machine, links to each component's datasheet, as well as some notes I made on the my experiences.
 
 ### HX711 ADC and load cells:
 
@@ -399,13 +399,15 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - The Arduino Mega board along with relays and ADCs are to be stacked on top of the PCB.
 
-- Wiring of components of cgmoi machine such as load cells, gyro, ADC to Arduino on PCB will be done with screw terminals soldered onto PCB.
+- Wiring of components of CGMOI machine such as load cells, gyro, ADC to Arduino on PCB will be done with screw terminals soldered onto PCB.
 
 - Female headers will be soldered on to PCB so that relays and ADCs can be stacked on PCB.
 
 - Male headers will be soldered on to PCB so that Arduino Mega can be stack on the PCB.
 
 - PCB along with its components would be put into a PCB encloser with opening for wires to connect to other components.
+
+- PCB was designed using KiCad and the files can be found [here](https://github.com/xiaohw7/cgmoi/tree/main/pcb/CGMOI).
 
 - PCB encloser is designed using solidworks and to be 3D printed. Design of encloser is based on [this PCB encloser](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
 
