@@ -105,9 +105,9 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * Mode 3 uses 'rotate' instance of the AccelStepper class. A separate instance from the one used in mode 2. Hence when user first uploads `cgmoi2.ino`, mode 3 regards the position of the stepper motor at that instant as 0 (origin). User can instruct stepper motor to rotate to a specific position that is a certain number of steps away from the origin. Positive steps are in the clockwise direction from origin while negative steps are in the counter clockwise direction from origin.
 
-      * Note that location of origin stays the same the whole time while using the code. Therefore if user inputs 3000 (motor rotates 3000 steps in clockwise direction) and then inputs 1000, motor would subsequently rotate 2000 steps in the counter clockwise direction and stop at the position that is 1000 steps clockwise from the origin.
+      * Note that location of origin stays the same the whole time while using the code until Arduino is refreshed. Therefore if user inputs 3000 (motor rotates 3000 steps in clockwise direction from origin) and then inputs 1000, motor would subsequently rotate 2000 steps in the counter clockwise direction and stop at the position that is 1000 steps clockwise from the origin.
 
-      * If user uses mode 3 to rotate to 3000 steps clockwise, and then proceeds to use mode 2, mode 2 will alter the position of the stepper motor but mode 3 will still think it is at 3000 steps clockwise. Hence if user then goes to mode 3 and inputs 0, motor will rotate 3000 steps counter clockwise.
+      * If user uses mode 3 to rotate to 3000 steps clockwise, and then proceeds to use mode 2, mode 2 will alter the position of the stepper motor but mode 3 will still think it is at 3000 steps clockwise. Hence if user then goes back to mode 3 and inputs 0, motor will rotate 3000 steps counter clockwise.
 
       * ***Ensure serial monitor is set to 'No line ending'.***
 
@@ -244,8 +244,12 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
 
      *  Potential way to improve is to change to motor to a simple DC motor that outputs constant torque every time it accelerated top plate from rest regardless of whether top plate is loaded.
 
+3. PCB enclosure was not fully printed because filament kept breaking during the print. 2 halves of the enclosure were used as a makeshift PCB enclosure with one end of sawn open to create opening for wires. Also, slot for PCB to sit in and the width of the enclosure was too narrow for PCB to fit and required a lot of filing. Even then PCB had difficulty fitting into the slot.
+
+      * To increase probability of success of subsequent prints, opening of PCB enclosure should be widened by 1-2mm. Height of slot meant for PCB should be increased by 1mm. And use filament that's less likely to break during print.
+
 ## Instructions
-Below are instructions on how to set up each individual component of the cgmoi machine, links to each component's datasheet, as well as some notes I made on the problems I faced in the process.
+Below are instructions on how to set up each individual component of the cgmoi machine, links to each component's datasheet, as well as some notes I made on the my experiences.
 
 ### HX711 ADC and load cells:
 
@@ -389,7 +393,7 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - While running task Cg, user can control linear actuators and read values from load cells. User can send command to suspend Cg task and resume Gyro and Motor task in order to start obtaining angular acceleration values. While running Gyro and Motor task, user can also send command to suspend Gyro and Motor task and resume Cg task to return to reading values from linear actuators. Code is in `cgmoi.ino`(`moi4.ino` + `cg.ino`).
 
-- To facilitate more accurate and easier measurements of CG, another task, based on `rotate_topplate.ino`, is added to the code. Rotate task uses a seprate instance of AccelStepper class and allows user to control stepper motor and rotate top plate a set number of steps in either direction to facilitate alignment of top plate before raising linear actuators to measure CG. New code has 4 tasks, namely Gyro, Motor, Cg, and Rotate. Code is in `cgmoi2.ino`.
+- To facilitate more accurate and easier measurements of CG, another task, based on `rotate_topplate.ino`, is added to the code. Rotate task uses a separate instance of AccelStepper class from the one used in Motor task and allows user to control stepper motor and rotate top plate a set number of steps in either direction to facilitate alignment of top plate before raising linear actuators to measure CG. New code has 4 tasks, namely Gyro, Motor, Cg, and Rotate. Code is in `cgmoi2.ino`.
 
 ### Putting it together (Printed Circuit Board):
 
@@ -403,7 +407,7 @@ Below are instructions on how to set up each individual component of the cgmoi m
 
 - PCB along with its components would be put into a PCB encloser with opening for wires to connect to other components.
 
-- PCB encloser is to be designed using solidworks and 3D printed. Design of encloser is based on [this PCB encloser](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
+- PCB encloser is designed using solidworks and to be 3D printed. Design of encloser is based on [this PCB encloser](https://www.lazada.sg/products/extruded-pcb-aluminum-box-black-enclosure-electronic-project-case-80x160x170mm-i2083438345-s11541324037.html)
 
 - PCB CAD files can be found on [Onedrive](https://onedrive.live.com/?authkey=%21AlhODXygXZWnhUQ&id=8E16A592663A6%2154244&cid=0008E16A592663A6)
 
