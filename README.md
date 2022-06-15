@@ -47,7 +47,7 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
       - [FreeRTOS](https://github.com/feilipu/Arduino_FreeRTOS_Library) for running Real Time Operating System on Arduino
       - [SimpleKalmanFilter](https://github.com/denyssene/SimpleKalmanFilter) for running values through a Kalman filter to reduce noisy readings
 
-2. Upload cgmoi2.ino onto Arduino and open Serial monitor.
+2. Upload cgmoi2.ino onto Arduino and open Serial monitor. Serial monitor to use 9600 baud.
 
 3. Code uses FreeRTOS. There will be 4 tasks, namely Rotate, Gyro, Motor, and Cg. Code will suspend Rotate, Gyro, and Motor task immediately in void setup() and Cg task will run at highest priority.
 
@@ -198,8 +198,8 @@ With reference to image above, points A,B,C correspond to load cell 1,2,3 respec
       * Pc = m6 - m3
       * Pb = m5 - m2
       * Mass of satellite, M = Pa + Pb + Pc  
-      * m1, m2 and m3 are weights of fixture tools and platform on load cell A, A and A respectively.
-      * m4, m5 and m6 are wights of fixture tools, platform and satellite on load cell A, B and C respectively.
+      * m1, m2 and m3 are weights of fixture tools and platform on load cell A, B and C respectively.
+      * m4, m5 and m6 are weights of fixture tools, platform and satellite on load cell A, B and C respectively.
       * Pa, Pb and Pc are satellite weights on load cell a, b and c respectively.
       * Code outputs overall mass of satellite in grams.
 
