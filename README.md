@@ -47,7 +47,7 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
       - [FreeRTOS](https://github.com/feilipu/Arduino_FreeRTOS_Library) for running Real Time Operating System on Arduino
       - [SimpleKalmanFilter](https://github.com/denyssene/SimpleKalmanFilter) for running values through a Kalman filter to reduce noisy readings
 
-2. Upload cgmoi2.ino onto Arduino and open Serial monitor. Serial monitor to use 9600 baud.
+2. Upload cgmoi2.ino onto Arduino and open Serial monitor. Serial monitor to use 9600 baud. Stepper motor driver should be set to 1600 pulse/rev.
 
 3. Code uses FreeRTOS. There will be 4 tasks, namely Rotate, Gyro, Motor, and Cg. Code will suspend Rotate, Gyro, and Motor task immediately in void setup() and Cg task will run at highest priority.
 
