@@ -152,7 +152,7 @@ Below is an illustration of how to navigate between the three modes:
 |CG |Send '14' |End Cg task and resume/start Gyro and Motor tasks, switch to mode MOI|
 |CG |Send '16' |End Cg task and resume/start Rotate task, switch to mode ROTATE|
 |MOI |Send '12' |Turn on power to stepper motor|
-|MOI|Send '13' |Turn off power to stepper motor|
+|MOI |Send '13' |Turn off power to stepper motor|
 |MOI |Send '15' |End Gyro and Motor tasks and resume/start Cg task, switch to mode CG|
 |MOI |Send '16' |End Gyro and Motor tasks and resume/start Rotate task, switch to mode ROTATE|
 |ROTATE |Send '12' |Turn on power to stepper motor|
