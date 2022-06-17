@@ -386,6 +386,8 @@ Below are instructions on how to set up each individual component of the CGMOI m
 
 - Linear actuators should be tested first by moving each actuator up and down.
 
+- Marked line at the edge of top plate should be aligned with number 1 indicated on loadcell 1 so that the axis indicated on the top plate correspond to calculations using the 3 load cells. Marked line should be 90 degrees counter clockwise from gyroscope when looking from the top view.
+
 - Linear actuators should be extended all the way to measure weight of satellite. Satellite should be placed on the top plate after actuators fully extend and taring load cells. Wait for “Tare load cell 1 / 2 / 3 complete” message. User should also tare load cells after each measurement.
 
 - Arduino mega is able to support all 3 load cells and the 4 relays hence all 7 components will share the same VCC and GND through breadboard. Code is in `cg.ino` (`linear_actuator_script.ino` + `HX711_script3.ino`).
