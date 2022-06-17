@@ -69,7 +69,7 @@ Each load cell is marked load cell 1/2/3 on the load cell itself. Linear actuato
 
       * To ease measuring process of CG, x and y axis on top plate must align with axis indicated in "Calculations" section below. Arrow of y axis must point directly away from load cell 1. Location of origin is the center of the top plate.
 
-      * One way to align x and y axis is to align the marked line on the edge of the top plate with the number 1 indicated on load cell 1. User can do so with the help of mode 3. An illustration is shown below.
+      * One way to align x and y axis is to align the marked line on the edge of the top plate with the number 1 indicated on load cell 1(marked line should be on the edge of the top plate and positioned 90 degrees counter clockwise from the gyroscope when looking from above the gyroscope mounting point). User can do so with the help of mode 3. An illustration is shown below.
 
       * ![axis alignment](https://github.com/xiaohw7/cgmoi/blob/main/Images/axis_alignment.JPG)
 
