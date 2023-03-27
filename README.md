@@ -4,7 +4,6 @@
 
 ![cgmoi machine](https://github.com/xiaohw7/cgmoi/blob/main/Images/cgmoi%20machine%20annotated.png)
 
-**Machine is currently still a work in progress.**
 
 The CGMOI machine is one that is capable of measuring the Centre of Gravity (CG) and Moment Of Inertia (MOI) of a nano-satellite while satellite is mounted on the top plate as shown in picture below.
 
